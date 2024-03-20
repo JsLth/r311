@@ -1,11 +1,22 @@
 o311_cache <- new.env(parent = emptyenv())
 
 
-o311_jurisdiction <- function(root) {
+o311_jurisdiction <- function(city) {
+  all_endpoints <- o311_endpoints()
 
+  endpoints <- all_endpoints[grepl(
+    city,
+    all_endpoints$name,
+    ignore.case = TRUE
+  ), ]
 
   juris <- list(
-    root = root
+    root = endpoints$base_url,
+    name = endpoints$name,
+    country = endpoints$country,
+    discovery = endpoints$api_discovery,
+    version = endpoints$version,
+    jurisdiction = endpoints$jurisdiction_id
   )
 
   assign("juris", juris, envir = o311_cache)
@@ -38,5 +49,7 @@ o311_endpoints <- function() {
 
 
 o311_discovery <- function(url) {
-
+  req <- httr2::request(url)
+  res <- httr2::req_perform(req)
+  httr2::resp_body_json(res)
 }

@@ -11,5 +11,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports: 
-    httr2
+    httr2,
+    xml2
+Suggests:
+    httptest2
 RoxygenNote: 7.3.1
