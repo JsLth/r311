@@ -2,7 +2,7 @@
 % Please edit documentation in R/query.R
 \name{o311_query}
 \alias{o311_query}
-\title{Query an open311 service}
+\title{Query an open311 endpoint}
 \usage{
 o311_query(path, ..., simplify = TRUE)
 }
@@ -18,7 +18,8 @@ o311_query(path, ..., simplify = TRUE)
 The parsed query output, either as a list or dataframe.
 }
 \description{
-Make a generic open311 query. Some open311 implementations support
+Low-level function to perform a generic request to the API currently
+attached by \code{o311_jurisdiction}. Some open311 implementations support
 unique operations that are not included in the official documentation.
 This function can be used to access these URL paths.
 }

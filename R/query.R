@@ -1,6 +1,7 @@
-#' Query an open311 service
+#' Query an open311 endpoint
 #' @description
-#' Make a generic open311 query. Some open311 implementations support
+#' Low-level function to perform a generic request to the API currently
+#' attached by \code{o311_jurisdiction}. Some open311 implementations support
 #' unique operations that are not included in the official documentation.
 #' This function can be used to access these URL paths.
 #'
