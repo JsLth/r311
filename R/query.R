@@ -16,11 +16,14 @@
 #'
 #' @export
 o311_query <- function(path, ..., simplify = TRUE) {
+  assert_dots_named()
   juris <- get_juris()
+  root <- juris$root
   query <- drop_null(c(jurisdiction_id = juris$jurisdiction, list(...)))
-  path <- paste0(path, ifelse(juris$json, ".json", ".xml"))
+  format <- ifelse(juris$json, "json", "xml")
+  path <- paste(path, format, sep = ".")
 
-  GET(juris$root, path = path, query = query, simplify = simplify)
+  GET(root, path = path, query = query, simplify = simplify, format = format)
 }
 
 
@@ -51,11 +54,25 @@ GET <- function(url,
 
 tidy_response <- function(x, format) {
   if (identical(format, "json")) {
-    #x <- cbind.data.frame(lapply(x, function(col) {
-    #  if (is.data.frame(col)) unlist(col) else col
-    #}))
     as_data_frame(x)
   } else if (identical(format, "xml")) {
-    xml_to_dataframe(x)
+    # find the first xml tag that has a length of over 1
+    # this usually works, but might not always
+    tag <- unique(names(Find(function(x) length(x) > 1, xml2::as_list(x))))
+
+    if (!is.null(tag) || length(tag) > 1) {
+      as_data_frame(xmlconvert::xml_to_df(
+        text = as.character(x),
+        records.tags = tag,
+        check.datatypes = TRUE
+      ))
+    } else { # nocov start
+      warning(paste(
+        "Could not tidy XML response.",
+        "It might deviate from the open311 standard.",
+        "Please use the JSON format instead or set simplify = FALSE."
+      ))
+      x
+    } # nocov end
   }
 }
