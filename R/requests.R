@@ -45,7 +45,7 @@
 #' if the page exceeds \code{max_pages}, the responses up to this point are
 #' returned.
 #'
-#' open311 leaves space for implementations to implement their own request
+#' open311 leaves space for endpoints to implement their own request
 #' parameters. These parameters can be provided using dot arguments.
 #' These arguments are not validated or pre-processed. Date-time objects
 #' must be formatted according to the
@@ -57,16 +57,23 @@
 #'  \item{\code{update_after}/\code{updated_before}: Limit request according
 #'  to request update dates.}
 #'  \item{\code{per_page}: Specifiy the maximum number of requests per page.}
-#'  \item{\code{extensions}: Return additional technical information.}
+#'  \item{\code{extensions}: Adds a nested attribute
+#'  \code{"extended_attributes"} to the response.}
+#'  \item{\code{long}/\code{lat}/\code{radius}: Searches for requests in a fixed radius
+#'  around a coordinate.}
 #' }
 #'
 #' As dot arguments deviate from the open311 standard, they are not guaranteed
 #' to be available for every endpoint and might be removed without further
-#' notice.
+#' notice. Refer to the endpoint docs to learn more about custom parameters
+#' (\code{o311_endpoints()$docs}).
 #'
 #' @examples
-#' # example code
-#'
+#' \dontrun{
+#' # retrieve requests from the last two days
+#' now <- Sys.time()
+#' o311_requests(end_date = now, start_date = now - 60 * 60 * 24 * 2)
+#' }
 #' @seealso \code{\link{o311_jurisdiction}}
 #' @export
 o311_requests <- function(service_code = NULL,
@@ -102,14 +109,14 @@ o311_requests <- function(service_code = NULL,
 #' @param service_request_id \code{[character]}
 #'
 #' Identifier of a single service request. Request IDs can usually be retrieved
-#' from a response from \code{o311_requests}.
+#' from \code{o311_requests}.
 #' @rdname o311_requests
 #' @export
-o311_request <- function(service_request_id) {
+o311_request <- function(service_request_id, ...) {
   assert_string(service_request_id)
 
   path <- sprintf("request/", service_request_id)
-  res <- o311_query(path = path, simplify = TRUE)
+  res <- o311_query(path = path, ..., simplify = TRUE)
   request_to_sf(res)
 }
 

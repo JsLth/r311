@@ -43,6 +43,13 @@
 #' information on an endpoint. For \code{o311_add_endpoint}, the new endpoint,
 #' invisibly. \code{o311_reset_endpoints} returns \code{NULL} invisibly.
 #'
+#' @details
+#' \code{o311_endpoints()} returns a static list defined in the package
+#' installation directory. This list contains a limited number of endpoints
+#' that were proven to work at the time of package development. It does not
+#' include newer/smaller/less known endpoints or test APIs. These can be
+#' manually added using \code{o311_add_endpoint}.
+#'
 #' @note
 #' This function uses \code{\link[tools]{R_user_dir}} to persistently store
 #' custom endpoints data between sessions. To clean up, run

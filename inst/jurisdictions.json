@@ -2,6 +2,7 @@
   {
     "name": "Annaberg-Buchholz, Deutschland",
     "root": "https://anliegen.annaberg-buchholz.de/georeport/v2/",
+    "docs": "https://anliegen.annaberg-buchholz.de/content/open311",
     "jurisdiction": "annberg-buchholz.de",
     "key": false,
     "pagination": true,
@@ -20,6 +21,7 @@
   {
     "name": "Bonn, Deutschland",
     "root": "https://anliegen.bonn.de/georeport/v2/",
+    "docs": "https://anliegen.bonn.de/open311",
     "jurisdiction": "bonn.de",
     "key": false,
     "pagination": true,
@@ -29,6 +31,7 @@
   {
     "name": "Boston, MA",
     "root": "https://311.boston.gov/open311/v2/",
+    "docs": "https://311.boston.gov/open311",
     "jurisdiction": "boston.gov",
     "key": false,
     "pagination": true,
@@ -38,6 +41,7 @@
   {
     "name": "Brookline, MA",
     "root": "http://spot.brooklinema.gov/open311/v2/",
+    "docs": "http://spot.brooklinema.gov/open311/v2/",
     "jurisdiction": "brooklinema.gov",
     "key": false,
     "pagination": true,
@@ -47,6 +51,7 @@
   {
     "name": "Chicaco, IL",
     "root": "http://311api.cityofchicago.org/open311/v2/",
+    "docs": "http://311api.cityofchicago.org/open311/v2/",
     "jurisdiction": "cityofchicago.org",
     "key": false,
     "pagination": true,
@@ -56,6 +61,7 @@
   {
     "name": "Köln / Cologne, Deutschland",
     "root": "https://sags-uns-archiv.stadt-koeln.de/georeport/v2/",
+    "docs": "https://sags-uns-archiv.stadt-koeln.de/seiten/open311",
     "jurisdiction": "stadt-koeln.de",
     "key": false,
     "pagination": true,
@@ -74,6 +80,7 @@
   {
     "name": "Rostock, Deutschland",
     "root": "https://www.klarschiff-hro.de/backoffice/citysdk/",
+    "docs": "https://github.com/bfpi/klarschiff-citysdk/blob/master/README.md",
     "jurisdiction": "rostock.de",
     "key": false,
     "pagination": false,
@@ -82,6 +89,7 @@
   {
     "name": "San Francisco, CA",
     "root": "https://mobile311.sfgov.org/open311/v2/",
+    "docs": "https://mobile311.sfgov.org/open311/v2/",
     "jurisdiction": "sfgov.org",
     "key": false,
     "pagination": true,
@@ -91,6 +99,7 @@
   {
     "name": "Siegburg, Deutschland",
     "root": "https://anliegen.siegburg.de/georeport/v2/",
+    "docs": "https://anliegen.siegburg.de/content/open311",
     "jurisdiction": "siegburg.de",
     "key": false,
     "pagination": true,
@@ -108,6 +117,7 @@
   {
     "name": "Zürich, CH",
     "root": "https://www.zueriwieneu.ch/open311/v2",
+    "docs": "https://www.zueriwieneu.ch/open311/",
     "jurisdiction": "stadt-zuerich.ch",
     "key": false,
     "pagination": true,
@@ -125,6 +135,7 @@
   {
     "name": "Gilbert, AZ",
     "root": "https://seeclickfix.com/open311/v2/655/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
     "jurisdiction": "gilbertaz.gov",
     "key": false,
     "pagination": true,
@@ -134,6 +145,7 @@
   {
     "name": "Schwerin, DEU",
     "root": "https://www.klarschiff-sn.de/backoffice/citysdk/",
+    "docs": "https://github.com/bfpi/klarschiff-citysdk/blob/master/README.md",
     "jurisdiction": "schwerin.de",
     "key": false,
     "pagination": false,
@@ -142,6 +154,7 @@
   {
     "name": "FixMyStreet",
     "root": "https://www.fixmystreet.com/open311/v2/",
+    "docs": "https://www.fixmystreet.com/open311/",
     "jurisdiction": "fixmystreet",
     "key": false,
     "pagination": true,
@@ -151,18 +164,11 @@
   {
     "name": "München, DEU",
     "root": "https://machmuenchenbesser.de/georeport/v2/",
+    "docs": "https://machmuenchenbesser.de/open311-georeport",
     "jurisdiction": "muenchen.de",
     "key": false,
     "pagination": true,
     "limit": 100,
-    "json": true
-  },
-  {
-    "name": "Boston, MA",
-    "root": "https://boston2-production.spotmobile.net/open311/v2/",
-    "key": false,
-    "pagination": true,
-    "limit": 50,
     "json": true
   }
 ]

@@ -4,7 +4,11 @@
 \alias{o311_jurisdiction}
 \title{Mount a jurisdiction}
 \usage{
-o311_jurisdiction(endpoint = NULL, jurisdiction = NULL)
+o311_jurisdiction(
+  endpoint = NULL,
+  jurisdiction = NULL,
+  format = c("json", "xml")
+)
 }
 \arguments{
 \item{endpoint}{\code{[character]}
@@ -17,6 +21,15 @@ city, but can be any provider of an open311 API.}
 ID of a jurisdiction that is served by an open311 API. A jurisdiction
 ID is usually the root URL of the jurisdiction website, e.g.
 \code{"sfgov.org"} for San Francisco.}
+
+\item{format}{\code{[character]}
+
+Response format. Must be one of \code{"json"} or \code{"xml"}. Defaults to
+\code{"json"} because simplification is more difficult and unsafe for
+\code{xml2} objects. It is advisable to use \code{"json"} whenever
+possible and applicable. Additionally, \code{"xml"} requires the
+\code{xml2} package for queries and the \code{xmlconvert} package for
+simplification.}
 }
 \value{
 A list containing the most important information on a given
