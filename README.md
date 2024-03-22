@@ -4,6 +4,12 @@
 # open311
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/JsLth/open311/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JsLth/open311/actions/workflows/R-CMD-check.yaml)
+[![](https://www.r-pkg.org/badges/version/rors)](https://cran.r-project.org/package=rors)
+[![Codecov test
+coverage](https://codecov.io/gh/JsLth/open311/branch/main/graph/badge.svg)](https://app.codecov.io/gh/JsLth/open311?branch=main)
+[![CodeFactor](https://www.codefactor.io/repository/github/jslth/open311/badge/master)](https://www.codefactor.io/repository/github/jslth/open311/overview/master)
 <!-- badges: end -->
 
 `open311` is an R package that allows you to query any endpoint that
@@ -34,38 +40,28 @@ retrieves a small amount of data on service tickets in Cologne, Germany.
 library(open311)
 
 o311_jurisdiction("Cologne")
-#> $root
-#> [1] "https://sags-uns.stadt-koeln.de/georeport/v2/"
-#> 
-#> $name
-#> [1] "Köln / Cologne, Deutschland"
-#> 
-#> $country
-#> [1] "DEU"
-#> 
-#> $discovery
-#> [1] "https://sags-uns.stadt-koeln.de/georeport/v2/discovery.json"
-#> 
-#> $version
-#> [1] "georeport-v2"
-#> 
-#> $jurisdiction
-#> [1] "stadt-koeln.de"
 o311_requests()
-#> # A tibble: 100 × 13
-#>    service_request_id title  description   lat  long address_string service_name
-#>    <chr>              <chr>  <chr>       <dbl> <dbl> <chr>          <chr>       
-#>  1 862-2023           #862-… "Kreuzung …  50.9  6.92 50931 Köln - … Gully verst…
-#>  2 863-2023           #863-…  <NA>        50.9  6.97 50968 Köln - … Leuchtmitte…
-#>  3 864-2023           #864-… "Led Lampe…  51.0  6.91 50827 Köln - … Leuchtmitte…
-#>  4 865-2023           #865-… "Die Ampel…  51.0  6.91 50825 Köln - … Kfz-Ampel d…
-#>  5 866-2023           #866-… "Auf Höhe …  50.9  7.00 51149 Köln - … Wilder Müll 
-#>  6 867-2023           #867-… "Auf Höhe …  50.9  7.00 51149 Köln - … Wilder Müll 
-#>  7 868-2023           #868-… "Erheblich…  51.0  6.98 50735 Köln - … Defekte Obe…
-#>  8 869-2023           #869-… "Erheblich…  51.0  6.98 50735 Köln - … Defekte Obe…
-#>  9 870-2023           #870-… "Auf der I…  51.0  6.95 50735 Köln - … Defekte Obe…
-#> 10 871-2023           #871-… "Straße mi…  50.9  6.92 50931 Köln - … Gully verst…
-#> # ℹ 90 more rows
-#> # ℹ 6 more variables: requested_datetime <chr>, updated_datetime <chr>,
-#> #   status <chr>, media_url <chr>, status_note <chr>, service_code <chr>
+#> Simple feature collection with 50 features and 14 fields
+#> Geometry type: POINT
+#> Dimension:     XY
+#> Bounding box:  xmin: 6.833799 ymin: 50.85938 xmax: 7.10085 ymax: 51.0604
+#> Geodetic CRS:  WGS 84
+#> # A tibble: 50 × 15
+#>    service_request_id status service_code service_name               description
+#>  * <chr>              <chr>  <chr>        <chr>                      <chr>      
+#>  1 A-173480           open   009          Schrottfahrzeuge/-fahrräd… "Rondorfer…
+#>  2 A-173476           open   012          Straßenbaustellen          "Baustelle…
+#>  3 A-173472           open   012          Straßenbaustellen          "Guten Tag…
+#>  4 A-173470           open   009          Schrottfahrzeuge/-fahrräd… "Unabgesch…
+#>  5 A-173455           open   009          Schrottfahrzeuge/-fahrräd… "Am Rand d…
+#>  6 A-173438           open   006          Gully verstopft            "Bachemer …
+#>  7 A-173430           open   009          Schrottfahrzeuge/-fahrräd… "Auf der W…
+#>  8 A-173409           open   009          Schrottfahrzeuge/-fahrräd… "Räder ste…
+#>  9 A-173407           open   009          Schrottfahrzeuge/-fahrräd… "Ohne Kenn…
+#> 10 A-173390           open   009          Schrottfahrzeuge/-fahrräd… "Auto steh…
+#> # ℹ 40 more rows
+#> # ℹ 10 more variables: agency_responsible <lgl>, service_notice <lgl>,
+#> #   address_id <lgl>, requested_datetime <chr>, updated_datetime <chr>,
+#> #   address <chr>, zipcode <lgl>, status_notes <chr>, media_url <chr>,
+#> #   geometry <POINT [°]>
 ```

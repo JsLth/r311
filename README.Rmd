@@ -12,12 +12,16 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 
-httptest2::start_vignette("vignettes/README")
+httptest2::start_vignette("../man/figures/README")
 ```
 
 # open311
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/JsLth/open311/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JsLth/open311/actions/workflows/R-CMD-check.yaml)
+[![](https://www.r-pkg.org/badges/version/rors)](https://cran.r-project.org/package=rors)
+[![Codecov test coverage](https://codecov.io/gh/JsLth/open311/branch/main/graph/badge.svg)](https://app.codecov.io/gh/JsLth/open311?branch=main)
+[![CodeFactor](https://www.codefactor.io/repository/github/jslth/open311/badge/master)](https://www.codefactor.io/repository/github/jslth/open311/overview/master)
 <!-- badges: end -->
 
 `open311` is an R package that allows you to query any endpoint that uses

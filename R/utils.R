@@ -31,6 +31,11 @@ loadable <- function(x) {
 }
 
 
+o311_path <- function(...) {
+  system.file(..., package = "open311")
+}
+
+
 xml_to_dataframe <- function(doc) {
   nodes <- xml2::xml_find_all(doc, "//*")
   leafs <- which(xml2::xml_length(xml2::xml_children(nodes)) == 0)
@@ -50,5 +55,5 @@ xml_to_dataframe <- function(doc) {
 
 
 w3c_datetime <- function(x) {
-  format(x, format = "%FT%R:%SZ")
+  if (is.character(x)) format(x, format = "%FT%R:%SZ")
 }

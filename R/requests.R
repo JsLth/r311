@@ -1,9 +1,11 @@
-#' Query the current status of multiple requests
+#' Get civic service request data
 #' @description
-#' Get data from a registered open311 endpoint.
+#' Get civic service request data from a registered open311 endpoint.
+#' \code{o311_request} queries a single service request by ID.
+#' \code{o311_requests} queries a single page of service requests.
+#' \code{o311_request_all} tries to iterate through all pages of an endpoint
+#' to return a complete dataset of service requests.
 #'
-#' @param jurisdiction_id ID of a specific jurisdiction. Only required if
-#' an endpoint serves multiple jurisdictions.
 #' @param service_code \code{[character]}
 #'
 #' IDs of the service types to be queried. Defaults to all available codes of
@@ -20,34 +22,147 @@
 #' Status of the public service ticket. Can be one of \code{"open"} or
 #' \code{"closed"}. If \code{NULL}, returns all types of tickets.
 #'
+#' @param page \code{[integer]}
+#'
+#' Page of the response. Most endpoints paginate their responses in a way
+#' that only a limited number of tickets are returned with each query.
+#' To retrieve all data, consider using \code{\link{o311_request_all}}.
+#'
 #' @param ... Further endpoint-specific parameters as documented in the
 #' respective endpoint reference.
 #'
+#' @param max_pages \code{[integer]}
+#'
+#' Number of pages that are searched until the result is returned.
+#'
+#' @details
+#' \code{o311_request_all} applies a number of checks to determine when to
+#' stop searching. First, many endpoints return an error if the last page
+#' is exceeded. Thus, if the last page request failed, break.
+#' Second, if exceeding the pagination limit does not return an error, the
+#' response is compared with the previous response. If identical, the
+#' response is discarded and all previous responses returned. Finally,
+#' if the page exceeds \code{max_pages}, the responses up to this point are
+#' returned.
+#'
+#' open311 leaves space for implementations to implement their own request
+#' parameters. These parameters can be provided using dot arguments.
+#' These arguments are not validated or pre-processed. Date-time objects
+#' must be formatted according to the
+#' \href{https://www.w3.org/TR/NOTE-datetime}{w3c} standard.
+#' Some more common parameters include:
+#'
+#' \itemize{
+#'  \item{\code{q}: Perform a text search across all requests.}
+#'  \item{\code{update_after}/\code{updated_before}: Limit request according
+#'  to request update dates.}
+#'  \item{\code{per_page}: Specifiy the maximum number of requests per page.}
+#'  \item{\code{extensions}: Return additional technical information.}
+#' }
+#'
+#' As dot arguments deviate from the open311 standard, they are not guaranteed
+#' to be available for every endpoint and might be removed without further
+#' notice.
+#'
+#' @examples
+#' # example code
+#'
+#' @seealso \code{\link{o311_jurisdiction}}
 #' @export
-o311_requests <- function(jurisdiction_id = NULL,
-                          service_code = NULL,
+o311_requests <- function(service_code = NULL,
                           start_date = NULL,
                           end_date = NULL,
                           status = NULL,
+                          page = NULL,
                           ...) {
-  assert_string(jurisdiction_id)
   assert_string(service_code)
   assert_time(start_date)
   assert_time(end_date)
+  assert_number(page, int = TRUE)
 
   status <- match.arg(status, c("open", "closed"))
   start_date <- w3c_datetime(start_date)
   end_date <- w3c_datetime(end_date)
-  url <- get_root_api()
 
-  req <- httr2::request(url)
-  req <- httr2::req_method(req, "GET")
-  req <- httr2::req_url_path(req, "georeport/v2/requests.json")
+  res <- o311_query(
+    path = "requests",
+    service_code = service_code,
+    start_date = start_date,
+    end_date = end_date,
+    status = status,
+    page = page,
+    ...,
+    simplify = TRUE
+  )
 
-  args <- as.list(match.call()[-1])
-  req <- do.call(httr2::req_url_query, c(args, list(req)))
+  request_to_sf(res)
+}
 
-  res <- httr2::req_perform(req)
-  res <- httr2::resp_body_json(res, simplifyVector = TRUE, flatten = TRUE)
-  as_data_frame(res)
+
+#' @param service_request_id \code{[character]}
+#'
+#' Identifier of a single service request. Request IDs can usually be retrieved
+#' from a response from \code{o311_requests}.
+#' @rdname o311_requests
+#' @export
+o311_request <- function(service_request_id) {
+  assert_string(service_request_id)
+
+  path <- sprintf("request/", service_request_id)
+  res <- o311_query(path = path, simplify = TRUE)
+  request_to_sf(res)
+}
+
+
+#' @rdname o311_requests
+#' @export
+o311_request_all <- function(service_code = NULL,
+                             start_date = NULL,
+                             end_date = NULL,
+                             status = NULL,
+                             ...,
+                             max_pages = Inf) {
+  if ("page" %in% ...names()) {
+    stop(paste(
+      "`page` is unsupported in `o311_request_all`.",
+      "The function iterates through all pages."
+    ))
+  }
+
+  out <- list()
+  i <- 1
+  repeat {
+    res <- tryCatch(
+      o311_requests(
+        service_code = service_code,
+        start_date = start_date,
+        end_date = end_date,
+        status = status,
+        page = i,
+        ...,
+      ),
+      error = identity
+    )
+
+    # break if last request failed
+    if (inherits(res, "error")) break
+
+    # break if last request is identical to previous one
+    if (identical(res, out[length(out)])) break
+
+    out[[i]] <- res
+    i <- i + 1
+
+    # break if page limit is reached
+    if (i > max_pages) break
+  }
+  res
+}
+
+
+request_to_sf <- function(res) {
+  if (all(c("long", "lat") %in% names(res))) {
+    res <- sf::st_as_sf(res, coords = c("long", "lat"), crs = 4326)
+  }
+  res
 }

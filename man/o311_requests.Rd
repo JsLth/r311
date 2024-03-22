@@ -2,21 +2,31 @@
 % Please edit documentation in R/requests.R
 \name{o311_requests}
 \alias{o311_requests}
-\title{Query the current status of multiple requests}
+\alias{o311_request}
+\alias{o311_request_all}
+\title{Get civic service request data}
 \usage{
 o311_requests(
-  jurisdiction_id = NULL,
   service_code = NULL,
   start_date = NULL,
   end_date = NULL,
   status = NULL,
+  page = NULL,
   ...
+)
+
+o311_request(service_request_id)
+
+o311_request_all(
+  service_code = NULL,
+  start_date = NULL,
+  end_date = NULL,
+  status = NULL,
+  ...,
+  max_pages = Inf
 )
 }
 \arguments{
-\item{jurisdiction_id}{ID of a specific jurisdiction. Only required if
-an endpoint serves multiple jurisdictions.}
-
 \item{service_code}{\code{[character]}
 
 IDs of the service types to be queried. Defaults to all available codes of
@@ -33,9 +43,64 @@ If not specified, defaults to the last 90 days.}
 Status of the public service ticket. Can be one of \code{"open"} or
 \code{"closed"}. If \code{NULL}, returns all types of tickets.}
 
+\item{page}{\code{[integer]}
+
+Page of the response. Most endpoints paginate their responses in a way
+that only a limited number of tickets are returned with each query.
+To retrieve all data, consider using \code{\link{o311_request_all}}.}
+
 \item{...}{Further endpoint-specific parameters as documented in the
 respective endpoint reference.}
+
+\item{service_request_id}{\code{[character]}
+
+Identifier of a single service request. Request IDs can usually be retrieved
+from a response from \code{o311_requests}.}
+
+\item{max_pages}{\code{[integer]}
+
+Number of pages that are searched until the result is returned.}
 }
 \description{
-Get data from a registered open311 endpoint.
+Get civic service request data from a registered open311 endpoint.
+\code{o311_request} queries a single service request by ID.
+\code{o311_requests} queries a single page of service requests.
+\code{o311_request_all} tries to iterate through all pages of an endpoint
+to return a complete dataset of service requests.
+}
+\details{
+\code{o311_request_all} applies a number of checks to determine when to
+stop searching. First, many endpoints return an error if the last page
+is exceeded. Thus, if the last page request failed, break.
+Second, if exceeding the pagination limit does not return an error, the
+response is compared with the previous response. If identical, the
+response is discarded and all previous responses returned. Finally,
+if the page exceeds \code{max_pages}, the responses up to this point are
+returned.
+
+open311 leaves space for implementations to implement their own request
+parameters. These parameters can be provided using dot arguments.
+These arguments are not validated or pre-processed. Date-time objects
+must be formatted according to the
+\href{https://www.w3.org/TR/NOTE-datetime}{w3c} standard.
+Some more common parameters include:
+
+\itemize{
+ \item{\code{q}: Perform a text search across all requests.}
+ \item{\code{update_after}/\code{updated_before}: Limit request according
+ to request update dates.}
+ \item{\code{per_page}: Specifiy the maximum number of requests per page.}
+ \item{\code{extensions}: Return additional technical information.}
+}
+
+As dot arguments deviate from the open311 standard, they are not guaranteed
+to be available for every endpoint and might be removed without further
+notice.
+}
+\examples{
+# example code
+
+}
+\seealso{
+\code{\link{o311_jurisdiction}}
 }

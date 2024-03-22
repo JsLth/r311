@@ -1,0 +1,168 @@
+[
+  {
+    "name": "Annaberg-Buchholz, Deutschland",
+    "root": "https://anliegen.annaberg-buchholz.de/georeport/v2/",
+    "jurisdiction": "annberg-buchholz.de",
+    "key": false,
+    "pagination": true,
+    "limit": 50,
+    "json": true
+  },
+  {
+    "name": "Bloomington, IN",
+    "root": "https://bloomington.in.gov/crm/open311/v2/",
+    "jurisdiction": "bloomington.in.gov",
+    "key": false,
+    "pagination": true,
+    "limit": 1000,
+    "json": true
+  },
+  {
+    "name": "Bonn, Deutschland",
+    "root": "https://anliegen.bonn.de/georeport/v2/",
+    "jurisdiction": "bonn.de",
+    "key": false,
+    "pagination": true,
+    "limit": 100,
+    "json": true
+  },
+  {
+    "name": "Boston, MA",
+    "root": "https://311.boston.gov/open311/v2/",
+    "jurisdiction": "boston.gov",
+    "key": false,
+    "pagination": true,
+    "limit": 50,
+    "json": true
+  },
+  {
+    "name": "Brookline, MA",
+    "root": "http://spot.brooklinema.gov/open311/v2/",
+    "jurisdiction": "brooklinema.gov",
+    "key": false,
+    "pagination": true,
+    "limit": 50,
+    "json": true
+  },
+  {
+    "name": "Chicaco, IL",
+    "root": "http://311api.cityofchicago.org/open311/v2/",
+    "jurisdiction": "cityofchicago.org",
+    "key": false,
+    "pagination": true,
+    "limit": 50,
+    "json": true
+  },
+  {
+    "name": "Köln / Cologne, Deutschland",
+    "root": "https://sags-uns-archiv.stadt-koeln.de/georeport/v2/",
+    "jurisdiction": "stadt-koeln.de",
+    "key": false,
+    "pagination": true,
+    "limit": 50,
+    "json": true
+  },
+  {
+    "name": "Ottawa, ON",
+    "root": "https://city-of-ottawa-prod.apigee.net/open311/v2/",
+    "jurisdiction": "ottawa.ca",
+    "key": false,
+    "pagination": true,
+    "limit": 1000,
+    "json": true
+  },
+  {
+    "name": "Rostock, Deutschland",
+    "root": "https://www.klarschiff-hro.de/backoffice/citysdk/",
+    "jurisdiction": "rostock.de",
+    "key": false,
+    "pagination": false,
+    "json": true
+  },
+  {
+    "name": "San Francisco, CA",
+    "root": "https://mobile311.sfgov.org/open311/v2/",
+    "jurisdiction": "sfgov.org",
+    "key": false,
+    "pagination": true,
+    "limit": 50,
+    "json": true
+  },
+  {
+    "name": "Siegburg, Deutschland",
+    "root": "https://anliegen.siegburg.de/georeport/v2/",
+    "jurisdiction": "siegburg.de",
+    "key": false,
+    "pagination": true,
+    "limit": 50,
+    "json": true
+  },
+  {
+    "name": "Turku, FI",
+    "root": "https://api.turku.fi/feedback/v1/",
+    "jurisdiction": "turku.fi",
+    "key": false,
+    "pagination": false,
+    "json": true
+  },
+  {
+    "name": "Zürich, CH",
+    "root": "https://www.zueriwieneu.ch/open311/v2",
+    "jurisdiction": "stadt-zuerich.ch",
+    "key": false,
+    "pagination": true,
+    "limit": 100,
+    "json": true
+  },
+  {
+    "name": "Philadelphia, PA",
+    "root": "https://www.publicstuff.com/api/open311/",
+    "jurisdiction": "philadelphia-pa",
+    "key": false,
+    "pagination": true,
+    "json": true
+  },
+  {
+    "name": "Gilbert, AZ",
+    "root": "https://seeclickfix.com/open311/v2/655/",
+    "jurisdiction": "gilbertaz.gov",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true
+  },
+  {
+    "name": "Schwerin, DEU",
+    "root": "https://www.klarschiff-sn.de/backoffice/citysdk/",
+    "jurisdiction": "schwerin.de",
+    "key": false,
+    "pagination": false,
+    "json": true
+  },
+  {
+    "name": "FixMyStreet",
+    "root": "https://www.fixmystreet.com/open311/v2/",
+    "jurisdiction": "fixmystreet",
+    "key": false,
+    "pagination": true,
+    "limit": 1000,
+    "json": true
+  },
+  {
+    "name": "München, DEU",
+    "root": "https://machmuenchenbesser.de/georeport/v2/",
+    "jurisdiction": "muenchen.de",
+    "key": false,
+    "pagination": true,
+    "limit": 100,
+    "json": true
+  },
+  {
+    "name": "Boston, MA",
+    "root": "https://boston2-production.spotmobile.net/open311/v2/",
+    "key": false,
+    "pagination": true,
+    "limit": 50,
+    "json": true
+  }
+]
