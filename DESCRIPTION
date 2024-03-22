@@ -1,12 +1,17 @@
 Package: open311
 Type: Package
 Title: R interface to the open311 standard
-Version: 0.1.0.9000
+Version: 0.2.0.9000
 Authors@R: 
     person("Jonas", "Lieth", , "jonas.lieth@gesis.org", role = c("aut", "cre"))
 Maintainer: Jonas Lieth <jonas.lieth@gesis.org>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: Access and handle APIs that use the international open331
+    GeoReport v2 standard for civic issue tracking. Retrieve civic service
+    types and request data. Select and add available open311 endpoints and
+    jurisdictions. Implicitly supports custom queries and open311 extensions
+    such as CitySDK or uReport. Requires a minimal number of hard dependencies
+    while still allowing the integration in common R formats (xml2, tibble,
+    sf).
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -15,14 +20,15 @@ Depends:
 Imports:
     tools,
     httr2,
-    xml2,
-    sf
+    jsonlite
 Suggests:
     httptest2,
     testthat (>= 3.0.0),
     knitr,
     tibble,
-    jsonlite
+    sf,
+    xml2,
+    xmlconvert
 RoxygenNote: 7.3.1
 VignetteBuilder: knitr
 Config/testthat/edition: 3
