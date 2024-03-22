@@ -20,6 +20,15 @@ o311_cache <- new.env(parent = emptyenv())
 #' ID is usually the root URL of the jurisdiction website, e.g.
 #' \code{"sfgov.org"} for San Francisco.
 #'
+#' @param format \code{[character]}
+#'
+#' Response format. Must be one of \code{"json"} or \code{"xml"}. Defaults to
+#' \code{"json"} because simplification is more difficult and unsafe for
+#' \code{xml2} objects. It is advisable to use \code{"json"} whenever
+#' possible and applicable. Additionally, \code{"xml"} requires the
+#' \code{xml2} package for queries and the \code{xmlconvert} package for
+#' simplification.
+#'
 #' @returns A list containing the most important information on a given
 #' jurisdiction.
 #'
@@ -46,13 +55,14 @@ o311_cache <- new.env(parent = emptyenv())
 #' @seealso \code{\link{o311_requests}}, \code{\link{o311_request}},
 #' \code{\link{o311_services}}
 #' @export
-o311_jurisdiction <- function(endpoint = NULL, jurisdiction = NULL) {
+o311_jurisdiction <- function(endpoint = NULL, jurisdiction = NULL, format = c("json", "xml")) {
   if (is.null(endpoint) && is.null(jurisdiction)) {
     stop("Either `endpoint` or `jurisdiction` must be specified.")
   }
 
   assert_string(endpoint)
   assert_string(jurisdiction)
+  format <- match.arg(format)
   endpoints <- o311_endpoints()
 
   if (!is.null(jurisdiction)) {
@@ -65,9 +75,11 @@ o311_jurisdiction <- function(endpoint = NULL, jurisdiction = NULL) {
     ), ]
   }
 
-  validate_jurisdiction(endpoints)
+  check_jurisdiction(endpoints)
+  check_format(endpoints, format)
+  endpoints$json <- identical(format, "json")
 
-  juris <- as.list(endpoints)
+  juris <- lapply(endpoints, "%NA%", NULL)
   assign("juris", juris, envir = o311_cache)
   invisible(juris)
 }
@@ -89,7 +101,7 @@ setup_error <- function() {
 }
 
 
-validate_jurisdiction <- function(endpoints) {
+check_jurisdiction <- function(endpoints) {
   if (nrow(endpoints) > 1) {
     endpoints_dup <- length(unique(endpoints$name)) == 1
     juris_dup <- length(unique(endpoints$jurisdiction)) == 1
@@ -116,7 +128,19 @@ validate_jurisdiction <- function(endpoints) {
     stop(paste(
       "No jurisdiction could be found given the specified",
       "city / jurisdiction ID. Run `o311_endpoints()`",
-      "to get an overview of available jurisdictions"
+      "to get an overview of available jurisdictions."
     ))
+  }
+}
+
+
+check_format <- function(endpoints, format) {
+  if (!endpoints$json && identical(format, "json")) {
+    stop(paste(
+      "JSON responses are not supported by the given API.",
+      "Change the `format` argument to \"xml\"."
+    ))
+  } else if (!loadable("xml2") && identical(format, "xml")) {
+    stop("The `xml2` package is needed to accept XML responses.")
   }
 }
