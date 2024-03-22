@@ -72,3 +72,10 @@ assert_url <- function(x) {
     stop(sprintf("%s must be a valid URL", x))
   }
 }
+
+
+assert_dots_named <- function(...) {
+  if (...length() && is.null(...names())) {
+    stop("All arguments in ... must be named.")
+  }
+}
