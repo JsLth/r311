@@ -24,7 +24,7 @@ o311_endpoints()
 \item{name}{\code{[character]}
 
 Name of an endpoint / city. This name can be arbitrary and only serves
-for identification in \code{[o311_jurisdiction]}.}
+for identification in \code{[o311_api]}.}
 
 \item{root}{\code{[character]}
 
@@ -78,7 +78,7 @@ This function uses \code{\link[tools]{R_user_dir}} to persistently store
 custom endpoints data between sessions. To clean up, run
 \code{o311_reset_endpoints()} which deletes the package-specific user
 directory and defaults back to
-\code{system.file("jurisdictions.json", package = "open311")}.
+\code{system.file("endpoints.json", package = "open311")}.
 }
 \examples{
 # read default endpoints
@@ -92,5 +92,5 @@ o311_endpoints()
 
 }
 \seealso{
-\code{\link{o311_jurisdiction}}
+\code{\link{o311_api}}
 }

@@ -50,7 +50,7 @@ a small amount of data on service tickets in Cologne, Germany.
 ```{r example}
 library(open311)
 
-o311_jurisdiction("Cologne")
+o311_api("Cologne")
 o311_requests()
 ```
 

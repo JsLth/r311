@@ -30,7 +30,8 @@ o311_cache <- new.env(parent = emptyenv())
 #' simplification.
 #'
 #' @returns A list containing the most important information on a given
-#' jurisdiction.
+#' jurisdiction, invisibly. This list is attached to the session and can
+#' be retrieved by calling \code{o311_api()} without arguments.
 #'
 #' @details
 #' In theory, several jurisdictions can exist for a single endpoints, e.g.
@@ -46,18 +47,19 @@ o311_cache <- new.env(parent = emptyenv())
 #' @examples
 #' \dontrun{
 #' # cities are matched using regex
-#' o311_jurisdiction(city = "Cologne")
+#' o311_api(city = "Cologne")
 #'
 #' # passing a jurisdiction is more explicit
-#' o311_jurisdiction(jurisdiction = "stadt-koeln.de")
+#' o311_api(jurisdiction = "stadt-koeln.de")
 #' }
-#'
 #' @seealso \code{\link{o311_requests}}, \code{\link{o311_request}},
 #' \code{\link{o311_services}}
 #' @export
-o311_jurisdiction <- function(endpoint = NULL, jurisdiction = NULL, format = c("json", "xml")) {
+o311_api <- function(endpoint = NULL,
+                     jurisdiction = NULL,
+                     format = c("json", "xml")) {
   if (is.null(endpoint) && is.null(jurisdiction)) {
-    stop("Either `endpoint` or `jurisdiction` must be specified.")
+    return(get_juris())
   }
 
   assert_string(endpoint)
@@ -94,7 +96,7 @@ setup_error <- function() {
   stop(
     paste(
       "Could not find root API.",
-      "Please set up a jurisdiction using `o311_jurisdiction()`"
+      "Please set an active API using `o311_api()`"
     ),
     call. = FALSE
   )

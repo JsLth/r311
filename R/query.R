@@ -1,7 +1,7 @@
 #' Query an open311 endpoint
 #' @description
 #' Low-level function to perform a generic request to the API currently
-#' attached by \code{o311_jurisdiction}. Some open311 implementations support
+#' attached by \code{o311_api}. Some open311 implementations support
 #' unique operations that are not included in the official documentation.
 #' This function can be used to access these URL paths.
 #'
@@ -13,8 +13,10 @@
 #' @returns The parsed query output, either as a list or dataframe.
 #'
 #' @examples
-#' # example code
-#'
+#' \dontrun{
+#' # manually query discovery
+#' o311_query(path = "discovery", simplify = FALSE)
+#' }
 #' @export
 o311_query <- function(path, ..., simplify = TRUE) {
   assert_dots_named()
@@ -55,7 +57,7 @@ GET <- function(url,
 
 tidy_response <- function(x, format) {
   if (identical(format, "json")) {
-    as_data_frame(x)
+    as_data_frame(unbox(x))
   } else if (identical(format, "xml")) {
     # find the first xml tag that has a length of over 1
     # this usually works, but might not always

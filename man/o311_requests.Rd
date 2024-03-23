@@ -103,11 +103,26 @@ notice. Refer to the endpoint docs to learn more about custom parameters
 }
 \examples{
 \dontrun{
+o311_api("chicago")
+
 # retrieve requests from the last two days
 now <- Sys.time()
-o311_requests(end_date = now, start_date = now - 60 * 60 * 24 * 2)
+two_days <- 60 * 60 * 24 * 2
+o311_requests(end_date = now, start_date = now - two_days)
+
+# retrieve only open tickets
+tickets <- o311_requests(status = "open")
+
+# request the first ticket of the previous response
+o311_request(tickets$service_request_id[1])
+
+# request all data
+o311_request_all()
+
+# request data of the first 5 pages
+o311_request_all(max_pages = 5)
 }
 }
 \seealso{
-\code{\link{o311_jurisdiction}}
+\code{\link{o311_api}}
 }

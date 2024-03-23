@@ -9,7 +9,7 @@
 #' @param name \code{[character]}
 #'
 #' Name of an endpoint / city. This name can be arbitrary and only serves
-#' for identification in \code{[o311_jurisdiction]}.
+#' for identification in \code{[o311_api]}.
 #'
 #' @param root \code{[character]}
 #'
@@ -55,7 +55,7 @@
 #' custom endpoints data between sessions. To clean up, run
 #' \code{o311_reset_endpoints()} which deletes the package-specific user
 #' directory and defaults back to
-#' \code{system.file("jurisdictions.json", package = "open311")}.
+#' \code{system.file("endpoints.json", package = "open311")}.
 #'
 #' @examples
 #' # read default endpoints
@@ -68,7 +68,7 @@
 #' o311_endpoints()
 #'
 #' @rdname o311_endpoints
-#' @seealso \code{\link{o311_jurisdiction}}
+#' @seealso \code{\link{o311_api}}
 #' @export
 o311_add_endpoint <- function(name,
                               root,
@@ -88,8 +88,8 @@ o311_add_endpoint <- function(name,
   new_endpoint <- drop_null(as.list(environment()))
 
   # for editing, always use the user path
-  copy_jurisdictions_json()
-  json_path <- user_jurisdictions_path()
+  copy_endpoints_json()
+  json_path <- user_endpoints_path()
 
   endpoints <- jsonlite::read_json(json_path)
   endpoints <- c(endpoints, list(new_endpoint))
@@ -110,36 +110,36 @@ o311_reset_endpoints <- function() {
 #' @export
 o311_endpoints <- function() {
   as_data_frame(jsonlite::read_json(
-    jurisdictions_json(),
+    endpoints_json(),
     simplifyVector = TRUE
   ))
 }
 
 
-copy_jurisdictions_json <- function() {
+copy_endpoints_json <- function() {
   user_dir <- tools::R_user_dir("open311")
-  data_path <- file.path(user_dir, "jurisdictions.json")
+  data_path <- file.path(user_dir, "endpoints.json")
   if (!file.exists(data_path)) {
     dir.create(user_dir, recursive = TRUE)
-    file.copy(jurisdictions_json(), data_path)
+    file.copy(endpoints_json(), data_path)
   }
 }
 
 
-o311_jurisdictions_path <- function() {
-  o311_path("jurisdictions.json")
+o311_endpoints_path <- function() {
+  o311_path("endpoints.json")
 }
 
 
-user_jurisdictions_path <- function() {
-  file.path(tools::R_user_dir("open311"), "jurisdictions.json")
+user_endpoints_path <- function() {
+  file.path(tools::R_user_dir("open311"), "endpoints.json")
 }
 
 
-jurisdictions_json <- function() {
+endpoints_json <- function() {
   ifelse(
-    file.exists(user_jurisdictions_path()),
-    user_jurisdictions_path(),
-    o311_jurisdictions_path()
+    file.exists(user_endpoints_path()),
+    user_endpoints_path(),
+    o311_endpoints_path()
   )
 }

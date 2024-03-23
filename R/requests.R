@@ -70,11 +70,26 @@
 #'
 #' @examples
 #' \dontrun{
+#' o311_api("chicago")
+#'
 #' # retrieve requests from the last two days
 #' now <- Sys.time()
-#' o311_requests(end_date = now, start_date = now - 60 * 60 * 24 * 2)
+#' two_days <- 60 * 60 * 24 * 2
+#' o311_requests(end_date = now, start_date = now - two_days)
+#'
+#' # retrieve only open tickets
+#' tickets <- o311_requests(status = "open")
+#'
+#' # request the first ticket of the previous response
+#' o311_request(tickets$service_request_id[1])
+#'
+#' # request all data
+#' o311_request_all()
+#'
+#' # request data of the first 5 pages
+#' o311_request_all(max_pages = 5)
 #' }
-#' @seealso \code{\link{o311_jurisdiction}}
+#' @seealso \code{\link{o311_api}}
 #' @export
 o311_requests <- function(service_code = NULL,
                           start_date = NULL,
@@ -115,7 +130,7 @@ o311_requests <- function(service_code = NULL,
 o311_request <- function(service_request_id, ...) {
   assert_string(service_request_id)
 
-  path <- sprintf("request/", service_request_id)
+  path <- sprintf("requests/%s", service_request_id)
   res <- o311_query(path = path, ..., simplify = TRUE)
   request_to_sf(res)
 }
@@ -146,16 +161,19 @@ o311_request_all <- function(service_code = NULL,
         end_date = end_date,
         status = status,
         page = i,
-        ...,
+        ...
       ),
       error = identity
     )
 
     # break if last request failed
-    if (inherits(res, "error")) break
+    if (inherits(res, "error")) {
+      if (!length(out)) stop(res)
+      break
+    }
 
     # break if last request is identical to previous one
-    if (identical(res, out[length(out)])) break
+    if (length(out) && identical(res, out[[length(out)]])) break
 
     out[[i]] <- res
     i <- i + 1
@@ -163,7 +181,8 @@ o311_request_all <- function(service_code = NULL,
     # break if page limit is reached
     if (i > max_pages) break
   }
-  res
+
+  rbind_list(out)
 }
 
 

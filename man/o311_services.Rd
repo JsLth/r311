@@ -22,7 +22,7 @@ A dataframe or list containing information about each service.
 \description{
 Get a list of available services. Services are unique to the endpoint / city
 and thus require an attached jurisdiction using
-\code{\link{o311_jurisdiction}}.
+\code{\link{o311_api}}.
 }
 \examples{
 \dontrun{
@@ -31,7 +31,7 @@ o311_add_endpoint(
   name = "helsinki test",
   root = "https://dev.hel.fi/open311-test/v1/"
 )
-o311_jurisdiction("helsinki test")
+o311_api("helsinki test")
 
 # get a list of all services
 services <- o311_services()

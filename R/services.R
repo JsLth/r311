@@ -2,7 +2,7 @@
 #' @description
 #' Get a list of available services. Services are unique to the endpoint / city
 #' and thus require an attached jurisdiction using
-#' \code{\link{o311_jurisdiction}}.
+#' \code{\link{o311_api}}.
 #'
 #' @param ... Further endpoint-specific parameters as documented in the
 #' respective endpoint reference.
@@ -16,7 +16,7 @@
 #'   name = "helsinki test",
 #'   root = "https://dev.hel.fi/open311-test/v1/"
 #' )
-#' o311_jurisdiction("helsinki test")
+#' o311_api("helsinki test")
 #'
 #' # get a list of all services
 #' services <- o311_services()
@@ -30,7 +30,7 @@
 #' }
 #' @export
 o311_services <- function(...) {
-  o311_query(path = "services", simplify = TRUE)
+  o311_query(path = "services", ..., simplify = TRUE)
 }
 
 
@@ -41,6 +41,6 @@ o311_services <- function(...) {
 o311_service <- function(service_code, ...) {
   assert_string(service_code)
 
-  path <- sprintf("services/", service_code)
-  res <- o311_query(path = path, simplify = FALSE)
+  path <- sprintf("services/%s", service_code)
+  o311_query(path = path, ..., simplify = TRUE)
 }

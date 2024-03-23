@@ -3,7 +3,7 @@ assert_string <- function(x, null = TRUE, n = 1L) {
   if (
     (!is.character(x) ||
     !length(x) == n ||
-    is.na(x))
+    any(is.na(x)))
   ) {
     x_name <- deparse(substitute(x))
     stop(sprintf(
@@ -19,7 +19,7 @@ assert_number <- function(x, null = TRUE, n = 1, int = FALSE) {
   if (
     (!is.numeric(x) ||
      !length(x) == n ||
-     is.na(x) ||
+     any(is.na(x)) ||
      ifelse(int, x %% 1 != 0, FALSE))
   ) {
     x_name <- deparse(substitute(x))
@@ -36,7 +36,7 @@ assert_flag <- function(x, null = TRUE) {
   if (
     (!is.logical(x) ||
      !length(x) == 1 ||
-     is.na(x))
+     any(is.na(x)))
   ) {
     x_name <- deparse(substitute(x))
     stop(sprintf(
@@ -52,7 +52,7 @@ assert_time <- function(x, null = TRUE, n = 1) {
   if (
     (!inherits(x, "POSIXct") ||
      !length(x) == n ||
-     is.na(x))
+     any(is.na(x)))
   ) {
     x_name <- deparse(substitute(x))
     stop(sprintf(
