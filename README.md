@@ -12,14 +12,19 @@ coverage](https://codecov.io/gh/JsLth/open311/branch/main/graph/badge.svg)](http
 [![CodeFactor](https://www.codefactor.io/repository/github/jslth/open311/badge/master)](https://www.codefactor.io/repository/github/jslth/open311/overview/master)
 <!-- badges: end -->
 
-`open311` is an R package that allows you to query any endpoint that
-uses the open311 API standard for public service communication. Usually,
-such APIs are established alongside web services that allow citizens to
-submit public service tickets on public spaces. These tickets can be
-retrieved using open311 APIs.
-
-`open311` supports all official endpoints which currently include
-`services` and `requests`.
+`r311` is an R interface to the international standard
+[open311](https://www.open311.org/). open311 APIs are used for civic
+issue management and public service communication. The standard allows
+administrations to better manage citizen requests, citizens to more
+easily submit requests, and (hence this package) researchers and data
+scientists to access data regarding public service communication. `r311`
+supports the seamless management and add supplementation of available
+endpoints, the selection of appropriate APIs to access, and the
+retrieval of civic service and request data. Custom queries and
+extensions (e.g. from CitySDK) are implicitly supported. `r311` is
+designed to require a minimal amount of dependencies, but allow for easy
+integration into common R frameworks such as the tidyverse, `sf` or
+`xml2`.
 
 ## Installation
 
@@ -39,7 +44,7 @@ retrieves a small amount of data on service tickets in Cologne, Germany.
 ``` r
 library(open311)
 
-o311_jurisdiction("Cologne")
+o311_api("Cologne")
 o311_requests()
 #> Simple feature collection with 50 features and 14 fields
 #> Geometry type: POINT
