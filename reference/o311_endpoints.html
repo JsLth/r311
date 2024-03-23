@@ -18,7 +18,7 @@ state of the endpoints list."><!-- mathjax --><script src="https://cdnjs.cloudfl
     
     <a class="navbar-brand me-2" href="../index.html">open311</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -74,7 +74,7 @@ state of the endpoints list.</p>
     <dl><dt>name</dt>
 <dd><p><code>[character]</code></p>
 <p>Name of an endpoint / city. This name can be arbitrary and only serves
-for identification in <code>[o311_jurisdiction]</code>.</p></dd>
+for identification in <code>[o311_api]</code>.</p></dd>
 
 
 <dt>root</dt>
@@ -120,73 +120,79 @@ information on an endpoint. For <code>o311_add_endpoint</code>, the new endpoint
 invisibly. <code>o311_reset_endpoints</code> returns <code>NULL</code> invisibly.</p>
     </div>
     <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p><code>o311_endpoints()</code> returns a static list defined in the package
+installation directory. This list contains a limited number of endpoints
+that were proven to work at the time of package development. It does not
+include newer/smaller/less known endpoints or test APIs. These can be
+manually added using <code>o311_add_endpoint</code>.</p>
+    </div>
+    <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
     <p>This function uses <code><a href="https://rdrr.io/r/tools/userdir.html" class="external-link">R_user_dir</a></code> to persistently store
 custom endpoints data between sessions. To clean up, run
 <code>o311_reset_endpoints()</code> which deletes the package-specific user
 directory and defaults back to
-<code>system.file("jurisdictions.json", package = "open311")</code>.</p>
+<code>system.file("endpoints.json", package = "open311")</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="o311_jurisdiction.html">o311_jurisdiction</a></code></p></div>
+    <div class="dont-index"><p><code><a href="o311_api.html">o311_api</a></code></p></div>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># read default endpoints</span></span></span>
 <span class="r-in"><span><span class="fu">o311_endpoints</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 19 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    name                          root  jurisdiction key   pagination limit json </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Annaberg-Buchholz, Deutschla… http… annberg-buc… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bloomington, IN               http… bloomington… FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Bonn, Deutschland             http… bonn.de      FALSE TRUE         100 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Boston, MA                    http… boston.gov   FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Brookline, MA                 http… brooklinema… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Chicaco, IL                   http… cityofchica… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Köln / Cologne, Deutschland   http… stadt-koeln… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Ottawa, ON                    http… ottawa.ca    FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Rostock, Deutschland          http… rostock.de   FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> San Francisco, CA             http… sfgov.org    FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Siegburg, Deutschland         http… siegburg.de  FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> Turku, FI                     http… turku.fi     FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> Zürich, CH                    http… stadt-zueri… FALSE TRUE         100 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> Philadelphia, PA              http… philadelphi… FALSE TRUE          <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> Gilbert, AZ                   http… gilbertaz.g… FALSE TRUE          20 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> Schwerin, DEU                 http… schwerin.de  FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> FixMyStreet                   http… fixmystreet  FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> München, DEU                  http… muenchen.de  FALSE TRUE         100 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> Boston, MA                    http… <span style="color: #BB0000;">NA</span>           FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 18 × 8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    name                    root  docs  jurisdiction key   pagination limit json </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Annaberg-Buchholz, Deu… http… http… annberg-buc… FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bloomington, IN         http… <span style="color: #BB0000;">NA</span>    bloomington… FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Bonn, Deutschland       http… http… bonn.de      FALSE TRUE         100 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Boston, MA              http… http… boston.gov   FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Brookline, MA           http… http… brooklinema… FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Chicaco, IL             http… http… cityofchica… FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Köln / Cologne, Deutsc… http… http… stadt-koeln… FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Ottawa, ON              http… <span style="color: #BB0000;">NA</span>    ottawa.ca    FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Rostock, Deutschland    http… http… rostock.de   FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> San Francisco, CA       http… http… sfgov.org    FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Siegburg, Deutschland   http… http… siegburg.de  FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> Turku, FI               http… <span style="color: #BB0000;">NA</span>    turku.fi     FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> Zürich, CH              http… http… stadt-zueri… FALSE TRUE         100 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> Philadelphia, PA        http… <span style="color: #BB0000;">NA</span>    philadelphi… FALSE TRUE          <span style="color: #BB0000;">NA</span> TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> Gilbert, AZ             http… http… gilbertaz.g… FALSE TRUE          20 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> Schwerin, DEU           http… http… schwerin.de  FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> FixMyStreet             http… http… fixmystreet  FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> München, DEU            http… http… muenchen.de  FALSE TRUE         100 TRUE </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># add a new endpoint</span></span></span>
 <span class="r-in"><span><span class="fu">o311_add_endpoint</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"test"</span>, root <span class="op">=</span> <span class="st">"test.org/georeport/v2"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># read new endpoints</span></span></span>
 <span class="r-in"><span><span class="fu">o311_endpoints</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 20 × 7</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    name                          root  jurisdiction key   pagination limit json </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Annaberg-Buchholz, Deutschla… http… annberg-buc… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bloomington, IN               http… bloomington… FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Bonn, Deutschland             http… bonn.de      FALSE TRUE         100 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Boston, MA                    http… boston.gov   FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Brookline, MA                 http… brooklinema… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Chicaco, IL                   http… cityofchica… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Köln / Cologne, Deutschland   http… stadt-koeln… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Ottawa, ON                    http… ottawa.ca    FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Rostock, Deutschland          http… rostock.de   FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> San Francisco, CA             http… sfgov.org    FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Siegburg, Deutschland         http… siegburg.de  FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> Turku, FI                     http… turku.fi     FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> Zürich, CH                    http… stadt-zueri… FALSE TRUE         100 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> Philadelphia, PA              http… philadelphi… FALSE TRUE          <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> Gilbert, AZ                   http… gilbertaz.g… FALSE TRUE          20 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> Schwerin, DEU                 http… schwerin.de  FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> FixMyStreet                   http… fixmystreet  FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> München, DEU                  http… muenchen.de  FALSE TRUE         100 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> Boston, MA                    http… <span style="color: #BB0000;">NA</span>           FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">20</span> test                          test… <span style="color: #BB0000;">NA</span>           FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 19 × 8</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    name                    root  docs  jurisdiction key   pagination limit json </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Annaberg-Buchholz, Deu… http… http… annberg-buc… FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bloomington, IN         http… <span style="color: #BB0000;">NA</span>    bloomington… FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Bonn, Deutschland       http… http… bonn.de      FALSE TRUE         100 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Boston, MA              http… http… boston.gov   FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Brookline, MA           http… http… brooklinema… FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Chicaco, IL             http… http… cityofchica… FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Köln / Cologne, Deutsc… http… http… stadt-koeln… FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Ottawa, ON              http… <span style="color: #BB0000;">NA</span>    ottawa.ca    FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Rostock, Deutschland    http… http… rostock.de   FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> San Francisco, CA       http… http… sfgov.org    FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Siegburg, Deutschland   http… http… siegburg.de  FALSE TRUE          50 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> Turku, FI               http… <span style="color: #BB0000;">NA</span>    turku.fi     FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> Zürich, CH              http… http… stadt-zueri… FALSE TRUE         100 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> Philadelphia, PA        http… <span style="color: #BB0000;">NA</span>    philadelphi… FALSE TRUE          <span style="color: #BB0000;">NA</span> TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> Gilbert, AZ             http… http… gilbertaz.g… FALSE TRUE          20 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> Schwerin, DEU           http… http… schwerin.de  FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> FixMyStreet             http… http… fixmystreet  FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> München, DEU            http… http… muenchen.de  FALSE TRUE         100 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> test                    test… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>           FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

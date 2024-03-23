@@ -18,7 +18,7 @@ to return a complete dataset of service requests."><!-- mathjax --><script src="
     
     <a class="navbar-brand me-2" href="../index.html">open311</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +63,7 @@ to return a complete dataset of service requests.</p>
 <span>  <span class="va">...</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">o311_request</span><span class="op">(</span><span class="va">service_request_id</span><span class="op">)</span></span>
+<span><span class="fu">o311_request</span><span class="op">(</span><span class="va">service_request_id</span>, <span class="va">...</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">o311_request_all</span><span class="op">(</span></span>
 <span>  service_code <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -111,7 +111,7 @@ respective endpoint reference.</p></dd>
 <dt>service_request_id</dt>
 <dd><p><code>[character]</code></p>
 <p>Identifier of a single service request. Request IDs can usually be retrieved
-from a response from <code>o311_requests</code>.</p></dd>
+from <code>o311_requests</code>.</p></dd>
 
 
 <dt>max_pages</dt>
@@ -129,7 +129,7 @@ response is compared with the previous response. If identical, the
 response is discarded and all previous responses returned. Finally,
 if the page exceeds <code>max_pages</code>, the responses up to this point are
 returned.</p>
-<p>open311 leaves space for implementations to implement their own request
+<p>open311 leaves space for endpoints to implement their own request
 parameters. These parameters can be provided using dot arguments.
 These arguments are not validated or pre-processed. Date-time objects
 must be formatted according to the
@@ -139,21 +139,42 @@ Some more common parameters include:</p>
 <li><p><code>update_after</code>/<code>updated_before</code>: Limit request according
  to request update dates.</p></li>
 <li><p><code>per_page</code>: Specifiy the maximum number of requests per page.</p></li>
-<li><p><code>extensions</code>: Return additional technical information.</p></li>
+<li><p><code>extensions</code>: Adds a nested attribute
+ <code>"extended_attributes"</code> to the response.</p></li>
+<li><p><code>long</code>/<code>lat</code>/<code>radius</code>: Searches for requests in a fixed radius
+ around a coordinate.</p></li>
 </ul><p>As dot arguments deviate from the open311 standard, they are not guaranteed
 to be available for every endpoint and might be removed without further
-notice.</p>
+notice. Refer to the endpoint docs to learn more about custom parameters
+(<code>o311_endpoints()$docs</code>).</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><code><a href="o311_jurisdiction.html">o311_jurisdiction</a></code></p></div>
+    <div class="dont-index"><p><code><a href="o311_api.html">o311_api</a></code></p></div>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># example code</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"chicago"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"></span>
+<span class="r-in"><span><span class="co"># retrieve requests from the last two days</span></span></span>
+<span class="r-in"><span><span class="va">now</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">two_days</span> <span class="op">&lt;-</span> <span class="fl">60</span> <span class="op">*</span> <span class="fl">60</span> <span class="op">*</span> <span class="fl">24</span> <span class="op">*</span> <span class="fl">2</span></span></span>
+<span class="r-in"><span><span class="fu">o311_requests</span><span class="op">(</span>end_date <span class="op">=</span> <span class="va">now</span>, start_date <span class="op">=</span> <span class="va">now</span> <span class="op">-</span> <span class="va">two_days</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># retrieve only open tickets</span></span></span>
+<span class="r-in"><span><span class="va">tickets</span> <span class="op">&lt;-</span> <span class="fu">o311_requests</span><span class="op">(</span>status <span class="op">=</span> <span class="st">"open"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># request the first ticket of the previous response</span></span></span>
+<span class="r-in"><span><span class="fu">o311_request</span><span class="op">(</span><span class="va">tickets</span><span class="op">$</span><span class="va">service_request_id</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># request all data</span></span></span>
+<span class="r-in"><span><span class="fu">o311_request_all</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># request data of the first 5 pages</span></span></span>
+<span class="r-in"><span><span class="fu">o311_request_all</span><span class="op">(</span>max_pages <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
