@@ -19,7 +19,7 @@ Depends:
     R (>= 4.0.0)
 Imports:
     tools,
-    httr2,
+    curl,
     jsonlite
 Suggests:
     httptest2,

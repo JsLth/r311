@@ -35,23 +35,78 @@ GET <- function(url,
                 query = list(),
                 simplify = TRUE,
                 format = "json") {
-  req <- httr2::request(url)
-  req <- httr2::req_method(req, "GET")
-  req <- httr2::req_url_path_append(req, path)
-  req <- do.call(httr2::req_url_query, c(list(.req = req), query))
-  res <- httr2::req_perform(req)
+  req <- url_path(url, path)
+  req <- build_query(req, query)
 
-  if (identical(format, "json")) {
-    res <- httr2::resp_body_json(res, simplifyVector = simplify)
-  } else if (identical(format, "xml")) {
-    res <- httr2::resp_body_xml(res)
-  }
+  resp <- curl::curl_fetch_memory(req)
+  resp <- handle_response(resp, type = format, simplify = simplify)
 
   if (simplify) {
-    res <- tidy_response(res, format)
+    resp <- tidy_response(resp, format)
   }
 
-  res
+  resp
+}
+
+
+url_path <- function(url, path) {
+  if (!endsWith(url, "/")) url <- paste0(url, "/")
+  if (startsWith(path, "/")) path <- substr(path, 2, nchar(path))
+  paste0(url, path)
+}
+
+
+build_query <- function(url, query) {
+  if (!length(query)) return(url)
+  query <- paste(names(query), query, sep = "=")
+  query <- paste(query, collapse = "&")
+  paste0(url, "?", query)
+}
+
+
+handle_response <- function(resp, type, simplify) {
+  if (resp$status != 200) {
+    # handle all http errors defined by open311
+    switch(
+      as.character(resp$status),
+      "400" = open311_error(resp, type),
+      "403" = open311_error(resp, type),
+      "404" = abort("Error code 404: Not Found", class = 404),
+      abort(sprintf("Error code: %s", resp$status), class = resp$status)
+    )
+  }
+
+  check_content_type(resp, type)
+  content <- rawToChar(resp$content)
+
+  if (identical(type, "json")) {
+    jsonlite::fromJSON(content, simplifyVector = simplify)
+  } else {
+    xml2::read_xml(content, encoding = "UTF-8")
+  }
+}
+
+
+open311_error <- function(resp, type) {
+  check_content_type(resp, type)
+  content <- rawToChar(resp$content)
+  error <- unbox(jsonlite::fromJSON(content, simplifyVector = FALSE))
+  abort(
+    sprintf("Error code %s: %s", error$code, error$description),
+    class = resp$status
+  )
+}
+
+
+check_content_type <- function(resp, type) {
+  type <- switch(type, json = "application/json", xml = "text/xml")
+
+  if (!grepl(type, resp$type, fixed = TRUE)) { # nocov start
+    abort(
+      sprintf("Unexpected content type %s", dQuote(resp$type)),
+      class = "type_error"
+    )
+  } # nocov end
 }
 
 
