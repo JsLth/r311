@@ -45,13 +45,14 @@ o311_cache <- new.env(parent = emptyenv())
 #' add non-default endpoints using \code{\link{o311_add_endpoint}}.
 #'
 #' @examples
-#' \dontrun{
 #' # cities are matched using regex
 #' o311_api(city = "Cologne")
 #'
 #' # passing a jurisdiction is more explicit
 #' o311_api(jurisdiction = "stadt-koeln.de")
-#' }
+#'
+#' # calls without arguments return the current API
+#' o311_api()
 #' @seealso \code{\link{o311_requests}}, \code{\link{o311_request}},
 #' \code{\link{o311_services}}
 #' @export
