@@ -12,7 +12,7 @@
 #' an endpoint. A list of all available service codes can be retrieved using
 #' \code{\link{o311_services}}.
 #'
-#' @param start_date,end_date \code{[POSIXct]}
+#' @param start_date,end_date \code{[POSIXt]}
 #'
 #' Start date and end date of the query results. Must be date-time objects.
 #' If not specified, defaults to the last 90 days.
