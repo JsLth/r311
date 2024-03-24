@@ -5,7 +5,7 @@ Version: 0.2.0.9000
 Authors@R: 
     person("Jonas", "Lieth", , "jonas.lieth@gesis.org", role = c("aut", "cre"))
 Maintainer: Jonas Lieth <jonas.lieth@gesis.org>
-Description: Access and handle APIs that use the international open331
+Description: Access and handle APIs that use the international open311
     GeoReport v2 standard for civic issue tracking. Retrieve civic service
     types and request data. Select and add available open311 endpoints and
     jurisdictions. Implicitly supports custom queries and open311 extensions
