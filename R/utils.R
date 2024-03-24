@@ -8,6 +8,13 @@
 }
 
 
+abort <- function(msg, class = NULL, call = NULL, ...) {
+  error <- list(message = msg, call = call %||% sys.call(-1))
+  class(error) <- c(paste0("o311_", class %||% "error"), "error", "condition")
+  stop(error)
+}
+
+
 as_data_frame <- function(...) {
   if (loadable("tibble")) {
     tibble::as_tibble(...)

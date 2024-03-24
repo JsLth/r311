@@ -52,6 +52,7 @@ GET <- function(url,
 url_path <- function(url, path) {
   if (!endsWith(url, "/")) url <- paste0(url, "/")
   if (startsWith(path, "/")) path <- substr(path, 2, nchar(path))
+  if (endsWith(path, "/")) path <- substr(path, 1, nchar(path) - 1)
   paste0(url, path)
 }
 
@@ -69,10 +70,10 @@ handle_response <- function(resp, type, simplify) {
     # handle all http errors defined by open311
     switch(
       as.character(resp$status),
-      "400" = open311_error(resp, type),
+      "400" = open311_error(resp, type), # nocov
       "403" = open311_error(resp, type),
       "404" = abort("Error code 404: Not Found", class = 404),
-      abort(sprintf("Error code: %s", resp$status), class = resp$status)
+      abort(sprintf("Error code: %s", resp$status), class = resp$status) # nocov
     )
   }
 

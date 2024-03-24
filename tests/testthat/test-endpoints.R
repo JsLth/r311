@@ -103,6 +103,13 @@ test_that("format checks in place", {
 })
 
 
+test_that("path seperators are handled well", {
+  p1 <- "test.org/path"
+  p2 <- url_path("test.org", "/path/")
+  expect_identical(p1, p2)
+})
+
+
 test_that("simple queries return the expected output", {
   skip_on_cran()
   add_test_endpoint()
@@ -114,6 +121,16 @@ test_that("simple queries return the expected output", {
   expect_s3_class(serv <- o311_services(), "tbl")
   expect_gt(nrow(o311_service(serv$service_code[1])), 0)
   expect_equal(nrow(o311_request(tick$service_request_id[1])), 1)
+})
+
+
+test_that("fails gracefully", {
+  add_test_endpoint("sf invalid", juris = "test")
+  o311_api("sf invalid")
+  expect_error(o311_query("services"), class = "o311_403")
+  o311_reset_endpoints()
+  add_test_endpoint("sf test")
+  expect_error(o311_query("no-endpoint", api_key = "test"), class = "o311_404")
 })
 
 
