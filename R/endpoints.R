@@ -131,7 +131,7 @@ o311_endpoints_path <- function() {
 
 
 user_endpoints_path <- function() {
-  file.path(o311_user_path(), "endpoints.json")
+  file.path(o311_user_dir(), "endpoints.json")
 }
 
 
