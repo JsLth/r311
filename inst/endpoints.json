@@ -7,7 +7,8 @@
     "key": false,
     "pagination": true,
     "limit": 50,
-    "json": true
+    "json": true,
+    "dialect": "Mark-a-Spot"
   },
   {
     "name": "Bloomington, IN",
@@ -16,7 +17,8 @@
     "key": false,
     "pagination": true,
     "limit": 1000,
-    "json": true
+    "json": true,
+    "dialect": "uReport"
   },
   {
     "name": "Bonn, Deutschland",
@@ -26,7 +28,8 @@
     "key": false,
     "pagination": true,
     "limit": 100,
-    "json": true
+    "json": true,
+    "dialect": "Mark-a-Spot"
   },
   {
     "name": "Boston, MA",
@@ -36,7 +39,8 @@
     "key": false,
     "pagination": true,
     "limit": 50,
-    "json": true
+    "json": true,
+    "dialect": "Connected Bits"
   },
   {
     "name": "Brookline, MA",
@@ -46,17 +50,29 @@
     "key": false,
     "pagination": true,
     "limit": 50,
-    "json": true
+    "json": true,
+    "dialect": "Connected Bits"
   },
   {
-    "name": "Chicaco, IL",
+    "name": "Austin, TX",
+    "root": "https://311.austintexas.gov/open311/v2/",
+    "docs": "https://311.austintexas.gov/open311/v2/",
+    "key": false,
+    "pagination": true,
+    "limit": 50,
+    "json": true,
+    "dialect": "Connected Bits"
+  },
+  {
+    "name": "Chicago, IL",
     "root": "http://311api.cityofchicago.org/open311/v2/",
     "docs": "http://311api.cityofchicago.org/open311/v2/",
     "jurisdiction": "cityofchicago.org",
     "key": false,
     "pagination": true,
     "limit": 50,
-    "json": true
+    "json": true,
+    "dialect": "Connected Bits"
   },
   {
     "name": "Köln / Cologne, Deutschland",
@@ -66,7 +82,8 @@
     "key": false,
     "pagination": true,
     "limit": 50,
-    "json": true
+    "json": true,
+    "dialect": "Mark-a-Spot"
   },
   {
     "name": "Ottawa, ON",
@@ -84,7 +101,8 @@
     "jurisdiction": "rostock.de",
     "key": false,
     "pagination": false,
-    "json": true
+    "json": true,
+    "dialect": "CitySDK"
   },
   {
     "name": "San Francisco, CA",
@@ -94,7 +112,8 @@
     "key": false,
     "pagination": true,
     "limit": 50,
-    "json": true
+    "json": true,
+    "dialect": "Connected Bits"
   },
   {
     "name": "Siegburg, Deutschland",
@@ -104,7 +123,8 @@
     "key": false,
     "pagination": true,
     "limit": 50,
-    "json": true
+    "json": true,
+    "dialect": "Mark-a-Spot"
   },
   {
     "name": "Turku, FI",
@@ -122,7 +142,8 @@
     "key": false,
     "pagination": true,
     "limit": 100,
-    "json": true
+    "json": true,
+    "dialect": "FixMyStreet"
   },
   {
     "name": "Philadelphia, PA",
@@ -130,17 +151,8 @@
     "jurisdiction": "philadelphia-pa",
     "key": false,
     "pagination": true,
-    "json": true
-  },
-  {
-    "name": "Gilbert, AZ",
-    "root": "https://seeclickfix.com/open311/v2/655/",
-    "docs": "https://seeclickfix.com/open311/v2/docs",
-    "jurisdiction": "gilbertaz.gov",
-    "key": false,
-    "pagination": true,
-    "limit": 20,
-    "json": true
+    "json": true,
+    "dialect": "PublicStuff"
   },
   {
     "name": "Schwerin, DEU",
@@ -149,7 +161,8 @@
     "jurisdiction": "schwerin.de",
     "key": false,
     "pagination": false,
-    "json": true
+    "json": true,
+    "dialect": "CitySDK"
   },
   {
     "name": "FixMyStreet",
@@ -159,7 +172,8 @@
     "key": false,
     "pagination": true,
     "limit": 1000,
-    "json": true
+    "json": true,
+    "dialect": "FixMyStreet"
   },
   {
     "name": "München, DEU",
@@ -169,6 +183,418 @@
     "key": false,
     "pagination": true,
     "limit": 100,
-    "json": true
+    "json": true,
+    "dialect": "Mark-a-Spot"
+  },
+  {
+    "name": "City of New Haven, CT",
+    "root": "https://seeclickfix.com/open311/v2/29/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Bainbridge Island, MA",
+    "root": "https://seeclickfix.com/open311/v2/38/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+    {
+    "name": "City of Corona, CA",
+    "root": "https://seeclickfix.com/open311/v2/70/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+    {
+    "name": "Tucson, AZ",
+    "root": "https://seeclickfix.com/open311/v2/36/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Burlingame, CA",
+    "root": "https://seeclickfix.com/open311/v2/45/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Hamden, CT",
+    "root": "https://seeclickfix.com/open311/v2/77/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Milton, GA",
+    "root": "https://seeclickfix.com/open311/v2/94/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Winnellie, NT",
+    "root": "https://seeclickfix.com/open311/v2/111/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Dunwoody, GA",
+    "root": "https://seeclickfix.com/open311/v2/112/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Milton, GA",
+    "root": "https://seeclickfix.com/open311/v2/94/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Huntsville, AL",
+    "root": "https://seeclickfix.com/open311/v2/145/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Palm Harbor, FL",
+    "root": "https://seeclickfix.com/open311/v2/148/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Raleigh, NC",
+    "root": "https://seeclickfix.com/open311/v2/149/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "College Station, TX",
+    "root": "https://seeclickfix.com/open311/v2/163/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Newark, OH",
+    "root": "https://seeclickfix.com/open311/v2/170/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Saugus, MA",
+    "root": "https://seeclickfix.com/open311/v2/173/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Ridgway, Pennsylvania",
+    "root": "https://seeclickfix.com/open311/v2/175/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "New Haven, CT",
+    "root": "https://seeclickfix.com/open311/v2/183/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Swampscott, Massachusetts",
+    "root": "https://seeclickfix.com/open311/v2/196/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Yarmouth, NS",
+    "root": "https://seeclickfix.com/open311/v2/213/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Shoreline, WA",
+    "root": "https://seeclickfix.com/open311/v2/215/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Walnut Creek, CA",
+    "root": "https://seeclickfix.com/open311/v2/216/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Oakland, California",
+    "root": "https://seeclickfix.com/open311/v2/219/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Enfield, CT",
+    "root": "https://seeclickfix.com/open311/v2/223/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Northfield, NJ",
+    "root": "https://seeclickfix.com/open311/v2/225/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Union City, GA",
+    "root": "https://seeclickfix.com/open311/v2/226/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Macon, GA",
+    "root": "https://seeclickfix.com/open311/v2/228/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Minneapolis, MN",
+    "root": "https://seeclickfix.com/open311/v2/238/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Palm Springs, CA",
+    "root": "https://seeclickfix.com/open311/v2/246/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Coral Gables, FL",
+    "root": "https://seeclickfix.com/open311/v2/253/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Albuquerque, NM",
+    "root": "https://seeclickfix.com/open311/v2/257/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Surrey, BC",
+    "root": "https://seeclickfix.com/open311/v2/258/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Lake Elsinore, CA",
+    "root": "https://seeclickfix.com/open311/v2/265/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Saint Petersburg, FL",
+    "root": "https://seeclickfix.com/open311/v2/276/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Canton OH",
+    "root": "https://seeclickfix.com/open311/v2/279/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Mason City, Iowa",
+    "root": "https://seeclickfix.com/open311/v2/282/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Chula Vista, CA",
+    "root": "https://seeclickfix.com/open311/v2/283/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Fayetteville, NC",
+    "root": "https://seeclickfix.com/open311/v2/283/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Hammond, IN",
+    "root": "https://seeclickfix.com/open311/v2/295/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Burlington, VT",
+    "root": "https://seeclickfix.com/open311/v2/297/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
+    "name": "Gilbert, AZ",
+    "root": "https://seeclickfix.com/open311/v2/655/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "jurisdiction": "gilbertaz.gov",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
   }
 ]
