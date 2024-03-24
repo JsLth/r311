@@ -52,7 +52,7 @@ If paginated, how many requests does one page contain?}
 \item{json}{\code{[logical]}
 
 Are JSON responses supported? If \code{FALSE}, defaults to \code{"XML"}
-responses. \code{"XML"} responses are harder to simplify.}
+responses. See also \code{\link{o311_api}}.}
 }
 \value{
 For \code{o311_endpoints}, a dataframe containing all relevant
@@ -78,7 +78,7 @@ This function uses \code{\link[tools]{R_user_dir}} to persistently store
 custom endpoints data between sessions. To clean up, run
 \code{o311_reset_endpoints()} which deletes the package-specific user
 directory and defaults back to
-\code{system.file("endpoints.json", package = "open311")}.
+\code{system.file("endpoints.json", package = "r311")}.
 }
 \examples{
 # read default endpoints

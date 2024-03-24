@@ -1,4 +1,4 @@
-Package: open311
+Package: r311
 Type: Package
 Title: R interface to the open311 standard
 Version: 0.2.0.9000

@@ -1,6 +1,6 @@
 test_that("endpoints can be modified", {
   o311_reset_endpoints()
-  user_dir <- tools::R_user_dir("open311")
+  user_dir <- o311_user_dir()
   expect_false(startsWith(endpoints_json(), user_dir))
   nrow1 <- nrow(o311_endpoints())
 

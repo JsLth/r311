@@ -37,7 +37,7 @@
 #' @param json \code{[logical]}
 #'
 #' Are JSON responses supported? If \code{FALSE}, defaults to \code{"XML"}
-#' responses. \code{"XML"} responses are harder to simplify.
+#' responses. See also \code{\link{o311_api}}.
 #'
 #' @returns For \code{o311_endpoints}, a dataframe containing all relevant
 #' information on an endpoint. For \code{o311_add_endpoint}, the new endpoint,
@@ -55,7 +55,7 @@
 #' custom endpoints data between sessions. To clean up, run
 #' \code{o311_reset_endpoints()} which deletes the package-specific user
 #' directory and defaults back to
-#' \code{system.file("endpoints.json", package = "open311")}.
+#' \code{system.file("endpoints.json", package = "r311")}.
 #'
 #' @examples
 #' # read default endpoints
@@ -101,8 +101,7 @@ o311_add_endpoint <- function(name,
 #' @rdname o311_endpoints
 #' @export
 o311_reset_endpoints <- function() {
-  user_dir <- tools::R_user_dir("open311")
-  unlink(user_dir, recursive = TRUE, force = TRUE)
+  unlink(o311_user_dir(), recursive = TRUE, force = TRUE)
 }
 
 
@@ -117,7 +116,7 @@ o311_endpoints <- function() {
 
 
 copy_endpoints_json <- function() {
-  user_dir <- tools::R_user_dir("open311")
+  user_dir <- o311_user_dir()
   data_path <- file.path(user_dir, "endpoints.json")
   if (!file.exists(data_path)) {
     dir.create(user_dir, recursive = TRUE)
@@ -132,7 +131,7 @@ o311_endpoints_path <- function() {
 
 
 user_endpoints_path <- function() {
-  file.path(tools::R_user_dir("open311"), "endpoints.json")
+  file.path(o311_user_path(), "endpoints.json")
 }
 
 

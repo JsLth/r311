@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(open311)
+library(r311)
 
-test_check("open311")
+test_check("r311")

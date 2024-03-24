@@ -43,12 +43,17 @@ loadable <- function(x) {
 
 
 o311_path <- function(...) {
-  system.file(..., package = "open311")
+  system.file(..., package = "r311")
+}
+
+
+o311_user_dir <- function(...) {
+  tools::R_user_dir("r311")
 }
 
 
 w3c_datetime <- function(x) {
-  if (inherits(x, "POSIXct")) format(x, format = "%FT%R:%SZ")
+  if (inherits(x, "POSIXt")) format(x, format = "%FT%R:%SZ")
 }
 
 

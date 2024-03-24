@@ -1,4 +1,4 @@
-url: https://jslth.github.io/open311/
+url: https://jslth.github.io/r311/
 pkwurl: ~
 template:
   bootstrap: 5
@@ -10,14 +10,14 @@ template:
     link-color: "#0054AD"
 
 navbar:
-  title: "open311"
+  title: "r311"
   left:
     - text: "Overview"
       icon: fa-home
       href: index.html
     - text: "Get started"
       icon: fa-book
-      href: articles/open311.html
+      href: articles/r311.html
     - text: "Reference"
       icon: fa-search
       href: reference/index.html
