@@ -145,10 +145,13 @@ o311_request_all <- function(service_code = NULL,
                              ...,
                              max_pages = Inf) {
   if ("page" %in% ...names()) {
-    stop(paste(
-      "`page` is unsupported in `o311_request_all`.",
-      "The function iterates through all pages."
-    ))
+    abort(
+      paste(
+        "`page` is unsupported in `o311_request_all`.",
+        "The function iterates through all pages."
+      ),
+      class = "page_unsupported_error"
+    )
   }
 
   out <- list()
@@ -168,7 +171,7 @@ o311_request_all <- function(service_code = NULL,
 
     # break if last request failed
     if (inherits(res, "error")) {
-      if (!length(out)) stop(res)
+      if (!length(out)) abort(res)
       break
     }
 

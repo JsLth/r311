@@ -26,7 +26,7 @@ test_that("endpoints can be modified", {
 
 test_that("fails when not set up", {
   # test missing setup
-  expect_error(o311_services(), "Could not find root API")
+  expect_error(o311_services(), class = "o311_setup_error")
 })
 
 
@@ -47,7 +47,7 @@ test_that("identical endpoints/jurisdictions fail", {
   add_test_endpoint()
   expect_error(
     o311_api("sf test"),
-    regexp = "Consider fixing the endpoints"
+    class = "o311_endpoints_corrupt_error"
   )
   o311_reset_endpoints()
 
@@ -56,7 +56,7 @@ test_that("identical endpoints/jurisdictions fail", {
   add_test_endpoint(juris = "test")
   expect_error(
     o311_api("sf test"),
-    regexp = "Multiple identical endpoints detected"
+    class = "o311_ambiguous_endpoints_error"
   )
   o311_reset_endpoints()
 
@@ -65,7 +65,7 @@ test_that("identical endpoints/jurisdictions fail", {
   add_test_endpoint("sf test2", juris = "test")
   expect_error(
     o311_api(jurisdiction = "test"),
-    regexp = "Multiple identical jurisdictions"
+    class = "o311_ambiguous_juris_error"
   )
   o311_reset_endpoints()
 })
@@ -80,7 +80,7 @@ test_that("invalid api fails", {
   # test invalid jurisdiction
   expect_error(
     o311_api("invalid"),
-    regexp = "No jurisdiction could be found"
+    class = "o311_not_found_error"
   )
 })
 
@@ -90,12 +90,12 @@ test_that("format checks in place", {
   add_test_endpoint(json = FALSE)
   expect_error(
     o311_api("sf test", format = "json"),
-    regexp = "JSON responses are not supported"
+    class = "o311_json_unsupported_error"
   )
   with_mocked_bindings(
     expect_error(
       o311_api("sf test", format = "xml"),
-      regexp = "package is needed"
+      class = "o311_package_error"
     ),
     loadable = function(x) FALSE
   )
@@ -157,7 +157,7 @@ test_that("time is correctly formatted", {
 
 test_that("o311_request_all can terminate", {
   skip_on_cran()
-  expect_error(o311_request_all(page = 1), "unsupported")
+  expect_error(o311_request_all(page = 1), class = "o311_page_unsupported_error")
   expect_error(o311_request_all(status = "test"), "should be one of")
   expect_equal(nrow(with_mocked_bindings(
     o311_request_all(),

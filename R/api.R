@@ -93,12 +93,13 @@ get_juris <- function() {
 
 
 setup_error <- function() {
-  stop(
+  abort(
     paste(
       "Could not find root API.",
       "Please set an active API using `o311_api()`"
     ),
-    call. = FALSE
+    call. = FALSE,
+    class = "setup_error"
   )
 }
 
@@ -109,40 +110,58 @@ check_jurisdiction <- function(endpoints) {
     juris_dup <- length(unique(endpoints$jurisdiction)) == 1
 
     if (endpoints_dup && !juris_dup) {
-      stop(paste(
-        "Multiple identical endpoints detected.",
-        "Consider passing `jurisdiction` explicitly."
-      ))
+      abort(
+        paste(
+          "Multiple identical endpoints detected.",
+          "Consider passing `jurisdiction` explicitly."
+        ),
+        class = "ambiguous_endpoints_error"
+      )
     } else if (!endpoints_dup && juris_dup) {
-      stop(paste(
-        "Multiple identical jurisdictions detected.",
-        "Consider passing `endpoint` explicitly."
-      ))
+      abort(
+        paste(
+          "Multiple identical jurisdictions detected.",
+          "Consider passing `endpoint` explicitly."
+        ),
+        class = "ambiguous_juris_error"
+      )
     } else {
-      stop(paste(
-        "Multiple identical jurisdictions for the same endpoint detected.",
-        "Consider fixing the endpoints list using `o311_reset_endpoints()`."
-      ))
+      abort(
+        paste(
+          "Multiple identical jurisdictions for the same endpoint detected.",
+          "Consider fixing the endpoints list using `o311_reset_endpoints()`."
+        ),
+        class = "endpoints_corrupt_error"
+      )
     }
   }
 
   if (!nrow(endpoints)) {
-    stop(paste(
-      "No jurisdiction could be found given the specified",
-      "city / jurisdiction ID. Run `o311_endpoints()`",
-      "to get an overview of available jurisdictions."
-    ))
+    abort(
+      paste(
+        "No jurisdiction could be found given the specified",
+        "city / jurisdiction ID. Run `o311_endpoints()`",
+        "to get an overview of available jurisdictions."
+      ),
+      class = "not_found_error"
+    )
   }
 }
 
 
 check_format <- function(endpoints, format) {
   if (!endpoints$json && identical(format, "json")) {
-    stop(paste(
-      "JSON responses are not supported by the given API.",
-      "Change the `format` argument to \"xml\"."
-    ))
+    abort(
+      paste(
+        "JSON responses are not supported by the given API.",
+        "Change the `format` argument to \"xml\"."
+      ),
+      class = "json_unsupported_error"
+    )
   } else if (!loadable("xml2") && identical(format, "xml")) {
-    stop("The `xml2` package is needed to accept XML responses.")
+    abort(
+      "The `xml2` package is needed to accept XML responses.",
+      class = "package_error"
+    )
   }
 }
