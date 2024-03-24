@@ -2,7 +2,7 @@
 % Please edit documentation in R/api.R
 \name{o311_api}
 \alias{o311_api}
-\title{Mount a jurisdiction}
+\title{Select an open311 API}
 \usage{
 o311_api(endpoint = NULL, jurisdiction = NULL, format = c("json", "xml"))
 }
@@ -33,11 +33,13 @@ jurisdiction, invisibly. This list is attached to the session and can
 be retrieved by calling \code{o311_api()} without arguments.
 }
 \description{
-Attach an open311 jurisdiction to the active session. A jurisdiction
-describes a city or a jurisdiction within a city that is served by
-an open311 API. After running this function, the jurisdiction is available
-to other \code{o311_*} functions until the session is terminated or until it
-is overwritten.
+Select an open311 API and attach it to the active session. An open311 API is
+an implementation of the open311 standard. It consists of an endpoint name
+(e.g. a city), a root URL, and a jurisdiction ID. To unambiguously identify
+an API, you can provide an endpoint, a jurisdiction ID, or both. The input
+is matched with \code{\link{o311_endpoints}} to select an API. The
+selected API is available to other \code{o311_*} functions until the
+session is terminated or until it is overwritten.
 }
 \details{
 In theory, several jurisdictions can exist for a single endpoints, e.g.

@@ -1,13 +1,15 @@
 o311_cache <- new.env(parent = emptyenv())
 
 
-#' Mount a jurisdiction
+#' Select an open311 API
 #' @description
-#' Attach an open311 jurisdiction to the active session. A jurisdiction
-#' describes a city or a jurisdiction within a city that is served by
-#' an open311 API. After running this function, the jurisdiction is available
-#' to other \code{o311_*} functions until the session is terminated or until it
-#' is overwritten.
+#' Select an open311 API and attach it to the active session. An open311 API is
+#' an implementation of the open311 standard. It consists of an endpoint name
+#' (e.g. a city), a root URL, and a jurisdiction ID. To unambiguously identify
+#' an API, you can provide an endpoint, a jurisdiction ID, or both. The input
+#' is matched with \code{\link{o311_endpoints}} to select an API. The
+#' selected API is available to other \code{o311_*} functions until the
+#' session is terminated or until it is overwritten.
 #'
 #' @param endpoint \code{[character]}
 #'
