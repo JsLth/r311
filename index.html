@@ -15,7 +15,10 @@
 <title>R interface to the open311 standard • open311</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.9/font.css" rel="stylesheet">
+<link href="deps/JetBrains_Mono-0.4.9/font.css" rel="stylesheet">
+<link href="deps/Roboto_Slab-0.4.9/font.css" rel="stylesheet">
+<!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="R interface to the open311 standard">
 <meta property="og:description" content="Access and handle APIs that use the international open331
@@ -47,8 +50,26 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
+<li class="active nav-item">
+  <a class="nav-link" href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Overview
+  </a>
+</li>
 <li class="nav-item">
-  <a class="nav-link" href="reference/index.html">Reference</a>
+  <a class="nav-link" href="articles/open311.html">
+    <span class="fa fa-book"></span>
+     
+    Get started
+  </a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="reference/index.html">
+    <span class="fa fa-search"></span>
+     
+    Reference
+  </a>
 </li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
@@ -67,8 +88,7 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><code>open311</code> is an R package that allows you to query any endpoint that uses the open311 API standard for public service communication. Usually, such APIs are established alongside web services that allow citizens to submit public service tickets on public spaces. These tickets can be retrieved using open311 APIs.</p>
-<p><code>open311</code> supports all official endpoints which currently include <code>services</code> and <code>requests</code>.</p>
+<p><code>r311</code> is an R interface to the international standard <a href="https://www.open311.org/" class="external-link">open311</a>. open311 APIs are used for civic issue management and public service communication. The standard allows administrations to better manage citizen requests, citizens to more easily submit requests, and (hence this package) researchers and data scientists to access data regarding public service communication. <code>r311</code> supports the seamless management and add supplementation of available endpoints, the selection of appropriate APIs to access, and the retrieval of civic service and request data. Custom queries and extensions (e.g. from CitySDK) are implicitly supported. <code>r311</code> is designed to require a minimal amount of dependencies, but allow for easy integration into common R frameworks such as the tidyverse, <code>sf</code> or <code>xml2</code>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -84,7 +104,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">open311</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">o311_jurisdiction</span><span class="op">(</span><span class="st">"Cologne"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"Cologne"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/o311_requests.html">o311_requests</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Simple feature collection with 50 features and 14 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>

@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://jslth.github.io/open311/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE-text.html</loc>
+    <loc>https://jslth.github.io/open311/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://jslth.github.io/open311/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://jslth.github.io/open311/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://jslth.github.io/open311/index.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://jslth.github.io/open311/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/o311_api.html</loc>
+    <loc>https://jslth.github.io/open311/reference/o311_api.html</loc>
   </url>
   <url>
-    <loc>/reference/o311_discovery.html</loc>
+    <loc>https://jslth.github.io/open311/reference/o311_discovery.html</loc>
   </url>
   <url>
-    <loc>/reference/o311_endpoints.html</loc>
+    <loc>https://jslth.github.io/open311/reference/o311_endpoints.html</loc>
   </url>
   <url>
-    <loc>/reference/o311_query.html</loc>
+    <loc>https://jslth.github.io/open311/reference/o311_query.html</loc>
   </url>
   <url>
-    <loc>/reference/o311_requests.html</loc>
+    <loc>https://jslth.github.io/open311/reference/o311_requests.html</loc>
   </url>
   <url>
-    <loc>/reference/o311_services.html</loc>
+    <loc>https://jslth.github.io/open311/reference/o311_services.html</loc>
   </url>
 </urlset>
