@@ -90,6 +90,8 @@ o311_add_endpoint(name = "test", root = "test.org/georeport/v2")
 # read new endpoints
 o311_endpoints()
 
+# reset endpoints back to default
+o311_reset_endpoints()
 }
 \seealso{
 \code{\link{o311_api}}

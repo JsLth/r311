@@ -67,6 +67,8 @@
 #' # read new endpoints
 #' o311_endpoints()
 #'
+#' # reset endpoints back to default
+#' o311_reset_endpoints()
 #' @rdname o311_endpoints
 #' @seealso \code{\link{o311_api}}
 #' @export
