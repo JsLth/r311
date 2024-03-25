@@ -69,6 +69,9 @@
 #' # read default endpoints
 #' o311_endpoints()
 #'
+#' # get all endpoints powered by Connected Bits
+#' o311_endpoints(dialect = "Connected Bits")
+#'
 #' # add a new endpoint
 #' o311_add_endpoint(name = "test", root = "test.org/georeport/v2")
 #'
@@ -105,7 +108,7 @@ o311_add_endpoint <- function(name,
   endpoints <- jsonlite::read_json(json_path)
 
   if (has_duplicate_endpoints(endpoints, name, jurisdiction)) {
-    return(invisible(NULL))
+    return(invisible(new_endpoint))
   }
 
   endpoints <- c(endpoints, list(new_endpoint))
@@ -121,13 +124,31 @@ o311_reset_endpoints <- function() {
 }
 
 
+#' @param ... List of key-value pairs where each pair is a filter.
+#' The key represents the column and the value the requested column value.
+#' All keys must be present in the column names of \code{o311_endpoints()}.
 #' @rdname o311_endpoints
 #' @export
-o311_endpoints <- function() {
-  as_data_frame(jsonlite::read_json(
+o311_endpoints <- function(...) {
+  endpoints <- as_data_frame(jsonlite::read_json(
     endpoints_json(),
     simplifyVector = TRUE
   ))
+
+  dots <- list(...)
+
+  if (!all(names(dots) %in% names(endpoints))) {
+    abort(
+      "Keys in `...` must correspond to an endpoints column.",
+      class = "endpoints_filter_error"
+    )
+  }
+
+  for (col in names(dots)) {
+    endpoints <- endpoints[endpoints[[col]] %in% dots[[col]], ]
+  }
+
+  endpoints
 }
 
 
@@ -135,7 +156,7 @@ copy_endpoints_json <- function() {
   user_dir <- o311_user_dir()
   data_path <- file.path(user_dir, "endpoints.json")
   if (!file.exists(data_path)) {
-    dir.create(user_dir, recursive = TRUE)
+    dir.create(user_dir, recursive = TRUE, showWarnings = FALSE)
     file.copy(endpoints_json(), data_path)
   }
 }

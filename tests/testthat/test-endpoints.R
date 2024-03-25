@@ -1,3 +1,5 @@
+local_mocked_bindings(o311_user_dir = function() tempdir())
+
 test_that("endpoints can be modified", {
   o311_reset_endpoints()
   user_dir <- o311_user_dir()
@@ -21,6 +23,14 @@ test_that("endpoints can be modified", {
     loadable = function(x) FALSE,
     expect_false(tibble::is_tibble(o311_endpoints()))
   )
+})
+
+
+test_that("endpoints can be filtered", {
+  endpoints <- o311_endpoints(dialect = "Mark-a-Spot", limit = 50)
+  expect_identical(unique(endpoints$limit), 50L)
+  expect_identical(unique(endpoints$dialect), "Mark-a-Spot")
+  expect_error(o311_endpoints(test = 1), class = "o311_endpoints_filter_error")
 })
 
 
@@ -112,7 +122,7 @@ test_that("format checks in place", {
       o311_api("sf test", format = "xml"),
       class = "o311_package_error"
     ),
-    loadable = function(x) FALSE
+    loadable = function(...) FALSE
   )
   o311_reset_endpoints()
 })

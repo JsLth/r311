@@ -19,7 +19,7 @@ o311_add_endpoint(
 
 o311_reset_endpoints()
 
-o311_endpoints()
+o311_endpoints(...)
 }
 \arguments{
 \item{name}{\code{[character]}
@@ -61,6 +61,10 @@ open311 extension that the endpoint is built on. Common dialects include
 CitySDK, Connected Bits, SeeClickFix and Mark-a-Spot. Currently, this
 argument does nothing, but it could be used in the future to adjust
 response handling based on dialect.}
+
+\item{...}{List of key-value pairs where each pair is a filter.
+The key represents the column and the value the requested column value.
+All keys must be present in the column names of \code{o311_endpoints()}.}
 }
 \value{
 For \code{o311_endpoints}, a dataframe containing all relevant
@@ -92,6 +96,9 @@ directory and defaults back to
 \examples{
 # read default endpoints
 o311_endpoints()
+
+# get all endpoints powered by Connected Bits
+o311_endpoints(dialect = "Connected Bits")
 
 # add a new endpoint
 o311_add_endpoint(name = "test", root = "test.org/georeport/v2")
