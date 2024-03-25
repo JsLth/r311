@@ -183,7 +183,7 @@ test_that("o311_ok detects wrong roots", {
   expect_match(o311_ok(error = TRUE)$message, class = "o311_ok_error")
 
   o311_add_endpoint("invalid", root = "http://echo.jsontest.com/key/value/one/two")
-  o311_api("empty requests")
+  o311_api("invalid")
   expect_match(o311_ok(error = TRUE)$message, class = "o311_ok_error")
 
   o311_reset_endpoints()
