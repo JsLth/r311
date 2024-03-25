@@ -18,7 +18,7 @@ issue management and public service communication. The standard allows
 administrations to better manage citizen requests, citizens to more
 easily submit requests, and (hence this package) researchers and data
 scientists to access data regarding public service communication. `r311`
-supports the seamless management and add supplementation of available
+supports the seamless management and supplementation of available
 endpoints, the selection of appropriate APIs to access, and the
 retrieval of civic service and request data. Custom queries and
 extensions (e.g. from CitySDK) are implicitly supported. `r311` is
