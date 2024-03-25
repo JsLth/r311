@@ -3,7 +3,7 @@
 retrieves a list of endpoints including additional information.
 o311_add_endpoint adds to this list to define a new endpoint that
 can be used for queries. o311_reset_endpoints restores the initial
-state of the endpoints list."><title>Endpoints — o311_add_endpoint • open311</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.9/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.9/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.9/font.css" rel="stylesheet"><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Endpoints — o311_add_endpoint"><meta property="og:description" content="Modify and examine defined open311 endpoints. o311_endpoints()
+state of the endpoints list."><title>Endpoints — o311_add_endpoint • r311</title><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.9/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.9/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.9/font.css" rel="stylesheet"><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous"><!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Endpoints — o311_add_endpoint"><meta property="og:description" content="Modify and examine defined open311 endpoints. o311_endpoints()
 retrieves a list of endpoints including additional information.
 o311_add_endpoint adds to this list to define a new endpoint that
 can be used for queries. o311_reset_endpoints restores the initial
@@ -16,9 +16,9 @@ state of the endpoints list."><!-- mathjax --><script src="https://cdnjs.cloudfl
 
     <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
     
-    <a class="navbar-brand me-2" href="../index.html">open311</a>
+    <a class="navbar-brand me-2" href="../index.html">r311</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +34,7 @@ state of the endpoints list."><!-- mathjax --><script src="https://cdnjs.cloudfl
   </a>
 </li>
 <li class="nav-item">
-  <a class="nav-link" href="../articles/open311.html">
+  <a class="nav-link" href="../articles/r311.html">
     <span class="fa fa-book"></span>
      
     Get started
@@ -79,7 +79,8 @@ state of the endpoints list.</p>
 <span>  key <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  pagination <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  limit <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  json <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  json <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  dialect <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu">o311_reset_endpoints</span><span class="op">(</span><span class="op">)</span></span>
@@ -126,7 +127,15 @@ most endpoints only serve one jurisdiction.</p></dd>
 <dt>json</dt>
 <dd><p><code>[logical]</code></p>
 <p>Are JSON responses supported? If <code>FALSE</code>, defaults to <code>"XML"</code>
-responses. <code>"XML"</code> responses are harder to simplify.</p></dd>
+responses. See also <code><a href="o311_api.html">o311_api</a></code>.</p></dd>
+
+
+<dt>dialect</dt>
+<dd><p><code>[character]</code></p>
+<p>open311 extension that the endpoint is built on. Common dialects include
+CitySDK, Connected Bits, SeeClickFix and Mark-a-Spot. Currently, this
+argument does nothing, but it could be used in the future to adjust
+response handling based on dialect.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -135,7 +144,8 @@ responses. <code>"XML"</code> responses are harder to simplify.</p></dd>
 
 <p>For <code>o311_endpoints</code>, a dataframe containing all relevant
 information on an endpoint. For <code>o311_add_endpoint</code>, the new endpoint,
-invisibly. <code>o311_reset_endpoints</code> returns <code>NULL</code> invisibly.</p>
+invisibly. <code>o311_reset_endpoints</code> returns <code>NULL</code> invisibly.
+If the new endpoint is a duplicate, <code>NULL</code> is returned invisibly.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -151,7 +161,7 @@ manually added using <code>o311_add_endpoint</code>.</p>
 custom endpoints data between sessions. To clean up, run
 <code>o311_reset_endpoints()</code> which deletes the package-specific user
 directory and defaults back to
-<code>system.file("endpoints.json", package = "open311")</code>.</p>
+<code>system.file("endpoints.json", package = "r311")</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -162,56 +172,43 @@ directory and defaults back to
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># read default endpoints</span></span></span>
 <span class="r-in"><span><span class="fu">o311_endpoints</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 18 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    name                    root  docs  jurisdiction key   pagination limit json </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Annaberg-Buchholz, Deu… http… http… annberg-buc… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bloomington, IN         http… <span style="color: #BB0000;">NA</span>    bloomington… FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Bonn, Deutschland       http… http… bonn.de      FALSE TRUE         100 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Boston, MA              http… http… boston.gov   FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Brookline, MA           http… http… brooklinema… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Chicaco, IL             http… http… cityofchica… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Köln / Cologne, Deutsc… http… http… stadt-koeln… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Ottawa, ON              http… <span style="color: #BB0000;">NA</span>    ottawa.ca    FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Rostock, Deutschland    http… http… rostock.de   FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> San Francisco, CA       http… http… sfgov.org    FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Siegburg, Deutschland   http… http… siegburg.de  FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> Turku, FI               http… <span style="color: #BB0000;">NA</span>    turku.fi     FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> Zürich, CH              http… http… stadt-zueri… FALSE TRUE         100 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> Philadelphia, PA        http… <span style="color: #BB0000;">NA</span>    philadelphi… FALSE TRUE          <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> Gilbert, AZ             http… http… gilbertaz.g… FALSE TRUE          20 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> Schwerin, DEU           http… http… schwerin.de  FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> FixMyStreet             http… http… fixmystreet  FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> München, DEU            http… http… muenchen.de  FALSE TRUE         100 TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 61 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    name            root  docs  jurisdiction key   pagination limit json  dialect</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Annaberg-Buchh… http… http… annberg-buc… FALSE TRUE          50 TRUE  Mark-a…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bloomington, IN http… <span style="color: #BB0000;">NA</span>    bloomington… FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE  uReport</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Bonn, DE        http… http… bonn.de      FALSE TRUE         100 TRUE  Mark-a…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Boston, MA      http… http… boston.gov   FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Brookline, MA   http… http… brooklinema… FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Austin, TX      http… http… <span style="color: #BB0000;">NA</span>           FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Chicago, IL     http… http… cityofchica… FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Köln / Cologne… http… http… stadt-koeln… FALSE TRUE          50 TRUE  Mark-a…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Ottawa, ON      http… <span style="color: #BB0000;">NA</span>    ottawa.ca    FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE  <span style="color: #BB0000;">NA</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Rostock, DE     http… http… rostock.de   FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE  CitySDK</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 51 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># add a new endpoint</span></span></span>
 <span class="r-in"><span><span class="fu">o311_add_endpoint</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"test"</span>, root <span class="op">=</span> <span class="st">"test.org/georeport/v2"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># read new endpoints</span></span></span>
 <span class="r-in"><span><span class="fu">o311_endpoints</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 19 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    name                    root  docs  jurisdiction key   pagination limit json </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Annaberg-Buchholz, Deu… http… http… annberg-buc… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bloomington, IN         http… <span style="color: #BB0000;">NA</span>    bloomington… FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Bonn, Deutschland       http… http… bonn.de      FALSE TRUE         100 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Boston, MA              http… http… boston.gov   FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Brookline, MA           http… http… brooklinema… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Chicaco, IL             http… http… cityofchica… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Köln / Cologne, Deutsc… http… http… stadt-koeln… FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Ottawa, ON              http… <span style="color: #BB0000;">NA</span>    ottawa.ca    FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Rostock, Deutschland    http… http… rostock.de   FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> San Francisco, CA       http… http… sfgov.org    FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> Siegburg, Deutschland   http… http… siegburg.de  FALSE TRUE          50 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">12</span> Turku, FI               http… <span style="color: #BB0000;">NA</span>    turku.fi     FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">13</span> Zürich, CH              http… http… stadt-zueri… FALSE TRUE         100 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">14</span> Philadelphia, PA        http… <span style="color: #BB0000;">NA</span>    philadelphi… FALSE TRUE          <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">15</span> Gilbert, AZ             http… http… gilbertaz.g… FALSE TRUE          20 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">16</span> Schwerin, DEU           http… http… schwerin.de  FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">17</span> FixMyStreet             http… http… fixmystreet  FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">18</span> München, DEU            http… http… muenchen.de  FALSE TRUE         100 TRUE </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">19</span> test                    test… <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>           FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 62 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    name            root  docs  jurisdiction key   pagination limit json  dialect</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Annaberg-Buchh… http… http… annberg-buc… FALSE TRUE          50 TRUE  Mark-a…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bloomington, IN http… <span style="color: #BB0000;">NA</span>    bloomington… FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE  uReport</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Bonn, DE        http… http… bonn.de      FALSE TRUE         100 TRUE  Mark-a…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Boston, MA      http… http… boston.gov   FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Brookline, MA   http… http… brooklinema… FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Austin, TX      http… http… <span style="color: #BB0000;">NA</span>           FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Chicago, IL     http… http… cityofchica… FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Köln / Cologne… http… http… stadt-koeln… FALSE TRUE          50 TRUE  Mark-a…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Ottawa, ON      http… <span style="color: #BB0000;">NA</span>    ottawa.ca    FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE  <span style="color: #BB0000;">NA</span>     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Rostock, DE     http… http… rostock.de   FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE  CitySDK</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 52 more rows</span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># reset endpoints back to default</span></span></span>
+<span class="r-in"><span><span class="fu">o311_reset_endpoints</span><span class="op">(</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

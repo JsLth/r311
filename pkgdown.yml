@@ -1,9 +1,10 @@
 pandoc: 3.1.11
 pkgdown: 2.0.7
 pkgdown_sha: ~
-articles: {}
-last_built: 2024-03-24T02:32Z
+articles:
+  r311: r311.html
+last_built: 2024-03-25T01:17Z
 urls:
-  reference: https://jslth.github.io/open311/reference
-  article: https://jslth.github.io/open311/articles
+  reference: https://jslth.github.io/r311/reference
+  article: https://jslth.github.io/r311/articles
 
