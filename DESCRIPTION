@@ -1,7 +1,7 @@
 Package: r311
 Type: Package
 Title: R interface to the open311 standard
-Version: 0.2.0.9000
+Version: 0.3.0.9000
 Authors@R: 
     person("Jonas", "Lieth", , "jonas.lieth@gesis.org", role = c("aut", "cre"))
 Maintainer: Jonas Lieth <jonas.lieth@gesis.org>
@@ -28,7 +28,8 @@ Suggests:
     tibble,
     sf,
     xml2,
-    xmlconvert
+    xmlconvert,
+    rmarkdown
 RoxygenNote: 7.3.1
 VignetteBuilder: knitr
 Config/testthat/edition: 3
