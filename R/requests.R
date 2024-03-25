@@ -141,7 +141,7 @@ o311_request_all <- function(service_code = NULL,
                              ...,
                              max_pages = Inf,
                              progress = TRUE) {
-  assert_number(max_pages, null = FALSE, int = TRUE)
+  assert_number(max_pages, null = FALSE, int = TRUE, inf = TRUE)
   assert_flag(progress)
   if ("page" %in% ...names()) {
     abort(

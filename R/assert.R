@@ -14,8 +14,9 @@ assert_string <- function(x, null = TRUE, n = 1L) {
 }
 
 
-assert_number <- function(x, null = TRUE, n = 1, int = FALSE) {
+assert_number <- function(x, null = TRUE, n = 1, int = FALSE, inf = FALSE) {
   if (null && is.null(x)) return(invisible())
+  if (inf && is.infinite(x)) return(invisible())
   if (
     (!is.numeric(x) ||
      !length(x) == n ||

@@ -237,7 +237,6 @@ test_that("assertions work", {
 
   assert_string(NULL)
   assert_number(NULL)
-  assert_flag(NULL)
   assert_string(string)
   assert_string(char, n = 2)
   assert_number(doub1)
@@ -248,6 +247,7 @@ test_that("assertions work", {
   assert_time(time)
   assert_dots_named(a = string)
 
+  expect_error(assert_flag(NULL))
   expect_error(assert_string(NULL, null = FALSE))
   expect_error(assert_string(char))
   expect_error(assert_number(doub2))
