@@ -129,6 +129,10 @@ o311_request <- function(service_request_id, ...) {
 }
 
 
+#' @param max_pages \code{[integer]}
+#'
+#' Number of pages to search until the result is returned.
+#'
 #' @param progress \code{[logical]}
 #'
 #' Whether to show a waiter indicating the current page iteration.

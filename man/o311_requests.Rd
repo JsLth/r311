@@ -58,6 +58,10 @@ respective endpoint reference.}
 Identifier of a single service request. Request IDs can usually be retrieved
 from \code{o311_requests}.}
 
+\item{max_pages}{\code{[integer]}
+
+Number of pages that are searched until the result is returned.}
+
 \item{progress}{\code{[logical]}
 
 Whether to show a waiter indicating the current page iteration.}
