@@ -174,7 +174,7 @@ test_that("wkt is parsed if needed", {
 
 test_that("o311_ok detects wrong roots", {
   o311_add_endpoint("unavailable", root = "google.com/open311/v2")
-  o311_api("unavailble")
+  o311_api("unavailable")
   expect_false(o311_ok())
   expect_match(o311_ok(error = TRUE)$message, "Error code 404")
 
