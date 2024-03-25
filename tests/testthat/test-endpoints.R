@@ -173,10 +173,19 @@ test_that("wkt is parsed if needed", {
 
 
 test_that("o311_ok detects wrong roots", {
-  o311_add_endpoint("invalid", root = "google.com/open311/v2")
-  o311_api("invalid")
+  o311_add_endpoint("unavailable", root = "google.com/open311/v2")
+  o311_api("unavailble")
   expect_false(o311_ok())
   expect_match(o311_ok(error = TRUE)$message, "Error code 404")
+
+  o311_add_endpoint("empty", root = "https://seeclickfix.com/open311/v2/20/")
+  o311_api("empty")
+  expect_match(o311_ok(error = TRUE)$message, class = "o311_ok_error")
+
+  o311_add_endpoint("invalid", root = "http://echo.jsontest.com/key/value/one/two")
+  o311_api("empty requests")
+  expect_match(o311_ok(error = TRUE)$message, class = "o311_ok_error")
+
   o311_reset_endpoints()
 })
 

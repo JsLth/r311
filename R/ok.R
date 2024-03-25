@@ -38,7 +38,8 @@ o311_ok <- function(error = FALSE) {
       res <- o311_query("requests", simplify = FALSE)
 
       # check if requests.json returns a valid requests json
-      ok <- length(res) > 1 | "service_request_id" %in% names(res[[1]])
+      ok <- length(res) > 1 &&
+        "service_request_id" %in% names(unlist(res, recursive = FALSE))
 
       if (!ok) {
         abort(
