@@ -261,4 +261,7 @@ test_that("assertions work", {
 
 test_that("utils work", {
   expect_identical(unbox(list(list(1))), list(1))
+
+  expect_output(waiter(1, 10), "Receiving page 1 out of 10...")
+  expect_output(waiter(1), "Receiving page 1...")
 })

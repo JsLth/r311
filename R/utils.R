@@ -78,3 +78,12 @@ rbind_list <- function(args) {
   rownames(out) <- NULL
   out
 }
+
+
+waiter <- function(current = NULL, total = Inf) {
+  msg <- sprintf("Receiving page %s", current)
+  if (!is.infinite(total)) {
+    msg <- sprintf(paste(msg, "out of %s"), total)
+  }
+  cat(paste0(msg, "...\r"))
+}
