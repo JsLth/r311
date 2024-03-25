@@ -5,20 +5,20 @@
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/JsLth/open311/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JsLth/open311/actions/workflows/R-CMD-check.yaml)
-[![](https://www.r-pkg.org/badges/version/rors)](https://cran.r-project.org/package=rors)
+[![R-CMD-check](https://github.com/JsLth/r311/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JsLth/r311/actions/workflows/R-CMD-check.yaml)
+[![](https://www.r-pkg.org/badges/version/r311)](https://cran.r-project.org/package=r311)
 [![Codecov test
-coverage](https://codecov.io/gh/JsLth/open311/branch/main/graph/badge.svg)](https://app.codecov.io/gh/JsLth/open311?branch=main)
+coverage](https://codecov.io/gh/JsLth/r311/branch/main/graph/badge.svg)](https://app.codecov.io/gh/JsLth/r311?branch=main)
 [![CodeFactor](https://www.codefactor.io/repository/github/jslth/r311/badge)](https://www.codefactor.io/repository/github/jslth/r311)
 <!-- badges: end -->
 
 `r311` is an R interface to the international standard
-[open311](https://www.open311.org/). open311 APIs are used for civic
+[open311](https://www.open311.org/). Open311 APIs are used for civic
 issue management and public service communication. The standard allows
 administrations to better manage citizen requests, citizens to more
 easily submit requests, and (hence this package) researchers and data
 scientists to access data regarding public service communication. `r311`
-supports the seamless management and supplementation of available
+supports the seamless management and add supplementation of available
 endpoints, the selection of appropriate APIs to access, and the
 retrieval of civic service and request data. Custom queries and
 extensions (e.g. from CitySDK) are implicitly supported. `r311` is
@@ -32,17 +32,17 @@ You can install the development version of open311 from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("JsLth/open311")
+# install.packages("remotes")
+remotes::install_github("JsLth/r311")
 ```
 
 ## Example
 
-The following example loads `open311`, sets up a jurisdiction and
-retrieves a small amount of data on service tickets in Cologne, Germany.
+The following example loads `r311`, sets up a jurisdiction and retrieves
+a small amount of data on service tickets in Cologne, Germany.
 
 ``` r
-library(open311)
+library(r311)
 
 o311_api("Cologne")
 o311_requests()
