@@ -113,6 +113,8 @@ As the result is \code{TRUE}, you can safely start receiving real request data.
 After selecting an API and attaching it to the session, all \code{o311_*}
 functions can access it. You can now make requests.
 
+## Services
+
 To get an overview of the available services in a jurisdiction, you can
 use `o311_services`, which returns a list of San Francisco's administrative
 services.
@@ -120,6 +122,9 @@ services.
 ```{r}
 o311_services()
 ```
+
+
+## Requests
 
 To get data about civic issues in the city area, run `o311_requests`.
 
@@ -144,16 +149,8 @@ single service request from the API.
 o311_request("1020139511")
 ```
 
-Many endpoints define a page limit meaning that responses are divided into
-pages. A query without parameters returns the first page. Pagination can be
-controlled with the `page` argument. To control pagination, the
-`o311_request_all` function can come in handy. It automatically iterates
-through pages and heuristically decides when to stop. The following example
-retrieves data from the first two pages.
 
-```{r}
-o311_request_all(max_pages = 2)
-```
+## Non-standard parameters
 
 `r311` implicitly supports API extensions introducing custom paths and
 parameters. One such API is Klarschiff Rostock which is based on CitySDK.
@@ -175,4 +172,34 @@ parameter. The result is a 1×1 tibble containing a count value.
 ```{r}
 o311_requests(just_count = TRUE, max_requests = 10)
 ```
+
+
+## Bulk queries
+
+Many endpoints define a page limit meaning that responses are divided into
+pages. A query without parameters returns the first page. Pagination can be
+controlled with the `page` argument. To control pagination, the
+`o311_request_all` function can come in handy. It automatically iterates
+through pages and heuristically decides when to stop. The following example
+retrieves data from the first two pages, resulting in a tibble with 100
+service requests.
+
+```{r}
+o311_request_all(max_pages = 2)
+```
+
+
+# Cleanup
+
+Endpoint data is stored persistently between sessions so that you can create
+your own database of open311 endpoints. This database is stored in the system's
+user directory as returned by `tools::R_user_dir("r311")`. To reset the
+database, run
+
+```{r}
+o311_reset_endpoints()
+```
+
+This will default back to the endpoints defined by `r311` and remove all
+endpoints manually added by `o311_add_endpoints`.
 
