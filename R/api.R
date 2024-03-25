@@ -161,7 +161,7 @@ check_format <- function(endpoints, format) {
       ),
       class = "json_unsupported_error"
     )
-  } else if (!loadable("xml2") && identical(format, "xml")) {
+  } else if (!loadable("xml2", "xmlconvert") && identical(format, "xml")) {
     abort(
       "The `xml2` package is needed to accept XML responses.",
       class = "package_error"

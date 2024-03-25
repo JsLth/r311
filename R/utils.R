@@ -37,8 +37,10 @@ unbox <- function(x) {
 }
 
 
-loadable <- function(x) {
-  suppressPackageStartupMessages(requireNamespace(x, quietly = TRUE))
+loadable <- function(...) {
+  all(vapply(c(...), FUN.VALUE = logical(1), function(pkg) {
+    suppressPackageStartupMessages(requireNamespace(pkg, quietly = TRUE))
+  }))
 }
 
 
