@@ -185,6 +185,9 @@ data.</p>
 </h2>
 <p>After selecting an API and attaching it to the session, all functions
 can access it. You can now make requests.</p>
+<div class="section level3">
+<h3 id="services">Services<a class="anchor" aria-label="anchor" href="#services"></a>
+</h3>
 <p>To get an overview of the available services in a jurisdiction, you
 can use <code>o311_services</code>, which returns a list of San
 Francisco’s administrative services.</p>
@@ -204,6 +207,10 @@ Francisco’s administrative services.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 55e8409a45ff461f92000006 Encampment          <span style="color: #BB0000;">NA</span>          TRUE     batch Stre…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 518d5d52601827e3880001b1 Abandoned Vehicles  Report a v… TRUE     batch Park…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 11 more rows</span></span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="requests">Requests<a class="anchor" aria-label="anchor" href="#requests"></a>
+</h3>
 <p>To get data about civic issues in the city area, run
 <code>o311_requests</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -273,36 +280,10 @@ you can retrieve a single service request from the API.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1020139511         open   Shared Spaces 6050cd8ce8961bbfa3… 2023-12-08T23:54:…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 3 more variables: updated_datetime &lt;chr&gt;, address &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   geometry &lt;POINT [°]&gt;</span></span></span></code></pre></div>
-<p>Many endpoints define a page limit meaning that responses are divided
-into pages. A query without parameters returns the first page.
-Pagination can be controlled with the <code>page</code> argument. To
-control pagination, the <code>o311_request_all</code> function can come
-in handy. It automatically iterates through pages and heuristically
-decides when to stop. The following example retrieves data from the
-first two pages.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_requests.html">o311_request_all</a></span><span class="op">(</span>max_pages <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Simple feature collection with 100 features and 10 fields</span></span>
-<span><span class="co">#&gt; Geometry type: POINT</span></span>
-<span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: -122.5111 ymin: 37.73277 xmax: -122.3931 ymax: 37.79207</span></span>
-<span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 100 × 11</span></span></span>
-<span><span class="co">#&gt;    service_request_id status service_name               service_code description</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1020140302         open   Street or Sidewalk Cleani… 518d5892601… Test - gar…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1020139578         open   Street or Sidewalk Cleani… 518d5892601… Garbage on…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1020139514         open   Encampment                 55e8409a45f… <span style="color: #BB0000;">NA</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1020139511         open   Shared Spaces              6050cd8ce89… <span style="color: #BB0000;">NA</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 1020139507         open   Tree Maintenance           518d595d601… southbound…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 1020139506         open   Pothole &amp; Street Issues    50fea9c24aa… southbound…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 1020139503         open   Tree Maintenance           518d595d601… southbound…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 1020139502         open   Pothole &amp; Street Issues    50fea9c24aa… southbound…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1020139501         open   Tree Maintenance           518d595d601… southbound…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 1020139500         open   Pothole &amp; Street Issues    50fea9c24aa… southbound…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 90 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 6 more variables: requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   address &lt;chr&gt;, media_url &lt;chr&gt;, status_notes &lt;chr&gt;, geometry &lt;POINT [°]&gt;</span></span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="non-standard-parameters">Non-standard parameters<a class="anchor" aria-label="anchor" href="#non-standard-parameters"></a>
+</h3>
 <p><code>r311</code> implicitly supports API extensions introducing
 custom paths and parameters. One such API is Klarschiff Rostock which is
 based on CitySDK. Klarschiff CitySDK defines a number of non-default
@@ -311,7 +292,7 @@ requests. Available parameters can usually be found in the respective
 documentation (e.g. on GitHub for <a href="https://github.com/bfpi/klarschiff-citysdk" class="external-link">Klarschiff
 CitySDK</a>). The following query returns the last 10 requests tagged
 with the “idea” keyword.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"Rostock"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/o311_requests.html">o311_requests</a></span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"idea"</span>, max_requests <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Simple feature collection with 10 features and 15 fields</span></span>
@@ -340,12 +321,62 @@ with the “idea” keyword.</p>
 following example, we query just the count of total queried requests
 using the <code>just_count</code> parameter. The result is a 1×1 tibble
 containing a count value.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_requests.html">o311_requests</a></span><span class="op">(</span>just_count <span class="op">=</span> <span class="cn">TRUE</span>, max_requests <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 1</span></span></span>
 <span><span class="co">#&gt;   value</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>    10</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="bulk-queries">Bulk queries<a class="anchor" aria-label="anchor" href="#bulk-queries"></a>
+</h3>
+<p>Many endpoints define a page limit meaning that responses are divided
+into pages. A query without parameters returns the first page.
+Pagination can be controlled with the <code>page</code> argument. To
+control pagination, the <code>o311_request_all</code> function can come
+in handy. It automatically iterates through pages and heuristically
+decides when to stop. The following example retrieves data from the
+first two pages, resulting in a tibble with 100 service requests.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_requests.html">o311_request_all</a></span><span class="op">(</span>max_pages <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Simple feature collection with 3791 features and 15 fields</span></span>
+<span><span class="co">#&gt; Geometry type: POINT</span></span>
+<span><span class="co">#&gt; Dimension:     XY</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 12.01306 ymin: 54.05571 xmax: 12.24428 ymax: 54.20905</span></span>
+<span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 3,791 × 16</span></span></span>
+<span><span class="co">#&gt;    service_request_id status_notes  status service_code service_name description</span></span>
+<span><span class="co">#&gt;                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>              <span style="text-decoration: underline;">72</span>837 <span style="color: #949494;">""</span>            in_pr…           22 Sperrmüll    Sperrmüll  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>              <span style="text-decoration: underline;">69</span>364  <span style="color: #BB0000;">NA</span>           recei…           15 Elektroschr… redaktione…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>              <span style="text-decoration: underline;">84</span>163  <span style="color: #BB0000;">NA</span>           recei…           15 Elektroschr… redaktione…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>              <span style="text-decoration: underline;">84</span>019  <span style="color: #BB0000;">NA</span>           recei…           22 Sperrmüll    redaktione…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>              <span style="text-decoration: underline;">94</span>613 <span style="color: #949494;">""</span>            in_pr…           22 Sperrmüll    Alte-Warne…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>              <span style="text-decoration: underline;">94</span>614 <span style="color: #949494;">""</span>            in_pr…           15 Elektroschr… Machiner S…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>              <span style="text-decoration: underline;">94</span>612 <span style="color: #949494;">""</span>            in_pr…           22 Sperrmüll    Kolumbusri…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>              <span style="text-decoration: underline;">87</span>079  <span style="color: #BB0000;">NA</span>           recei…           22 Sperrmüll    redaktione…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>              <span style="text-decoration: underline;">93</span>891 <span style="color: #949494;">"</span>Vielen Dank… in_pr…          160 Altfahrzeug… Damenrad s…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>              <span style="text-decoration: underline;">84</span>197  <span style="color: #BB0000;">NA</span>           recei…           22 Sperrmüll    redaktione…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 3,781 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 10 more variables: agency_responsible &lt;chr&gt;, service_notice &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;, expected_datetime &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   address &lt;chr&gt;, adress_id &lt;lgl&gt;, media_url &lt;chr&gt;, zipcode &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   geometry &lt;POINT [°]&gt;</span></span></span></code></pre></div>
+</div>
+</div>
+<div class="section level2">
+<h2 id="cleanup">Cleanup<a class="anchor" aria-label="anchor" href="#cleanup"></a>
+</h2>
+<p>Endpoint data is stored persistently between sessions so that you can
+create your own database of open311 endpoints. This database is stored
+in the system’s user directory as returned by
+<code>tools::R_user_dir("r311")</code>. To reset the database, run</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_endpoints.html">o311_reset_endpoints</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p>This will default back to the endpoints defined by <code>r311</code>
+and remove all endpoints manually added by
+<code>o311_add_endpoints</code>.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
