@@ -66,6 +66,7 @@ response handling based on dialect.}
 For \code{o311_endpoints}, a dataframe containing all relevant
 information on an endpoint. For \code{o311_add_endpoint}, the new endpoint,
 invisibly. \code{o311_reset_endpoints} returns \code{NULL} invisibly.
+If the new endpoint is a duplicate, \code{NULL} is returned invisibly.
 }
 \description{
 Modify and examine defined open311 endpoints. \code{o311_endpoints()}

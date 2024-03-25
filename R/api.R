@@ -48,7 +48,7 @@ o311_cache <- new.env(parent = emptyenv())
 #'
 #' @examples
 #' # cities are matched using regex
-#' o311_api(city = "Cologne")
+#' o311_api("Cologne")
 #'
 #' # passing a jurisdiction is more explicit
 #' o311_api(jurisdiction = "stadt-koeln.de")

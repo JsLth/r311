@@ -24,6 +24,16 @@ test_that("endpoints can be modified", {
 })
 
 
+test_that("doesnt duplicate endpoints", {
+  nrow1 <- nrow(o311_endpoints())
+  add_test_endpoint()
+  add_test_endpoint()
+  nrow2 <- nrow(o311_endpoints())
+  expect_equal(nrow1, nrow2 - 1)
+  o311_reset_endpoints()
+})
+
+
 test_that("fails when not set up", {
   # test missing setup
   expect_error(o311_services(), class = "o311_setup_error")
@@ -43,8 +53,13 @@ test_that("selecting api works", {
 
 test_that("identical endpoints/jurisdictions fail", {
   # test identical endpoints and jurisdictions
-  add_test_endpoint()
-  add_test_endpoint()
+  with_mocked_bindings(
+    {
+      add_test_endpoint()
+      add_test_endpoint()
+    },
+    has_duplicate_endpoints = function(...) FALSE
+  )
   expect_error(
     o311_api("sf test"),
     class = "o311_endpoints_corrupt_error"
@@ -158,20 +173,27 @@ test_that("o311_ok detects wrong roots", {
 
 test_that("queries change the response", {
   skip_on_cran()
+  add_test_endpoint()
   o311_api("sf test")
   tick <- o311_requests(status = "open")
   expect_identical(unique(tick$status), "open")
+  o311_reset_endpoints()
 })
 
 
 test_that("time is correctly formatted", {
   skip_on_cran()
+  add_test_endpoint()
+  o311_api("sf test")
   expect_gt(nrow(o311_requests(end_date = Sys.time())), 0)
+  o311_reset_endpoints()
 })
 
 
 test_that("o311_request_all can terminate", {
   skip_on_cran()
+  add_test_endpoint()
+  o311_api("sf test")
   expect_error(o311_request_all(page = 1), class = "o311_page_unsupported_error")
   expect_error(o311_request_all(status = "test"), "should be one of")
   expect_equal(nrow(with_mocked_bindings(
@@ -187,6 +209,7 @@ test_that("o311_request_all can terminate", {
     }
   )), 1)
   expect_equal(nrow(o311_request_all(max_pages = 2)), 100)
+  o311_reset_endpoints()
 })
 
 
