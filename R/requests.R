@@ -31,10 +31,6 @@
 #' @param ... Further endpoint-specific parameters as documented in the
 #' respective endpoint reference.
 #'
-#' @param max_pages \code{[integer]}
-#'
-#' Number of pages that are searched until the result is returned.
-#'
 #' @details
 #' \code{o311_request_all} applies a number of checks to determine when to
 #' stop searching. First, many endpoints return an error if the last page
@@ -133,6 +129,9 @@ o311_request <- function(service_request_id, ...) {
 }
 
 
+#' @param progress \code{[logical]}
+#'
+#' Whether to show a waiter indicating the current page iteration.
 #' @rdname o311_requests
 #' @export
 o311_request_all <- function(service_code = NULL,
@@ -140,7 +139,10 @@ o311_request_all <- function(service_code = NULL,
                              end_date = NULL,
                              status = NULL,
                              ...,
-                             max_pages = Inf) {
+                             max_pages = Inf,
+                             progress = TRUE) {
+  assert_number(max_pages, null = FALSE, int = TRUE)
+  assert_flag(progress)
   if ("page" %in% ...names()) {
     abort(
       paste(
@@ -153,7 +155,11 @@ o311_request_all <- function(service_code = NULL,
 
   out <- list()
   i <- 1
-  repeat {
+  while (i <= max_pages) { # break if page limit is reached
+    if (i > 3 && progress) { # nocov start
+      waiter(current = i, total = max_pages)
+    } # nocov end
+
     res <- tryCatch(
       o311_requests(
         service_code = service_code,
@@ -177,9 +183,6 @@ o311_request_all <- function(service_code = NULL,
 
     out[[i]] <- res
     i <- i + 1
-
-    # break if page limit is reached
-    if (i > max_pages) break
   }
 
   rbind_list(out)

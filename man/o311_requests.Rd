@@ -23,7 +23,8 @@ o311_request_all(
   end_date = NULL,
   status = NULL,
   ...,
-  max_pages = Inf
+  max_pages = Inf,
+  progress = TRUE
 )
 }
 \arguments{
@@ -57,9 +58,9 @@ respective endpoint reference.}
 Identifier of a single service request. Request IDs can usually be retrieved
 from \code{o311_requests}.}
 
-\item{max_pages}{\code{[integer]}
+\item{progress}{\code{[logical]}
 
-Number of pages that are searched until the result is returned.}
+Whether to show a waiter indicating the current page iteration.}
 }
 \description{
 Get civic service request data from a registered open311 endpoint.
