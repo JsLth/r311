@@ -89,7 +89,8 @@ to return a complete dataset of service requests.</p>
 <span>  end_date <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  status <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  <span class="va">...</span>,</span>
-<span>  max_pages <span class="op">=</span> <span class="cn">Inf</span></span>
+<span>  max_pages <span class="op">=</span> <span class="cn">Inf</span>,</span>
+<span>  progress <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -132,9 +133,9 @@ respective endpoint reference.</p></dd>
 from <code>o311_requests</code>.</p></dd>
 
 
-<dt>max_pages</dt>
-<dd><p><code>[integer]</code></p>
-<p>Number of pages that are searched until the result is returned.</p></dd>
+<dt>progress</dt>
+<dd><p><code>[logical]</code></p>
+<p>Whether to show a waiter indicating the current page iteration.</p></dd>
 
 </dl></div>
     <div class="section level2">

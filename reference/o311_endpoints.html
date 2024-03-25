@@ -85,7 +85,7 @@ state of the endpoints list.</p>
 <span></span>
 <span><span class="fu">o311_reset_endpoints</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">o311_endpoints</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">o311_endpoints</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -137,6 +137,12 @@ CitySDK, Connected Bits, SeeClickFix and Mark-a-Spot. Currently, this
 argument does nothing, but it could be used in the future to adjust
 response handling based on dialect.</p></dd>
 
+
+<dt>...</dt>
+<dd><p>List of key-value pairs where each pair is a filter.
+The key represents the column and the value the requested column value.
+All keys must be present in the column names of <code>o311_endpoints()</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -172,26 +178,6 @@ directory and defaults back to
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># read default endpoints</span></span></span>
 <span class="r-in"><span><span class="fu">o311_endpoints</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 61 × 9</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    name            root  docs  jurisdiction key   pagination limit json  dialect</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Annaberg-Buchh… http… http… annberg-buc… FALSE TRUE          50 TRUE  Mark-a…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bloomington, IN http… <span style="color: #BB0000;">NA</span>    bloomington… FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE  uReport</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Bonn, DE        http… http… bonn.de      FALSE TRUE         100 TRUE  Mark-a…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Boston, MA      http… http… boston.gov   FALSE TRUE          50 TRUE  Connec…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Brookline, MA   http… http… brooklinema… FALSE TRUE          50 TRUE  Connec…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Austin, TX      http… http… <span style="color: #BB0000;">NA</span>           FALSE TRUE          50 TRUE  Connec…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Chicago, IL     http… http… cityofchica… FALSE TRUE          50 TRUE  Connec…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Köln / Cologne… http… http… stadt-koeln… FALSE TRUE          50 TRUE  Mark-a…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Ottawa, ON      http… <span style="color: #BB0000;">NA</span>    ottawa.ca    FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE  <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Rostock, DE     http… http… rostock.de   FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE  CitySDK</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 51 more rows</span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># add a new endpoint</span></span></span>
-<span class="r-in"><span><span class="fu">o311_add_endpoint</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"test"</span>, root <span class="op">=</span> <span class="st">"test.org/georeport/v2"</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># read new endpoints</span></span></span>
-<span class="r-in"><span><span class="fu">o311_endpoints</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 62 × 9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    name            root  docs  jurisdiction key   pagination limit json  dialect</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
@@ -202,10 +188,43 @@ directory and defaults back to
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Brookline, MA   http… http… brooklinema… FALSE TRUE          50 TRUE  Connec…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Austin, TX      http… http… <span style="color: #BB0000;">NA</span>           FALSE TRUE          50 TRUE  Connec…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Chicago, IL     http… http… cityofchica… FALSE TRUE          50 TRUE  Connec…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Köln / Cologne… http… http… stadt-koeln… FALSE TRUE          50 TRUE  Mark-a…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> Ottawa, ON      http… <span style="color: #BB0000;">NA</span>    ottawa.ca    FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE  <span style="color: #BB0000;">NA</span>     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Rostock, DE     http… http… rostock.de   FALSE FALSE         <span style="color: #BB0000;">NA</span> TRUE  CitySDK</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Newport News, … http… http… cityofnewpo… FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> San Diego, CA   http… http… sandiego.gov FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Köln / Cologne… http… http… stadt-koeln… FALSE TRUE          50 TRUE  Mark-a…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 52 more rows</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># get all endpoints powered by Connected Bits</span></span></span>
+<span class="r-in"><span><span class="fu">o311_endpoints</span><span class="op">(</span>dialect <span class="op">=</span> <span class="st">"Connected Bits"</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 7 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   name             root  docs  jurisdiction key   pagination limit json  dialect</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> Boston, MA       http… http… boston.gov   FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> Brookline, MA    http… http… brooklinema… FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> Austin, TX       http… http… <span style="color: #BB0000;">NA</span>           FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> Chicago, IL      http… http… cityofchica… FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> Newport News, VA http… http… cityofnewpo… FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> San Diego, CA    http… http… sandiego.gov FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> San Francisco, … http… http… sfgov.org    FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># add a new endpoint</span></span></span>
+<span class="r-in"><span><span class="fu">o311_add_endpoint</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"test"</span>, root <span class="op">=</span> <span class="st">"test.org/georeport/v2"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># read new endpoints</span></span></span>
+<span class="r-in"><span><span class="fu">o311_endpoints</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 63 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    name            root  docs  jurisdiction key   pagination limit json  dialect</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Annaberg-Buchh… http… http… annberg-buc… FALSE TRUE          50 TRUE  Mark-a…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> Bloomington, IN http… <span style="color: #BB0000;">NA</span>    bloomington… FALSE TRUE        <span style="text-decoration: underline;">1</span>000 TRUE  uReport</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> Bonn, DE        http… http… bonn.de      FALSE TRUE         100 TRUE  Mark-a…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> Boston, MA      http… http… boston.gov   FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> Brookline, MA   http… http… brooklinema… FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> Austin, TX      http… http… <span style="color: #BB0000;">NA</span>           FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> Chicago, IL     http… http… cityofchica… FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Newport News, … http… http… cityofnewpo… FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> San Diego, CA   http… http… sandiego.gov FALSE TRUE          50 TRUE  Connec…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Köln / Cologne… http… http… stadt-koeln… FALSE TRUE          50 TRUE  Mark-a…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 53 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># reset endpoints back to default</span></span></span>
 <span class="r-in"><span><span class="fu">o311_reset_endpoints</span><span class="op">(</span><span class="op">)</span></span></span>
