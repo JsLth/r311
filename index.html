@@ -88,21 +88,21 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><code>r311</code> is an R interface to the international standard <a href="https://www.open311.org/" class="external-link">open311</a>. open311 APIs are used for civic issue management and public service communication. The standard allows administrations to better manage citizen requests, citizens to more easily submit requests, and (hence this package) researchers and data scientists to access data regarding public service communication. <code>r311</code> supports the seamless management and supplementation of available endpoints, the selection of appropriate APIs to access, and the retrieval of civic service and request data. Custom queries and extensions (e.g. from CitySDK) are implicitly supported. <code>r311</code> is designed to require a minimal amount of dependencies, but allow for easy integration into common R frameworks such as the tidyverse, <code>sf</code> or <code>xml2</code>.</p>
+<p><code>r311</code> is an R interface to the international standard <a href="https://www.open311.org/" class="external-link">open311</a>. Open311 APIs are used for civic issue management and public service communication. The standard allows administrations to better manage citizen requests, citizens to more easily submit requests, and (hence this package) researchers and data scientists to access data regarding public service communication. <code>r311</code> supports the seamless management and add supplementation of available endpoints, the selection of appropriate APIs to access, and the retrieval of civic service and request data. Custom queries and extensions (e.g. from CitySDK) are implicitly supported. <code>r311</code> is designed to require a minimal amount of dependencies, but allow for easy integration into common R frameworks such as the tidyverse, <code>sf</code> or <code>xml2</code>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>You can install the development version of open311 from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"JsLth/open311"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"JsLth/r311"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>The following example loads <code>open311</code>, sets up a jurisdiction and retrieves a small amount of data on service tickets in Cologne, Germany.</p>
+<p>The following example loads <code>r311</code>, sets up a jurisdiction and retrieves a small amount of data on service tickets in Cologne, Germany.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">open311</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">r311</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"Cologne"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/o311_requests.html">o311_requests</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -157,9 +157,9 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/JsLth/open311/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/JsLth/open311/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://cran.r-project.org/package=rors" class="external-link"><img src="https://www.r-pkg.org/badges/version/rors"></a></li>
-<li><a href="https://app.codecov.io/gh/JsLth/open311?branch=main" class="external-link"><img src="https://codecov.io/gh/JsLth/open311/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://github.com/JsLth/r311/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/JsLth/r311/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://cran.r-project.org/package=r311" class="external-link"><img src="https://www.r-pkg.org/badges/version/r311"></a></li>
+<li><a href="https://app.codecov.io/gh/JsLth/r311?branch=main" class="external-link"><img src="https://codecov.io/gh/JsLth/r311/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://www.codefactor.io/repository/github/jslth/r311" class="external-link"><img src="https://www.codefactor.io/repository/github/jslth/r311/badge" alt="CodeFactor"></a></li>
 </ul>
 </div>
