@@ -31,7 +31,7 @@ assert_number <- function(x, null = TRUE, n = 1, int = FALSE) {
 }
 
 
-assert_flag <- function(x, null = TRUE) {
+assert_flag <- function(x, null = FALSE) {
   if (null && is.null(x)) return(invisible())
   if (
     (!is.logical(x) ||
