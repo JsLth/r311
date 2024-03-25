@@ -60,7 +60,7 @@ from \code{o311_requests}.}
 
 \item{max_pages}{\code{[integer]}
 
-Number of pages that are searched until the result is returned.}
+Number of pages to search until the result is returned.}
 
 \item{progress}{\code{[logical]}
 

@@ -50,7 +50,7 @@ o311_path <- function(...) {
 
 
 o311_user_dir <- function(...) {
-  tools::R_user_dir("r311")
+  getOption("o311_user_dir", default = tools::R_user_dir("r311"))
 }
 
 

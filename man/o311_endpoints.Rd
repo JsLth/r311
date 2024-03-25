@@ -88,7 +88,8 @@ manually added using \code{o311_add_endpoint}.
 }
 \note{
 This function uses \code{\link[tools]{R_user_dir}} to persistently store
-custom endpoints data between sessions. To clean up, run
+custom endpoints data between sessions. To set a different directory, you
+may use \code{options("o311_user_dir")}. To clean up, run
 \code{o311_reset_endpoints()} which deletes the package-specific user
 directory and defaults back to
 \code{system.file("endpoints.json", package = "r311")}.
