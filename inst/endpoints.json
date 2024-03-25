@@ -237,6 +237,16 @@
     "dialect": "SeeClickFix"
   },
   {
+    "name": "Tucson, AZ",
+    "root": "https://seeclickfix.com/open311/v2/36/",
+    "docs": "https://seeclickfix.com/open311/v2/docs",
+    "key": false,
+    "pagination": true,
+    "limit": 20,
+    "json": true,
+    "dialect": "SeeClickFix"
+  },
+  {
     "name": "Bainbridge Island, MA",
     "root": "https://seeclickfix.com/open311/v2/38/",
     "docs": "https://seeclickfix.com/open311/v2/docs",
@@ -249,16 +259,6 @@
     {
     "name": "City of Corona, CA",
     "root": "https://seeclickfix.com/open311/v2/70/",
-    "docs": "https://seeclickfix.com/open311/v2/docs",
-    "key": false,
-    "pagination": true,
-    "limit": 20,
-    "json": true,
-    "dialect": "SeeClickFix"
-  },
-    {
-    "name": "Tucson, AZ",
-    "root": "https://seeclickfix.com/open311/v2/36/",
     "docs": "https://seeclickfix.com/open311/v2/docs",
     "key": false,
     "pagination": true,
@@ -309,16 +309,6 @@
   {
     "name": "Dunwoody, GA",
     "root": "https://seeclickfix.com/open311/v2/112/",
-    "docs": "https://seeclickfix.com/open311/v2/docs",
-    "key": false,
-    "pagination": true,
-    "limit": 20,
-    "json": true,
-    "dialect": "SeeClickFix"
-  },
-  {
-    "name": "Milton, GA",
-    "root": "https://seeclickfix.com/open311/v2/94/",
     "docs": "https://seeclickfix.com/open311/v2/docs",
     "key": false,
     "pagination": true,
@@ -598,7 +588,7 @@
   },
   {
     "name": "Fayetteville, NC",
-    "root": "https://seeclickfix.com/open311/v2/283/",
+    "root": "https://seeclickfix.com/open311/v2/286/",
     "docs": "https://seeclickfix.com/open311/v2/docs",
     "key": false,
     "pagination": true,
