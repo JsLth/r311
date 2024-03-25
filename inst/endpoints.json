@@ -1,6 +1,6 @@
 [
   {
-    "name": "Annaberg-Buchholz, Deutschland",
+    "name": "Annaberg-Buchholz, DE",
     "root": "https://anliegen.annaberg-buchholz.de/georeport/v2/",
     "docs": "https://anliegen.annaberg-buchholz.de/content/open311",
     "jurisdiction": "annberg-buchholz.de",
@@ -21,7 +21,7 @@
     "dialect": "uReport"
   },
   {
-    "name": "Bonn, Deutschland",
+    "name": "Bonn, DE",
     "root": "https://anliegen.bonn.de/georeport/v2/",
     "docs": "https://anliegen.bonn.de/open311",
     "jurisdiction": "bonn.de",
@@ -75,7 +75,7 @@
     "dialect": "Connected Bits"
   },
   {
-    "name": "Köln / Cologne, Deutschland",
+    "name": "Köln / Cologne, DE",
     "root": "https://sags-uns-archiv.stadt-koeln.de/georeport/v2/",
     "docs": "https://sags-uns-archiv.stadt-koeln.de/seiten/open311",
     "jurisdiction": "stadt-koeln.de",
@@ -95,10 +95,19 @@
     "json": true
   },
   {
-    "name": "Rostock, Deutschland",
+    "name": "Rostock, DE",
     "root": "https://www.klarschiff-hro.de/backoffice/citysdk/",
     "docs": "https://github.com/bfpi/klarschiff-citysdk/blob/master/README.md",
     "jurisdiction": "rostock.de",
+    "key": false,
+    "pagination": false,
+    "json": true,
+    "dialect": "CitySDK"
+  },
+  {
+    "name": "Mecklenburg-Vorpommern, DE",
+    "root": "https://www.klarschiff-mv.de/backoffice/citysdk/",
+    "docs": "https://github.com/bfpi/klarschiff-citysdk/blob/master/README.md",
     "key": false,
     "pagination": false,
     "json": true,
@@ -116,7 +125,7 @@
     "dialect": "Connected Bits"
   },
   {
-    "name": "Siegburg, Deutschland",
+    "name": "Siegburg, DE",
     "root": "https://anliegen.siegburg.de/georeport/v2/",
     "docs": "https://anliegen.siegburg.de/content/open311",
     "jurisdiction": "siegburg.de",
