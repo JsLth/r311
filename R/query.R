@@ -14,8 +14,13 @@
 #'
 #' @examples
 #' \dontrun{
+#' o311_query("rostock")
+#'
 #' # manually query discovery
 #' o311_query(path = "discovery", simplify = FALSE)
+#'
+#' # query a custom path defined by the Klarschiff API
+#' o311_query(path = "areas")
 #' }
 #' @export
 o311_query <- function(path, ..., simplify = TRUE) {
@@ -73,7 +78,7 @@ handle_response <- function(resp, type, simplify) {
       "400" = open311_error(resp, type), # nocov
       "403" = open311_error(resp, type),
       "404" = abort("Error code 404: Not Found", class = 404),
-      abort(sprintf("Error code: %s", resp$status), class = resp$status) # nocov
+      abort(sprintf("Error code %s", resp$status), class = resp$status) # nocov
     )
   }
 
@@ -113,14 +118,14 @@ check_content_type <- function(resp, type) {
 
 tidy_response <- function(x, format) {
   if (identical(format, "json")) {
-    as_data_frame(unbox(x))
+    x <- as_data_frame(unbox(x))
   } else if (identical(format, "xml")) {
     # find the first xml tag that has a length of over 1
     # this usually works, but might not always
     tag <- unique(names(Find(function(x) length(x) > 1, xml2::as_list(x))))
 
     if (!is.null(tag) || length(tag) > 1) {
-      as_data_frame(xmlconvert::xml_to_df(
+      x <- as_data_frame(xmlconvert::xml_to_df(
         text = as.character(x),
         records.tags = tag,
         check.datatypes = TRUE
@@ -133,5 +138,31 @@ tidy_response <- function(x, format) {
       ))
       x
     } # nocov end
+  }
+
+  response_to_sf(x)
+}
+
+
+response_to_sf <- function(res) {
+  if (!nrow(res) || !loadable("sf")) return(res)
+  if (all(c("long", "lat") %in% names(res))) {
+    res <- sf::st_as_sf(res, coords = c("long", "lat"), crs = 4326)
+  } else if (identical(get_juris()$dialect, "CitySDK")) {
+    wkt_col <- look_for_wkt_string(res)
+    if (!is.null(wkt_col)) {
+      res <- sf::st_as_sf(res, wkt = wkt_col, crs = 4326)
+    }
+  }
+  res
+}
+
+
+look_for_wkt_string <- function(res) {
+  for (col in names(res)) {
+    if (is.character(res[[col]]) &&
+        any(startsWith(res[[col]][1], c("POLYGON", "MULTIPOLYGON")))) {
+      return(col)
+    }
   }
 }

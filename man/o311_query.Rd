@@ -25,7 +25,12 @@ This function can be used to access these URL paths.
 }
 \examples{
 \dontrun{
+o311_query("rostock")
+
 # manually query discovery
 o311_query(path = "discovery", simplify = FALSE)
+
+# query a custom path defined by the Klarschiff API
+o311_query(path = "areas")
 }
 }
