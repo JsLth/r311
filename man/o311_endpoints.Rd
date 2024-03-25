@@ -13,7 +13,8 @@ o311_add_endpoint(
   key = FALSE,
   pagination = FALSE,
   limit = NULL,
-  json = TRUE
+  json = TRUE,
+  dialect = NULL
 )
 
 o311_reset_endpoints()
@@ -53,6 +54,13 @@ If paginated, how many requests does one page contain?}
 
 Are JSON responses supported? If \code{FALSE}, defaults to \code{"XML"}
 responses. See also \code{\link{o311_api}}.}
+
+\item{dialect}{\code{[character]}
+
+open311 extension that the endpoint is built on. Common dialects include
+CitySDK, Connected Bits, SeeClickFix and Mark-a-Spot. Currently, this
+argument does nothing, but it could be used in the future to adjust
+response handling based on dialect.}
 }
 \value{
 For \code{o311_endpoints}, a dataframe containing all relevant

@@ -141,6 +141,21 @@ test_that("tidying xml produces a valid dataframe", {
 })
 
 
+test_that("wkt is parsed if needed", {
+  o311_api("greifswald")
+  expect_s3_class(o311_query("areas"), "sf")
+})
+
+
+test_that("o311_ok detects wrong roots", {
+  o311_add_endpoint("invalid", root = "google.com/open311/v2")
+  o311_api("invalid")
+  expect_false(o311_ok())
+  expect_match(o311_ok(error = TRUE)$message, "Error code 404")
+  o311_reset_endpoints()
+})
+
+
 test_that("queries change the response", {
   skip_on_cran()
   o311_api("sf test")
