@@ -75,6 +75,28 @@
     "dialect": "Connected Bits"
   },
   {
+    "name": "Newport News, VA",
+    "root": "http://311request.nnva.gov/open311/v2/",
+    "docs": "http://311request.nnva.gov/open311/v2/",
+    "jurisdiction": "cityofnewport_news.org",
+    "key": false,
+    "pagination": true,
+    "limit": 50,
+    "json": true,
+    "dialect": "Connected Bits"
+  },
+  {
+    "name": "San Diego, CA",
+    "root": "http://san-diego.spotreporters.com/open311/v2/",
+    "docs": "http://san-diego.spotreporters.com/open311/v2/",
+    "jurisdiction": "sandiego.gov",
+    "key": false,
+    "pagination": true,
+    "limit": 50,
+    "json": true,
+    "dialect": "Connected Bits"
+  },
+  {
     "name": "Köln / Cologne, DE",
     "root": "https://sags-uns-archiv.stadt-koeln.de/georeport/v2/",
     "docs": "https://sags-uns-archiv.stadt-koeln.de/seiten/open311",
