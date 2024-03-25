@@ -9,7 +9,7 @@
 [![](https://www.r-pkg.org/badges/version/rors)](https://cran.r-project.org/package=rors)
 [![Codecov test
 coverage](https://codecov.io/gh/JsLth/open311/branch/main/graph/badge.svg)](https://app.codecov.io/gh/JsLth/open311?branch=main)
-[![CodeFactor](https://www.codefactor.io/repository/github/jslth/open311/badge)](https://www.codefactor.io/repository/github/jslth/open311)
+[![CodeFactor](https://www.codefactor.io/repository/github/jslth/r311/badge)](https://www.codefactor.io/repository/github/jslth/r311)
 <!-- badges: end -->
 
 `r311` is an R interface to the international standard
