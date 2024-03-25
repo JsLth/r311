@@ -106,7 +106,7 @@ o311_requests <- function(service_code = NULL,
   start_date <- w3c_datetime(start_date)
   end_date <- w3c_datetime(end_date)
 
-  res <- o311_query(
+  o311_query(
     path = "requests",
     service_code = service_code,
     start_date = start_date,
@@ -116,8 +116,6 @@ o311_requests <- function(service_code = NULL,
     ...,
     simplify = TRUE
   )
-
-  request_to_sf(res)
 }
 
 
@@ -131,8 +129,7 @@ o311_request <- function(service_request_id, ...) {
   assert_string(service_request_id)
 
   path <- sprintf("requests/%s", service_request_id)
-  res <- o311_query(path = path, ..., simplify = TRUE)
-  request_to_sf(res)
+  o311_query(path = path, ..., simplify = TRUE)
 }
 
 
@@ -186,12 +183,4 @@ o311_request_all <- function(service_code = NULL,
   }
 
   rbind_list(out)
-}
-
-
-request_to_sf <- function(res) {
-  if (all(c("long", "lat") %in% names(res))) {
-    res <- sf::st_as_sf(res, coords = c("long", "lat"), crs = 4326)
-  }
-  res
 }

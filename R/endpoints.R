@@ -39,6 +39,13 @@
 #' Are JSON responses supported? If \code{FALSE}, defaults to \code{"XML"}
 #' responses. See also \code{\link{o311_api}}.
 #'
+#' @param dialect \code{[character]}
+#'
+#' open311 extension that the endpoint is built on. Common dialects include
+#' CitySDK, Connected Bits, SeeClickFix and Mark-a-Spot. Currently, this
+#' argument does nothing, but it could be used in the future to adjust
+#' response handling based on dialect.
+#'
 #' @returns For \code{o311_endpoints}, a dataframe containing all relevant
 #' information on an endpoint. For \code{o311_add_endpoint}, the new endpoint,
 #' invisibly. \code{o311_reset_endpoints} returns \code{NULL} invisibly.
@@ -78,7 +85,8 @@ o311_add_endpoint <- function(name,
                               key = FALSE,
                               pagination = FALSE,
                               limit = NULL,
-                              json = TRUE) {
+                              json = TRUE,
+                              dialect = NULL) {
   assert_string(name)
   assert_url(root)
   assert_string(jurisdiction)
