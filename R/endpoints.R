@@ -49,6 +49,7 @@
 #' @returns For \code{o311_endpoints}, a dataframe containing all relevant
 #' information on an endpoint. For \code{o311_add_endpoint}, the new endpoint,
 #' invisibly. \code{o311_reset_endpoints} returns \code{NULL} invisibly.
+#' If the new endpoint is a duplicate, \code{NULL} is returned invisibly.
 #'
 #' @details
 #' \code{o311_endpoints()} returns a static list defined in the package
@@ -102,6 +103,11 @@ o311_add_endpoint <- function(name,
   json_path <- user_endpoints_path()
 
   endpoints <- jsonlite::read_json(json_path)
+
+  if (has_duplicate_endpoints(endpoints, name, jurisdiction)) {
+    return(invisible(NULL))
+  }
+
   endpoints <- c(endpoints, list(new_endpoint))
   jsonlite::write_json(endpoints, json_path, pretty = TRUE, auto_unbox = TRUE)
   invisible(new_endpoint)
@@ -151,4 +157,16 @@ endpoints_json <- function() {
     user_endpoints_path(),
     o311_endpoints_path()
   )
+}
+
+
+has_duplicate_endpoints <- function(endpoints, name, jurisdiction) {
+  any(vapply(
+    endpoints,
+    function(x) {
+      identical(x[["name"]], name) &&
+        identical(x[["jurisdiction"]], jurisdiction)
+    },
+    FUN.VALUE = logical(1)
+  ))
 }
