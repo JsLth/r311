@@ -176,15 +176,15 @@ test_that("o311_ok detects wrong roots", {
   o311_add_endpoint("unavailable", root = "google.com/open311/v2")
   o311_api("unavailable")
   expect_false(o311_ok())
-  expect_match(o311_ok(error = TRUE)$message, "Error code 404")
+  expect_s3_class(o311_ok(error = TRUE), class = "o311_404")
 
   o311_add_endpoint("empty", root = "https://seeclickfix.com/open311/v2/20/")
   o311_api("empty")
-  expect_match(o311_ok(error = TRUE)$message, class = "o311_ok_error")
+  expect_s3_class(o311_ok(error = TRUE), class = "o311_ok_error")
 
   o311_add_endpoint("invalid", root = "http://echo.jsontest.com/key/value/one/two")
   o311_api("invalid")
-  expect_match(o311_ok(error = TRUE)$message, class = "o311_ok_error")
+  expect_s3_class(o311_ok(error = TRUE), class = "o311_ok_error")
 
   o311_reset_endpoints()
 })
