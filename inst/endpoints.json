@@ -114,6 +114,15 @@
     "dialect": "CitySDK"
   },
   {
+    "name": "Greifswald, DE",
+    "root": "https://www.klarschiff-hgw.de/citysdk/",
+    "docs": "https://github.com/bfpi/klarschiff-citysdk/blob/master/README.md",
+    "key": false,
+    "pagination": false,
+    "json": true,
+    "dialect": "CitySDK"
+  },
+  {
     "name": "San Francisco, CA",
     "root": "https://mobile311.sfgov.org/open311/v2/",
     "docs": "https://mobile311.sfgov.org/open311/v2/",
