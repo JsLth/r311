@@ -151,7 +151,7 @@ response_to_sf <- function(res) {
   } else if (identical(get_juris()$dialect, "CitySDK")) {
     wkt_col <- look_for_wkt_string(res)
     if (!is.null(wkt_col)) {
-      res <- sf::st_as_sf(res, wkt = wkt_col, crs = 4326)
+      res <- sf::st_as_sf(res, wkt = wkt_col)
     }
   }
   res
