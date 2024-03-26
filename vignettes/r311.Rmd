@@ -150,30 +150,6 @@ o311_request("1020139511")
 ```
 
 
-## Non-standard parameters
-
-`r311` implicitly supports API extensions introducing custom paths and
-parameters. One such API is Klarschiff Rostock which is based on CitySDK.
-Klarschiff CitySDK defines a number of non-default paths and parameters which
-extend the filtering abilities of open311 requests. Available parameters can
-usually be found in the respective documentation (e.g. on GitHub for 
-[Klarschiff CitySDK](https://github.com/bfpi/klarschiff-citysdk)).
-The following query returns the last 10 requests tagged with the "idea" keyword.
-
-```{r}
-o311_api("Rostock")
-o311_requests(keyword = "idea", max_requests = 10)
-```
-
-Some custom parameters can also alter the shape of the output. In the following
-example, we query just the count of total queried requests using the `just_count`
-parameter. The result is a 1×1 tibble containing a count value.
-
-```{r}
-o311_requests(just_count = TRUE, max_requests = 10)
-```
-
-
 ## Bulk queries
 
 Many endpoints define a page limit meaning that responses are divided into
@@ -186,6 +162,39 @@ service requests.
 
 ```{r}
 o311_request_all(max_pages = 2)
+```
+
+
+## Non-standard parameters
+
+`r311` implicitly supports API extensions introducing custom paths and
+parameters. One such API is Klarschiff Rostock which is based on CitySDK.
+Klarschiff CitySDK defines a number of non-default paths and parameters which
+extend the filtering abilities of open311 requests. Available parameters can
+usually be found in the respective documentation (e.g. on GitHub for 
+[Klarschiff CitySDK](https://github.com/bfpi/klarschiff-citysdk)).
+The following query returns the last 50 requests tagged with the "idea" keyword.
+
+```{r}
+o311_api("Rostock")
+tickets <- o311_requests(keyword = "idea", max_requests = 50)
+```
+
+Some custom parameters can also alter the shape of the output. In the following
+example, we query just the count of total requests using the `just_count`
+parameter. The result is a 1×1 tibble containing a count value.
+
+```{r}
+o311_requests(just_count = TRUE)
+```
+
+The CitySDK extensions also offers additional URL paths which can be queried
+using the generic `o311_query` function.
+
+```{r}
+poly <- o311_query("areas")
+plot(poly$grenze)
+plot(tickets$geometry, add = TRUE, pch = 16)
 ```
 
 
