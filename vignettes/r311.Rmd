@@ -21,12 +21,12 @@ library(r311)
 
 open311 is an international open-access standard for civic issue management
 and public service communication. 
-The standard allows administrations to better manage citizen reuqests,
+The standard allows administrations to better manage citizen requests,
 citizens to more easily participate in administrative work, and researchers
 and data scientists to access data regarding public service communication.
-As an open standard, open311 is not a centralized API, but a framework that
-is implemented by various cities (e.g. San Francisco, CA, Chicago, IL, Cologne,
-DE, Turku, FI, Zürich, CH) and services (e.g. SeeClickFix, FixMyStreet).
+As an open standard, open311 is not a centralized API, but a framework
+implemented by various cities (e.g. San Francisco, CA, Chicago, IL, Cologne,
+DE, Turku, FI, Zurich, CH) and services (e.g. SeeClickFix, FixMyStreet).
 
 It is way past the golden age of open311 APIs and much of development in
 civic issue tracking has shifted to less open-access and less standardized
@@ -35,12 +35,12 @@ their open311 endpoints. Nonetheless, open311 still constitutes a valuable
 source for open government data. Many cities and services still maintain an
 open311 service.
 
-`r311` enables the seamless management and selection of endpoints and the
+`r311` allows the seamless management and selection of endpoints and
 retrieval of service and request data. It supports (but does not depend on)
 many popular R frameworks such as the tidyverse, `sf` and `xml2` for
-response formatting. `r311`` is designed to be slim, both in content
-and dependencies. It only imports two import-less packages used for HTTP
-response handling. The functionalities are limited to two main features:
+response formatting. `r311` is designed to be slim, both in content
+and dependencies. It imports only two import-less packages used for HTTP
+response handling. The functionality is limited to two main features:
 
 - Endpoint management
 - Sending requests
