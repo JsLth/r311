@@ -53,7 +53,7 @@ This vignette will briefly cover these two features.
 Since open311 is an open and decentralized standard, there is not one but
 many endpoints that one can access. An endpoint is commonly implemented by
 a city administration, but can also be managed by a service provider such
-as FixMyStreet. Each endpoint can define multiple jurisidiction IDs, although,
+as FixMyStreet. Each endpoint can define multiple jurisdiction IDs, although,
 in practice, most endpoints only define a single jurisdiction.
 
 It can thus be difficult to manage the multitude of endpoints and jurisdictions.
