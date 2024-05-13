@@ -12,3 +12,10 @@ A list containing details on the given open311 API.
 \description{
 Retrieve discovery information about the mounted endpoint.
 }
+\examples{
+\dontrun{
+o311_api("zurich")
+
+o311_discovery()
+}
+}

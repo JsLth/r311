@@ -25,7 +25,7 @@ This function can be used to access these URL paths.
 }
 \examples{
 \dontrun{
-o311_query("rostock")
+o311_api("rostock")
 
 # manually query discovery
 o311_query(path = "discovery", simplify = FALSE)

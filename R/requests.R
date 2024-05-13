@@ -31,6 +31,10 @@
 #' @param ... Further endpoint-specific parameters as documented in the
 #' respective endpoint reference.
 #'
+#' @returns A dataframe containing data on civic service requests. The
+#' dataframe can contain varying columns depending on the open311
+#' implementation.
+#'
 #' @details
 #' \code{o311_request_all} applies a number of checks to determine when to
 #' stop searching. First, many endpoints return an error if the last page

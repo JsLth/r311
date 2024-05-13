@@ -66,6 +66,11 @@ Number of pages to search until the result is returned.}
 
 Whether to show a waiter indicating the current page iteration.}
 }
+\value{
+A dataframe containing data on civic service requests. The
+dataframe can contain varying columns depending on the open311
+implementation.
+}
 \description{
 Get civic service request data from a registered open311 endpoint.
 \code{o311_request} queries a single service request by ID.

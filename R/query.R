@@ -14,7 +14,7 @@
 #'
 #' @examples
 #' \dontrun{
-#' o311_query("rostock")
+#' o311_api("rostock")
 #'
 #' # manually query discovery
 #' o311_query(path = "discovery", simplify = FALSE)

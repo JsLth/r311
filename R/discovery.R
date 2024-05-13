@@ -5,6 +5,13 @@
 #' @returns A list containing details on the given open311 API.
 #'
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' o311_api("zurich")
+#'
+#' o311_discovery()
+#' }
 o311_discovery <- function() {
   o311_query(path = "discovery", simplify = FALSE)
 }
