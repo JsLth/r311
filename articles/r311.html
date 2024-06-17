@@ -165,8 +165,7 @@ the open311 test server of San Francisco.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_endpoints.html">o311_add_endpoint</a></span><span class="op">(</span></span>
 <span>  name <span class="op">=</span> <span class="st">"San Francisco Test"</span>,</span>
-<span>  root <span class="op">=</span> <span class="st">"http://mobile311-dev.sfgov.org/open311/v2/"</span>,</span>
-<span>  jurisdiction <span class="op">=</span> <span class="st">"sfgov.org"</span></span>
+<span>  root <span class="op">=</span> <span class="st">"http://mobile311-dev.sfgov.org/open311/v2/"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>Retrieving the endpoints list again confirms that you successfully
 added a new row to the endpoints dataframe.</p>
@@ -347,7 +346,7 @@ a count value.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 1</span></span></span>
 <span><span class="co">#&gt;   value</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">4</span>092</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">4</span>094</span></span></code></pre></div>
 <p>The CitySDK extensions also offers additional URL paths which can be
 queried using the generic <code>o311_query</code> function.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
