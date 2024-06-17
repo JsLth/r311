@@ -79,10 +79,10 @@ build_query <- function(url, query) {
 
 
 handle_response <- function(resp, type, simplify) {
-  if (resp$status != 200) {
+  if (resp$status_code != 200) {
     # handle all http errors defined by open311
     switch(
-      as.character(resp$status),
+      as.character(resp$status_code),
       "400" = open311_error(resp, type), # nocov
       "403" = open311_error(resp, type),
       guess_error(resp) # nocov
@@ -115,6 +115,7 @@ guess_error <- function(resp) { # nocov start
   headers <- rawToChar(resp$headers)
   headers <- curl::parse_headers_list(headers)
   content_type <- headers[["content-type"]]
+  status <- resp$status_code
 
   if (grepl("application/json", content_type, fixed = TRUE)) {
     content <- rawToChar(resp$content)
@@ -122,11 +123,13 @@ guess_error <- function(resp) { # nocov start
     abort(
       sprintf(
         "Error code %s: %s",
-        headers$status %||% resp$status_code,
+        headers$status %||% status,
         error$description %||% error$message %||% error$msg %||% error$error
       ),
-      class = resp$status_code
+      class = status
     )
+  } else {
+    abort(sprintf("Error code %s", status), class = status)
   }
 } # nocov end
 

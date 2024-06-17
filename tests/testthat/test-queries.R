@@ -8,14 +8,14 @@ test_that("path seperators are handled well", {
 test_that("simple queries return the expected output", {
   skip_on_cran()
   add_test_endpoint()
-  o311_api("sf test")
+  o311_api("sd test")
 
   expect_failure(expect_length(o311_discovery(), 0))
   expect_gt(nrow(serv <- o311_services()), 0)
   expect_gt(nrow(tick <- o311_requests()), 0)
   expect_s3_class(serv <- o311_services(), "tbl")
   expect_gt(nrow(o311_service(serv$service_code[1])), 0)
-  expect_equal(nrow(o311_request(tick$service_request_id[1])), 1)
+  expect_equal(nrow(o311_request(na.omit(tick$service_request_id)[1])), 1)
 })
 
 
@@ -24,14 +24,14 @@ test_that("fails gracefully", {
   o311_api("sf invalid")
   expect_error(o311_query("services"), class = "o311_403")
   o311_reset_endpoints()
-  add_test_endpoint("sf test")
+  add_test_endpoint("sd test")
   expect_error(o311_query("no-endpoint", api_key = "test"), class = "o311_404")
 })
 
 
 test_that("tidying xml produces a valid dataframe", {
   skip_on_cran()
-  o311_api("sf test", format = "xml")
+  o311_api("sd test", format = "xml")
   expect_gt(nrow(o311_requests()), 0)
 })
 
@@ -58,7 +58,7 @@ test_that("o311_ok detects wrong roots", {
   expect_s3_class(o311_ok(error = TRUE), class = "o311_ok_error")
 
   add_test_endpoint()
-  o311_api("sf test")
+  o311_api("sd test")
   expect_true(o311_ok())
 
   o311_reset_endpoints()
@@ -68,7 +68,7 @@ test_that("o311_ok detects wrong roots", {
 test_that("queries change the response", {
   skip_on_cran()
   add_test_endpoint()
-  o311_api("sf test")
+  o311_api("sd test")
   tick <- o311_requests(status = "open")
   expect_identical(unique(tick$status), "open")
   o311_reset_endpoints()
@@ -78,7 +78,7 @@ test_that("queries change the response", {
 test_that("time is correctly formatted", {
   skip_on_cran()
   add_test_endpoint()
-  o311_api("sf test")
+  o311_api("sd test")
   expect_gt(nrow(o311_requests(end_date = Sys.time())), 0)
   o311_reset_endpoints()
 })
@@ -87,7 +87,7 @@ test_that("time is correctly formatted", {
 test_that("o311_request_all can terminate", {
   skip_on_cran()
   add_test_endpoint()
-  o311_api("sf test")
+  o311_api("sd test")
   expect_error(o311_request_all(page = 1), class = "o311_page_unsupported_error")
   expect_error(o311_request_all(status = "test"), "should be one of")
   expect_equal(nrow(with_mocked_bindings(

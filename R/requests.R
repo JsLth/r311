@@ -103,6 +103,10 @@ o311_requests <- function(service_code = NULL,
   assert_string(status, null = TRUE)
   assert_number(page, int = TRUE)
 
+  if (!is.null(status)) {
+    status <- match.arg(status, c("open", "closed"))
+  }
+
   start_date <- w3c_datetime(start_date)
   end_date <- w3c_datetime(end_date)
 

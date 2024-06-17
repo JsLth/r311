@@ -20,7 +20,7 @@ o311_cache <- new.env(parent = emptyenv())
 #'
 #' ID of a jurisdiction that is served by an open311 API. A jurisdiction
 #' ID is usually the root URL of the jurisdiction website, e.g.
-#' \code{"sfgov.org"} for San Francisco.
+#' \code{"sandiego.gov"} for San Diego.
 #'
 #' @param format \code{[character]}
 #'

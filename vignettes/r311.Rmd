@@ -76,8 +76,7 @@ The following code adds the open311 test server of San Francisco.
 ```{r}
 o311_add_endpoint(
   name = "San Francisco Test",
-  root = "http://mobile311-dev.sfgov.org/open311/v2/",
-  jurisdiction = "sfgov.org"
+  root = "http://mobile311-dev.sfgov.org/open311/v2/"
 )
 ```
 

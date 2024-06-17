@@ -6,11 +6,11 @@ test_that("fails when not set up", {
 
 test_that("selecting api works", {
   # test endpoint passed
-  j1 <- o311_api("san francisco")
+  j1 <- o311_api("san diego")
   expect_named(o311_cache, "juris")
 
   # test jurisdiction passed
-  j2 <- o311_api(jurisdiction = "sfgov.org")
+  j2 <- o311_api(jurisdiction = "sandiego.gov")
   expect_identical(j1, j2)
 })
 
@@ -25,7 +25,7 @@ test_that("identical endpoints/jurisdictions fail", {
     has_duplicate_endpoints = function(...) FALSE
   )
   expect_error(
-    o311_api("sf test"),
+    o311_api("sd test"),
     class = "o311_endpoints_corrupt_error"
   )
   o311_reset_endpoints()
@@ -34,14 +34,14 @@ test_that("identical endpoints/jurisdictions fail", {
   add_test_endpoint()
   add_test_endpoint(juris = "test")
   expect_error(
-    o311_api("sf test"),
+    o311_api("sd test"),
     class = "o311_ambiguous_endpoints_error"
   )
   o311_reset_endpoints()
 
   # test identical jurisdictions
   add_test_endpoint(juris = "test")
-  add_test_endpoint("sf test2", juris = "test")
+  add_test_endpoint("sd test2", juris = "test")
   expect_error(
     o311_api(jurisdiction = "test"),
     class = "o311_ambiguous_juris_error"
@@ -68,12 +68,12 @@ test_that("format checks in place", {
   # test format errors
   add_test_endpoint(json = FALSE)
   expect_error(
-    o311_api("sf test", format = "json"),
+    o311_api("sd test", format = "json"),
     class = "o311_json_unsupported_error"
   )
   with_mocked_bindings(
     expect_error(
-      o311_api("sf test", format = "xml"),
+      o311_api("sd test", format = "xml"),
       class = "o311_package_error"
     ),
     loadable = function(...) FALSE
