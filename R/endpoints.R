@@ -131,6 +131,8 @@ o311_reset_endpoints <- function() {
 #' @rdname o311_endpoints
 #' @export
 o311_endpoints <- function(...) {
+  assert_dots_named()
+
   endpoints <- as_data_frame(jsonlite::read_json(
     endpoints_json(),
     simplifyVector = TRUE
