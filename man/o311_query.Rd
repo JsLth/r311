@@ -23,6 +23,10 @@ attached by \code{o311_api}. Some open311 implementations support
 unique operations that are not included in the official documentation.
 This function can be used to access these URL paths.
 }
+\details{
+You can set \code{options(r311_echo = TRUE)} to display all requests sent
+using \code{o311_query}.
+}
 \examples{
 \dontrun{
 o311_api("rostock")

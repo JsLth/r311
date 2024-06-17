@@ -12,6 +12,10 @@
 #'
 #' @returns The parsed query output, either as a list or dataframe.
 #'
+#' @details
+#' You can set \code{options(r311_echo = TRUE)} to display all requests sent
+#' using \code{o311_query}.
+#'
 #' @examples
 #' \dontrun{
 #' o311_api("rostock")
@@ -42,6 +46,10 @@ GET <- function(url,
                 format = "json") {
   req <- url_path(url, path)
   req <- build_query(req, query)
+
+  if (isTRUE(getOption("r311_echo", FALSE))) {
+    cat("Querying:", req, "\n")
+  }
 
   resp <- curl::curl_fetch_memory(req)
   resp <- handle_response(resp, type = format, simplify = simplify)
@@ -77,8 +85,7 @@ handle_response <- function(resp, type, simplify) {
       as.character(resp$status),
       "400" = open311_error(resp, type), # nocov
       "403" = open311_error(resp, type),
-      "404" = abort("Error code 404: Not Found", class = 404),
-      abort(sprintf("Error code %s", resp$status), class = resp$status) # nocov
+      guess_error(resp) # nocov
     )
   }
 
@@ -86,7 +93,7 @@ handle_response <- function(resp, type, simplify) {
   content <- rawToChar(resp$content)
 
   if (identical(type, "json")) {
-    jsonlite::fromJSON(content, simplifyVector = simplify)
+    jsonlite::fromJSON(content, simplifyVector = simplify, flatten = TRUE)
   } else {
     xml2::read_xml(content, encoding = "UTF-8")
   }
@@ -102,6 +109,26 @@ open311_error <- function(resp, type) {
     class = resp$status
   )
 }
+
+
+guess_error <- function(resp) { # nocov start
+  headers <- rawToChar(resp$headers)
+  headers <- curl::parse_headers_list(headers)
+  content_type <- headers[["content-type"]]
+
+  if (grepl("application/json", content_type, fixed = TRUE)) {
+    content <- rawToChar(resp$content)
+    error <- unbox(jsonlite::fromJSON(content, simplifyVector = FALSE))
+    abort(
+      sprintf(
+        "Error code %s: %s",
+        headers$status %||% resp$status_code,
+        error$description %||% error$message %||% error$msg %||% error$error
+      ),
+      class = resp$status_code
+    )
+  }
+} # nocov end
 
 
 check_content_type <- function(resp, type) {
@@ -146,8 +173,13 @@ tidy_response <- function(x, format) {
 
 response_to_sf <- function(res) {
   if (!nrow(res) || !loadable("sf")) return(res)
-  if (all(c("long", "lat") %in% names(res))) {
-    res <- sf::st_as_sf(res, coords = c("long", "lat"), crs = 4326)
+  cnames <- c("long", "lat")
+  if (all(cnames %in% names(res))) {
+    coords <- as.list(res[cnames])
+    res <- res[!names(res) %in% cnames]
+    geom <- coords_to_geom(coords)
+    res <- sf::st_sf(res, geometry = geom, crs = 4326)
+    res <- sf::st_as_sf(as_data_frame(res))
   } else if (identical(get_juris()$dialect, "CitySDK")) {
     wkt_col <- look_for_wkt_string(res)
     if (!is.null(wkt_col)) {
@@ -165,4 +197,11 @@ look_for_wkt_string <- function(res) {
       return(col)
     }
   }
+}
+
+
+coords_to_geom <- function(coords) {
+  coords <- lapply(coords, as.numeric)
+  sfg <- lapply(Map(c, coords$long, coords$lat), sf::st_point)
+  do.call(sf::st_sfc, sfg)
 }
