@@ -189,7 +189,7 @@
     "json": true
   },
   {
-    "name": "Zürich, CH",
+    "name": "zurich, CH",
     "root": "https://www.zueriwieneu.ch/open311/v2/",
     "docs": "https://www.zueriwieneu.ch/open311/",
     "jurisdiction": "stadt-zuerich.ch",

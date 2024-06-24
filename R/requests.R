@@ -69,7 +69,7 @@
 #' (\code{o311_endpoints()$docs}).
 #'
 #' @examples
-#' o311_api("chicago")
+#' o311_api("zurich")
 #'
 #' can_connect <- o311_ok()
 #' if (can_connect) {
