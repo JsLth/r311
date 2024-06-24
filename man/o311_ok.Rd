@@ -22,7 +22,6 @@ Checks whether an open311 API mounted by \code{\link{o311_api}} is reachable
 and returns a valid requests response.
 }
 \examples{
-\dontrun{
 # check if Bonn API is reachable
 o311_api("Bonn")
 o311_ok()
@@ -37,6 +36,8 @@ o311_api("Helsinki")
 o311_ok()
 
 # return error message
-o311_ok(error = TRUE)
-}
+try(o311_ok(error = TRUE))
+
+# reset endpoints database
+o311_reset_endpoints()
 }

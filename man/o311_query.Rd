@@ -28,13 +28,14 @@ You can set \code{options(r311_echo = TRUE)} to display all requests sent
 using \code{o311_query}.
 }
 \examples{
-\dontrun{
 o311_api("rostock")
 
-# manually query discovery
-o311_query(path = "discovery", simplify = FALSE)
+can_connect <- o311_ok()
+if (can_connect) {
+  # manually query discovery
+  o311_query(path = "discovery", simplify = FALSE)
 
-# query a custom path defined by the Klarschiff API
-o311_query(path = "areas")
+  # query a custom path defined by the Klarschiff API
+  o311_query(path = "areas")
 }
 }

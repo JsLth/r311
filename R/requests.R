@@ -69,25 +69,26 @@
 #' (\code{o311_endpoints()$docs}).
 #'
 #' @examples
-#' \dontrun{
 #' o311_api("chicago")
 #'
-#' # retrieve requests from the last two days
-#' now <- Sys.time()
-#' two_days <- 60 * 60 * 24 * 2
-#' o311_requests(end_date = now, start_date = now - two_days)
+#' can_connect <- o311_ok()
+#' if (can_connect) {
+#'   # retrieve requests from the last two days
+#'   now <- Sys.time()
+#'   two_days <- 60 * 60 * 24 * 2
+#'   o311_requests(end_date = now, start_date = now - two_days)
 #'
-#' # retrieve only open tickets
-#' tickets <- o311_requests(status = "open")
+#'   # retrieve only open tickets
+#'   tickets <- o311_requests(status = "open")
 #'
-#' # request the first ticket of the previous response
-#' o311_request(tickets$service_request_id[1])
+#'   # request the first ticket of the previous response
+#'   o311_request(tickets$service_request_id[1])
 #'
-#' # request all data
-#' o311_request_all()
+#'   # request all data
+#'   o311_request_all()
 #'
-#' # request data of the first 5 pages
-#' o311_request_all(max_pages = 5)
+#'   # request data of the first 5 pages
+#'   o311_request_all(max_pages = 5)
 #' }
 #' @seealso \code{\link{o311_api}}
 #' @export
@@ -186,7 +187,7 @@ o311_request_all <- function(service_code = NULL,
 
     # break if last request failed
     if (inherits(res, "error")) {
-      if (!length(out)) abort(res)
+      if (!length(out)) stop(res)
       break
     }
 

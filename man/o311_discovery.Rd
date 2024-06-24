@@ -13,9 +13,10 @@ A list containing details on the given open311 API.
 Retrieve discovery information about the mounted endpoint.
 }
 \examples{
-\dontrun{
 o311_api("zurich")
 
-o311_discovery()
+can_connect <- o311_ok()
+if (can_connect){
+  o311_discovery()
 }
 }

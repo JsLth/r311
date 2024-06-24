@@ -11,13 +11,19 @@ validate_endpoints(
 )
 }
 \arguments{
-\item{idx}{Index numbers of endpoints to check. Index numbers follow
+\item{idx}{\code{[integer]}
+
+Index numbers of endpoints to check. Index numbers follow
 row numbers in \code{\link{o311_endpoints}}.}
 
-\item{checks}{Which open311 method to check. By default, checks all
+\item{checks}{\code{[character]}
+
+Which open311 method to check. By default, checks all
 methods.}
 
-\item{methods}{Which checks to apply. \code{formal} checks whether an
+\item{methods}{\code{[character]}
+
+Which checks to apply. \code{formal} checks whether an
 endpoint is uniquely identifiable through given names and jurisdictions
 in \code{\link{o311_endpoints}}. \code{down} checks whether an endpoint
 is reachable and ready for requests. \code{valid} checks whether a method
@@ -37,13 +43,13 @@ reason, if applicable.
 }
 \examples{
 \dontrun{
-# check all endpoints and methods
-validate_endpoints()
+# check the first three endpoints in o311_endpoints()
+validate_endpoints(1:3)
 
 # check only requests
-validate_endpoints(checks = "requests")
+validate_endpoints(1:3, checks = "requests")
 
-# check only if an endpoint is down
-validate_endpoints(checks = "down")
+# check only whether an endpoint is down
+validate_endpoints(1:3, checks = "down")
 }
 }

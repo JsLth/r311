@@ -10,7 +10,6 @@
 #' @returns A dataframe or list containing information about each service.
 #'
 #' @examples
-#' \dontrun{
 #' # set up a jurisdiction
 #' o311_add_endpoint(
 #'   name = "helsinki test",
@@ -18,16 +17,20 @@
 #' )
 #' o311_api("helsinki test")
 #'
-#' # get a list of all services
-#' services <- o311_services()
+#' can_connect <- o311_ok()
+#' if (can_connect) {
+#'   # get a list of all services
+#'   services <- o311_services()
 #'
-#' # get a service list in finnish
-#' # the locale parameter is specific to the Helsinki API
-#' o311_services(locale = "fi_FI")
+#'   # get a service list in finnish
+#'   # the locale parameter is specific to the Helsinki API
+#'   o311_services(locale = "fi_FI")
 #'
-#' # inspect a service code
-#' o311_service(services$service_code[1])
+#'   # inspect a service code
+#'   o311_service(services$service_code[1])
 #' }
+#'
+#' o311_reset_endpoints()
 #' @export
 o311_services <- function(...) {
   o311_query(path = "services", ..., simplify = TRUE)

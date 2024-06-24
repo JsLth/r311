@@ -16,7 +16,7 @@ city, but can be any provider of an open311 API.}
 
 ID of a jurisdiction that is served by an open311 API. A jurisdiction
 ID is usually the root URL of the jurisdiction website, e.g.
-\code{"sfgov.org"} for San Francisco.}
+\code{"sandiego.gov"} for San Diego.}
 
 \item{format}{\code{[character]}
 
@@ -30,7 +30,8 @@ simplification.}
 \value{
 A list containing the most important information on a given
 jurisdiction, invisibly. This list is attached to the session and can
-be retrieved by calling \code{o311_api()} without arguments.
+be retrieved by calling \code{o311_api()} without arguments. Passing no
+arguments returns the currently attached API object.
 }
 \description{
 Select an open311 API and attach it to the active session. An open311 API is

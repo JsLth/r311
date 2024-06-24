@@ -7,10 +7,11 @@
 #' @export
 #'
 #' @examples
-#' \dontrun{
 #' o311_api("zurich")
 #'
-#' o311_discovery()
+#' can_connect <- o311_ok()
+#' if (can_connect){
+#'   o311_discovery()
 #' }
 o311_discovery <- function() {
   o311_query(path = "discovery", simplify = FALSE)

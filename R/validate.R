@@ -5,11 +5,19 @@
 #' \code{\link{o311_endpoints}} and returns their status along with a
 #' reason, if applicable.
 #'
-#' @param idx Index numbers of endpoints to check. Index numbers follow
+#' @param idx \code{[integer]}
+#'
+#' Index numbers of endpoints to check. Index numbers follow
 #' row numbers in \code{\link{o311_endpoints}}.
-#' @param checks Which open311 method to check. By default, checks all
+#'
+#' @param checks \code{[character]}
+#'
+#' Which open311 method to check. By default, checks all
 #' methods.
-#' @param methods Which checks to apply. \code{formal} checks whether an
+#'
+#' @param methods \code{[character]}
+#'
+#' Which checks to apply. \code{formal} checks whether an
 #' endpoint is uniquely identifiable through given names and jurisdictions
 #' in \code{\link{o311_endpoints}}. \code{down} checks whether an endpoint
 #' is reachable and ready for requests. \code{valid} checks whether a method
@@ -24,14 +32,14 @@
 #'
 #' @examples
 #' \dontrun{
-#' # check all endpoints and methods
-#' validate_endpoints()
+#' # check the first three endpoints in o311_endpoints()
+#' validate_endpoints(1:3)
 #'
 #' # check only requests
-#' validate_endpoints(checks = "requests")
+#' validate_endpoints(1:3, checks = "requests")
 #'
-#' # check only if an endpoint is down
-#' validate_endpoints(checks = "down")
+#' # check only whether an endpoint is down
+#' validate_endpoints(1:3, checks = "down")
 #' }
 validate_endpoints <- function(idx = NULL,
                                checks = c("discovery", "services", "requests"),

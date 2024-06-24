@@ -43,8 +43,8 @@
   },
   {
     "name": "Brookline, MA",
-    "root": "http://spot.brooklinema.gov/open311/v2/",
-    "docs": "http://spot.brooklinema.gov/open311/v2/",
+    "root": "https://spot.brooklinema.gov/open311/v2/",
+    "docs": "https://spot.brooklinema.gov/open311/v2/",
     "jurisdiction": "brooklinema.gov",
     "key": false,
     "pagination": true,
@@ -64,8 +64,8 @@
   },
   {
     "name": "Chicago, IL",
-    "root": "http://311api.cityofchicago.org/open311/v2/",
-    "docs": "http://311api.cityofchicago.org/open311/v2/",
+    "root": "https://311api.cityofchicago.org/open311/v2/",
+    "docs": "https://311api.cityofchicago.org/open311/v2/",
     "jurisdiction": "cityofchicago.org",
     "key": false,
     "pagination": true,
@@ -75,8 +75,8 @@
   },
   {
     "name": "Newport News, VA",
-    "root": "http://311request.nnva.gov/open311/v2/",
-    "docs": "http://311request.nnva.gov/open311/v2/",
+    "root": "https://311request.nnva.gov/open311/v2/",
+    "docs": "https://311request.nnva.gov/open311/v2/",
     "jurisdiction": "cityofnewport_news.org",
     "key": false,
     "pagination": true,
@@ -86,8 +86,8 @@
   },
   {
     "name": "San Diego, CA",
-    "root": "http://san-diego.spotreporters.com/open311/v2/",
-    "docs": "http://san-diego.spotreporters.com/open311/v2/",
+    "root": "https://san-diego.spotreporters.com/open311/v2/",
+    "docs": "https://san-diego.spotreporters.com/open311/v2/",
     "jurisdiction": "sandiego.gov",
     "key": false,
     "pagination": true,
@@ -164,6 +164,24 @@
     "dialect": "Mark-a-Spot"
   },
   {
+    "name": "Paderborn, DE",
+    "root": "https://anliegen.udh-pb.de/georeport/v2/",
+    "key": false,
+    "pagination": true,
+    "limit": 100,
+    "json": true,
+    "dialect": "Mark-a-Spot"
+  },
+  {
+    "name": "Krefeld, DE",
+    "root": "https://www.maak-et.de/georeport/v2/",
+    "key": false,
+    "pagination": true,
+    "limit": 100,
+    "json": true,
+    "dialect": "Mark-a-Spot"
+  },
+  {
     "name": "Turku, FI",
     "root": "https://api.turku.fi/feedback/v1/",
     "key": false,
@@ -172,7 +190,7 @@
   },
   {
     "name": "Zürich, CH",
-    "root": "https://www.zueriwieneu.ch/open311/v2",
+    "root": "https://www.zueriwieneu.ch/open311/v2/",
     "docs": "https://www.zueriwieneu.ch/open311/",
     "jurisdiction": "stadt-zuerich.ch",
     "key": false,
@@ -620,5 +638,25 @@
     "limit": 20,
     "json": true,
     "dialect": "SeeClickFix"
+  },
+  {
+    "name": "FiksGataMi, NO",
+    "root": "https://www.fiksgatami.no/open311/v2/",
+    "docs": "https://www.fiksgatami.no/open311/v2/requests.json",
+    "jurisdiction": "fiksgatami.no",
+    "key": false,
+    "pagination": true,
+    "limit": 1000,
+    "json": true,
+    "dialect": "FixMyStreet"
+  },
+  {
+    "name": "Zaragoza, ES",
+    "root": "https://www.zaragoza.es/api/recurso/open311/",
+    "docs": "https://www.zaragoza.es/sede/portal/datos-abiertos/open311",
+    "key": false,
+    "pagination": true,
+    "limit": 50,
+    "json": true
   }
 ]
