@@ -181,5 +181,5 @@ print.r311_api <- function(x, ...) {
   })
   fmt <- paste0("<r311_api>\n", paste(fmt, collapse = "\n"))
   cat(fmt, "\n")
-  x
+  invisible(x)
 }
