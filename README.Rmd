@@ -28,12 +28,19 @@ httptest2::start_vignette("../man/figures/README")
 
 ## Installation
 
-You can install the development version of open311 from [GitHub](https://github.com/) with:
+You can install r311 from CRAN with:
 
-``` r
+```r
+install.packages("r311")
+```
+
+Or you can install the development version from [GitHub](https://github.com/) with:
+
+```r
 # install.packages("remotes")
 remotes::install_github("JsLth/r311")
 ```
+
 
 ## Example
 
