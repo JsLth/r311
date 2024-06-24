@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="Access and handle APIs that use the international open311 GeoReport v2 standard for civic issue tracking. Retrieve civic service types and request data. Select and add available open311 endpoints and jurisdictions. Implicitly supports custom queries and open311 extensions such as CitySDK or uReport. Requires a minimal number of hard dependencies while still allowing the integration in common R formats (xml2, tibble, sf).">
-<title>R interface to the open311 standard • r311</title>
+<title>R Interface to the open311 standard • r311</title>
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.9/font.css" rel="stylesheet">
@@ -14,7 +14,7 @@
 <link href="deps/Roboto_Slab-0.4.9/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="R interface to the open311 standard">
+<!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js" integrity="sha512-7O5pXpc0oCRrxk8RUfDYFgn0nO1t+jLuIOQdOMRp4APB7uZ4vSjspzp5y6YDtDs4VzUSTbWzBFZ/LKJhnyFOKw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="R Interface to the open311 standard">
 <meta property="og:description" content="Access and handle APIs that use the international open311 GeoReport v2 standard for civic issue tracking. Retrieve civic service types and request data. Select and add available open311 endpoints and jurisdictions. Implicitly supports custom queries and open311 extensions such as CitySDK or uReport. Requires a minimal number of hard dependencies while still allowing the integration in common R formats (xml2, tibble, sf).">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -29,7 +29,7 @@
     
     <a class="navbar-brand me-2" href="index.html">r311</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,8 +87,11 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of open311 from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>You can install r311 from CRAN with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"r311"</span><span class="op">)</span></span></code></pre></div>
+<p>Or you can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"JsLth/r311"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -96,7 +99,7 @@
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <p>The following example loads <code>r311</code>, sets up a jurisdiction and retrieves a small amount of data on service tickets in Cologne, Germany.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jslth/r311" class="external-link">r311</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="reference/o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"Cologne"</span><span class="op">)</span></span>
@@ -104,21 +107,21 @@
 <span><span class="co">#&gt; Simple feature collection with 100 features and 11 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: 6.829609 ymin: 50.8609 xmax: 7.10357 ymax: 51.06044</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 6.833572 ymin: 50.84786 xmax: 7.098123 ymax: 51.05979</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
 <span><span class="co">#&gt; # A tibble: 100 × 12</span></span>
 <span><span class="co">#&gt;    service_request_id title              description address_string service_name</span></span>
-<span><span class="co">#&gt;  * &lt;chr&gt;              &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;       </span></span>
-<span><span class="co">#&gt;  1 7748-2024          #7748-2024 Schrot… "Schwarzer… 51067 Köln - … Schrott-Kfz </span></span>
-<span><span class="co">#&gt;  2 7775-2024          #7775-2024 Lichtm… "Seit dem … 51105 Köln - … Lichtmast d…</span></span>
-<span><span class="co">#&gt;  3 7776-2024          #7776-2024 Lichtm… "Seit dem … 51105 Köln - … Lichtmast d…</span></span>
-<span><span class="co">#&gt;  4 7777-2024          #7777-2024 Wilder… "An der Ei… 50679 Köln - … Wilder Müll </span></span>
-<span><span class="co">#&gt;  5 7783-2024          #7783-2024 Straße… "Baustelle… 50823 Köln - … Straßenbaus…</span></span>
-<span><span class="co">#&gt;  6 7795-2024          #7795-2024 Straße… "Ergänzung… 50823 Köln - … Straßenbaus…</span></span>
-<span><span class="co">#&gt;  7 7817-2024          #7817-2024 Schrot… "Hallo, \r… 51147 Köln - … Schrott-Kfz </span></span>
-<span><span class="co">#&gt;  8 7824-2024          #7824-2024 Schrot… "Hinteraus… 51065 Köln - … Schrottfahr…</span></span>
-<span><span class="co">#&gt;  9 7834-2024          #7834-2024 Fußgän… "Gestern w… 51103 Köln - … Fußgängeram…</span></span>
-<span><span class="co">#&gt; 10 7838-2024          #7838-2024 Spiel-… "Sehr geeh… Köln,          Spiel- und …</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;       </span></span>
+<span><span class="co">#&gt;  1 8421-2024          #8421-2024 Schrot… "An der Me… 50931 Köln - … Schrottfahr…</span></span>
+<span><span class="co">#&gt;  2 8422-2024          #8422-2024 Stadts… "Hier wird… 51061 Köln - … Stadtsauber…</span></span>
+<span><span class="co">#&gt;  3 8423-2024          #8423-2024 Wilder… "Sperrmüll… 50933 Köln - … Wilder Müll </span></span>
+<span><span class="co">#&gt;  4 8424-2024          #8424-2024 Defekt… "Zwischen … 50933 Köln - … Defekte Obe…</span></span>
+<span><span class="co">#&gt;  5 8425-2024          #8425-2024 Defekt… "Mitten au… 50933 Köln - … Defekte Obe…</span></span>
+<span><span class="co">#&gt;  6 8426-2024          #8426-2024 Schrot… "Heidestr.… 51069 Köln - … Schrott-Kfz </span></span>
+<span><span class="co">#&gt;  7 8427-2024          #8427-2024 Defekt… "mehrere g… 50737 Köln - … Defekte Obe…</span></span>
+<span><span class="co">#&gt;  8 8428-2024          #8428-2024 Schrot…  &lt;NA&gt;       50968 Köln - … Schrott-Kfz </span></span>
+<span><span class="co">#&gt;  9 8429-2024          #8429-2024 Defekt… "Auf dem G… 50825 Köln - … Defekte Obe…</span></span>
+<span><span class="co">#&gt; 10 8430-2024          #8430-2024 Wilder… "In unsere… 50670 Köln - … Wilder Müll </span></span>
 <span><span class="co">#&gt; # ℹ 90 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 7 more variables: requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   status &lt;chr&gt;, media_url &lt;chr&gt;, status_note &lt;chr&gt;, service_code &lt;chr&gt;,</span></span>

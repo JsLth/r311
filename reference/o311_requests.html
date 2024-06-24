@@ -18,7 +18,7 @@ to return a complete dataset of service requests."><!-- mathjax --><script src="
     
     <a class="navbar-brand me-2" href="../index.html">r311</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -193,25 +193,26 @@ notice. Refer to the endpoint docs to learn more about custom parameters
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"chicago"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"chicago"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># retrieve requests from the last two days</span></span></span>
-<span class="r-in"><span><span class="va">now</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">two_days</span> <span class="op">&lt;-</span> <span class="fl">60</span> <span class="op">*</span> <span class="fl">60</span> <span class="op">*</span> <span class="fl">24</span> <span class="op">*</span> <span class="fl">2</span></span></span>
-<span class="r-in"><span><span class="fu">o311_requests</span><span class="op">(</span>end_date <span class="op">=</span> <span class="va">now</span>, start_date <span class="op">=</span> <span class="va">now</span> <span class="op">-</span> <span class="va">two_days</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">can_connect</span> <span class="op">&lt;-</span> <span class="fu"><a href="o311_ok.html">o311_ok</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="va">can_connect</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="co"># retrieve requests from the last two days</span></span></span>
+<span class="r-in"><span>  <span class="va">now</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">two_days</span> <span class="op">&lt;-</span> <span class="fl">60</span> <span class="op">*</span> <span class="fl">60</span> <span class="op">*</span> <span class="fl">24</span> <span class="op">*</span> <span class="fl">2</span></span></span>
+<span class="r-in"><span>  <span class="fu">o311_requests</span><span class="op">(</span>end_date <span class="op">=</span> <span class="va">now</span>, start_date <span class="op">=</span> <span class="va">now</span> <span class="op">-</span> <span class="va">two_days</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># retrieve only open tickets</span></span></span>
-<span class="r-in"><span><span class="va">tickets</span> <span class="op">&lt;-</span> <span class="fu">o311_requests</span><span class="op">(</span>status <span class="op">=</span> <span class="st">"open"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># retrieve only open tickets</span></span></span>
+<span class="r-in"><span>  <span class="va">tickets</span> <span class="op">&lt;-</span> <span class="fu">o311_requests</span><span class="op">(</span>status <span class="op">=</span> <span class="st">"open"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># request the first ticket of the previous response</span></span></span>
-<span class="r-in"><span><span class="fu">o311_request</span><span class="op">(</span><span class="va">tickets</span><span class="op">$</span><span class="va">service_request_id</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># request the first ticket of the previous response</span></span></span>
+<span class="r-in"><span>  <span class="fu">o311_request</span><span class="op">(</span><span class="va">tickets</span><span class="op">$</span><span class="va">service_request_id</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># request all data</span></span></span>
-<span class="r-in"><span><span class="fu">o311_request_all</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># request all data</span></span></span>
+<span class="r-in"><span>  <span class="fu">o311_request_all</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># request data of the first 5 pages</span></span></span>
-<span class="r-in"><span><span class="fu">o311_request_all</span><span class="op">(</span>max_pages <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># request data of the first 5 pages</span></span></span>
+<span class="r-in"><span>  <span class="fu">o311_request_all</span><span class="op">(</span>max_pages <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>

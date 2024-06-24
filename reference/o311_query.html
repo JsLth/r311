@@ -16,7 +16,7 @@ This function can be used to access these URL paths."><!-- mathjax --><script sr
     
     <a class="navbar-brand me-2" href="../index.html">r311</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,15 +107,25 @@ using <code>o311_query</code>.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"rostock"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"rostock"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># manually query discovery</span></span></span>
-<span class="r-in"><span><span class="fu">o311_query</span><span class="op">(</span>path <span class="op">=</span> <span class="st">"discovery"</span>, simplify <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">can_connect</span> <span class="op">&lt;-</span> <span class="fu"><a href="o311_ok.html">o311_ok</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="va">can_connect</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="co"># manually query discovery</span></span></span>
+<span class="r-in"><span>  <span class="fu">o311_query</span><span class="op">(</span>path <span class="op">=</span> <span class="st">"discovery"</span>, simplify <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># query a custom path defined by the Klarschiff API</span></span></span>
-<span class="r-in"><span><span class="fu">o311_query</span><span class="op">(</span>path <span class="op">=</span> <span class="st">"areas"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># query a custom path defined by the Klarschiff API</span></span></span>
+<span class="r-in"><span>  <span class="fu">o311_query</span><span class="op">(</span>path <span class="op">=</span> <span class="st">"areas"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 1 feature and 2 fields</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: MULTIPOLYGON</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: 11.99837 ymin: 54.0508 xmax: 12.2954 ymax: 54.24451</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CRS:           NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      id name                                                              grenze</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                     <span style="color: #949494; font-style: italic;">&lt;MULTIPOLYGON&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 Klarschiff.HRO (((11.99844 54.17483, 11.99852 54.17496, 11.9988 54.1750…</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

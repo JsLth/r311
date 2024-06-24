@@ -16,7 +16,7 @@ reason, if applicable."><!-- mathjax --><script src="https://cdnjs.cloudflare.co
     
     <a class="navbar-brand me-2" href="../index.html">r311</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.4</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.5</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,17 +85,20 @@ reason, if applicable.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>idx</dt>
-<dd><p>Index numbers of endpoints to check. Index numbers follow
+<dd><p><code>[integer]</code></p>
+<p>Index numbers of endpoints to check. Index numbers follow
 row numbers in <code><a href="o311_endpoints.html">o311_endpoints</a></code>.</p></dd>
 
 
 <dt>checks</dt>
-<dd><p>Which open311 method to check. By default, checks all
+<dd><p><code>[character]</code></p>
+<p>Which open311 method to check. By default, checks all
 methods.</p></dd>
 
 
 <dt>methods</dt>
-<dd><p>Which checks to apply. <code>formal</code> checks whether an
+<dd><p><code>[character]</code></p>
+<p>Which checks to apply. <code>formal</code> checks whether an
 endpoint is uniquely identifiable through given names and jurisdictions
 in <code><a href="o311_endpoints.html">o311_endpoints</a></code>. <code>down</code> checks whether an endpoint
 is reachable and ready for requests. <code>valid</code> checks whether a method
@@ -115,14 +118,14 @@ turned out to be negative.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="co"># check all endpoints and methods</span></span></span>
-<span class="r-in"><span><span class="fu">validate_endpoints</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># check the first three endpoints in o311_endpoints()</span></span></span>
+<span class="r-in"><span><span class="fu">validate_endpoints</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># check only requests</span></span></span>
-<span class="r-in"><span><span class="fu">validate_endpoints</span><span class="op">(</span>checks <span class="op">=</span> <span class="st">"requests"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">validate_endpoints</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, checks <span class="op">=</span> <span class="st">"requests"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># check only if an endpoint is down</span></span></span>
-<span class="r-in"><span><span class="fu">validate_endpoints</span><span class="op">(</span>checks <span class="op">=</span> <span class="st">"down"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># check only whether an endpoint is down</span></span></span>
+<span class="r-in"><span><span class="fu">validate_endpoints</span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, checks <span class="op">=</span> <span class="st">"down"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
