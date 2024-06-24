@@ -13,7 +13,7 @@ A list containing details on the given open311 API.
 Retrieve discovery information about the mounted endpoint.
 }
 \examples{
-o311_api("zurich")
+o311_api("zürich")
 
 can_connect <- o311_ok()
 if (can_connect){
