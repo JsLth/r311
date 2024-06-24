@@ -7,7 +7,7 @@ o311_cache <- new.env(parent = emptyenv())
 #' an implementation of the open311 standard. It consists of an endpoint name
 #' (e.g. a city), a root URL, and a jurisdiction ID. To unambiguously identify
 #' an API, you can provide an endpoint, a jurisdiction ID, or both. The input
-#' is fuzzy-matched with \code{\link{o311_endpoints}} to select an API. The
+#' is matched with \code{\link{o311_endpoints}} to select an API. The
 #' selected API is available to other \code{o311_*} functions until the
 #' session is terminated or until it is overwritten.
 #'
@@ -59,8 +59,6 @@ o311_cache <- new.env(parent = emptyenv())
 #' @seealso
 #' \code{\link{o311_requests}}, \code{\link{o311_request}},
 #' \code{\link{o311_services}}
-#'
-#' \code{\link{agrepl}}
 #' @export
 o311_api <- function(endpoint = NULL,
                      jurisdiction = NULL,
@@ -77,7 +75,7 @@ o311_api <- function(endpoint = NULL,
   if (!is.null(jurisdiction)) {
     endpoints <- endpoints[endpoints$jurisdiction %in% jurisdiction, ]
   } else if (!is.null(endpoint)) {
-    endpoints <- endpoints[agrepl(
+    endpoints <- endpoints[grepl(
       endpoint,
       endpoints$name,
       ignore.case = TRUE

@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-#' o311_api("zurich")
+#' o311_api("zürich")
 #'
 #' can_connect <- o311_ok()
 #' if (can_connect){
