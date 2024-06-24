@@ -33,7 +33,8 @@ o311_cache <- new.env(parent = emptyenv())
 #'
 #' @returns A list containing the most important information on a given
 #' jurisdiction, invisibly. This list is attached to the session and can
-#' be retrieved by calling \code{o311_api()} without arguments.
+#' be retrieved by calling \code{o311_api()} without arguments. Passing no
+#' arguments returns the currently attached API object.
 #'
 #' @details
 #' In theory, several jurisdictions can exist for a single endpoints, e.g.
@@ -85,6 +86,7 @@ o311_api <- function(endpoint = NULL,
   endpoints$json <- identical(format, "json")
 
   juris <- lapply(endpoints, "%NA%", NULL)
+  class(juris) <- "r311_api"
   assign("juris", juris, envir = o311_cache)
   invisible(juris)
 }
@@ -167,4 +169,16 @@ check_format <- function(endpoints, format) {
       class = "package_error"
     )
   }
+}
+
+
+#' @export
+print.r311_api <- function(x, ...) {
+  fmt <- vapply(names(x), FUN.VALUE = character(1), function(i) {
+    nws <- strrep(" ", 12 - nchar(i))
+    paste0(" ", i, nws, " : ", x[[i]] %||% "None")
+  })
+  fmt <- paste0("<r311_api>\n", paste(fmt, collapse = "\n"))
+  cat(fmt, "\n")
+  x
 }
