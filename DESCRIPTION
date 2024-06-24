@@ -1,7 +1,7 @@
 Package: r311
 Type: Package
-Title: R interface to the open311 standard
-Version: 0.3.4
+Title: R Interface to the 'open311' standard
+Version: 0.3.5
 Authors@R: 
     person("Jonas", "Lieth", , "jonas.lieth@gesis.org", role = c("aut", "cre", "cph"))
 Maintainer: Jonas Lieth <jonas.lieth@gesis.org>
@@ -10,8 +10,8 @@ Description: Access and handle APIs that use the international open311
     types and request data. Select and add available open311 endpoints and
     jurisdictions. Implicitly supports custom queries and open311 extensions
     such as CitySDK or uReport. Requires a minimal number of hard dependencies
-    while still allowing the integration in common R formats (xml2, tibble,
-    sf).
+    while still allowing the integration in common R formats ('xml2', 'tibble',
+    'sf').
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
