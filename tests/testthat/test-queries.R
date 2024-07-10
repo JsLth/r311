@@ -38,6 +38,19 @@ test_that("validation works", {
   o311_reset_endpoints()
 })
 
+test_that("formal validation works", {
+  with_mocked_bindings(
+    {
+      add_test_endpoint()
+      add_test_endpoint()
+    },
+    has_duplicate_endpoints = function(...) FALSE
+  )
+  ep <- o311_endpoints()
+  vldt <- validate_endpoints(c(nrow(ep), nrow(ep) - 1))
+  expect_in(vldt$reason_requests, "Endpoints not unique")
+  expect_identical(vldt$requests, c(FALSE, FALSE))
+})
 
 test_that("tidying xml produces a valid dataframe", {
   skip_on_cran()
