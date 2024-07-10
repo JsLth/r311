@@ -48,7 +48,7 @@ validate_endpoints <- function(idx = NULL,
   endpoints <- o311_endpoints()
   idx <- idx %||% seq_len(nrow(endpoints))
   ok <- lapply(idx, function(i) {
-    waiter(current = i, total = length(idx), unit = "endpoint")
+    waiter(current = which(i == idx), total = length(idx), unit = "endpoint")
     name <- endpoints$name[i] %NA% NULL
     juris <- endpoints$jurisdiction[i] %NA% NULL
 
