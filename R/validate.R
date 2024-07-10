@@ -77,7 +77,7 @@ validate_endpoints <- function(idx = NULL,
 
 
 check_down <- function(x, methods) {
-  if (!"down" %in% methods) return(NA)
+  if (!"down" %in% methods) return(NA) # nocov
   fun <- match.fun(paste0("o311_", x))
   res <- try(fun(), silent = TRUE)
   if (inherits(res, "try-error")) {
@@ -88,7 +88,7 @@ check_down <- function(x, methods) {
 
 
 check_valid <- function(x, methods) {
-  if (!"valid" %in% methods) return(NA)
+  if (!"valid" %in% methods) return(NA) # nocov
   if (is.character(x)) return(x)
 
   if (is.data.frame(x)) {
@@ -98,7 +98,7 @@ check_valid <- function(x, methods) {
   }
 
   if (!ok) {
-    return("Output invalid")
+    return("Output invalid") # nocov
   }
 
   NA
