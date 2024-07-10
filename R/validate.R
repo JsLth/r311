@@ -42,8 +42,8 @@
 validate_endpoints <- function(idx = NULL,
                                checks = c("discovery", "services", "requests"),
                                methods = c("formal", "down", "valid")) {
-  assert_string(checks, n = 1:3)
-  assert_string(methods, n = 1:3)
+  checks <- match.arg(checks, several.ok = TRUE)
+  methods <- match.arg(methods, several.ok = TRUE)
 
   endpoints <- o311_endpoints()
   idx <- idx %||% seq_len(nrow(endpoints))
