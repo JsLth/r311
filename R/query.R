@@ -46,6 +46,7 @@ GET <- function(url,
                 format = "json") {
   req <- url_path(url, path)
   req <- build_query(req, query)
+  req <- utils::URLencode(req, reserved = TRUE)
 
   if (isTRUE(getOption("r311_echo", FALSE))) {
     cat("Querying:", req, "\n") # nocov
