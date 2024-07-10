@@ -68,7 +68,7 @@ rbind_list <- function(args) {
     if (nrow(args[[i]])) {
       nam_diff <- setdiff(unam, nam[[i]])
       if (length(nam_diff)) {
-        args[[i]][nam_diff] <- NA
+        args[[i]][nam_diff] <- NA # nocov
       }
     } else {
       next # nocov

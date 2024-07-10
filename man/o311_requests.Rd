@@ -112,7 +112,7 @@ notice. Refer to the endpoint docs to learn more about custom parameters
 (\code{o311_endpoints()$docs}).
 }
 \examples{
-o311_api("chicago")
+o311_api("zurich")
 
 can_connect <- o311_ok()
 if (can_connect) {

@@ -17,15 +17,14 @@
 #' using \code{o311_query}.
 #'
 #' @examples
+#' \dontrun{
 #' o311_api("rostock")
 #'
-#' can_connect <- o311_ok()
-#' if (can_connect) {
-#'   # manually query discovery
-#'   o311_query(path = "discovery", simplify = FALSE)
+#' # manually query discovery
+#' o311_query(path = "discovery", simplify = FALSE)
 #'
-#'   # query a custom path defined by the Klarschiff API
-#'   o311_query(path = "areas")
+#' # query a custom path defined by the Klarschiff API
+#' o311_query(path = "areas")
 #' }
 #' @export
 o311_query <- function(path, ..., simplify = TRUE) {
@@ -49,7 +48,7 @@ GET <- function(url,
   req <- build_query(req, query)
 
   if (isTRUE(getOption("r311_echo", FALSE))) {
-    cat("Querying:", req, "\n")
+    cat("Querying:", req, "\n") # nocov
   }
 
   resp <- curl::curl_fetch_memory(req)
@@ -120,22 +119,12 @@ guess_error <- function(resp) { # nocov start
 
   if (grepl("application/json", content_type, fixed = TRUE)) {
     content <- rawToChar(resp$content)
-    error <- jsonlite::fromJSON(content, simplifyVector = FALSE)
-    has_error_fields <- !any(
-      c("description", "message", "msg", "error") %in% names(error)
-    )
-    if (has_error_fields) { # nocov start
-      error <- unbox(error)
-    } # nocov end
+    error <- unbox(jsonlite::fromJSON(content, simplifyVector = FALSE))
     abort(
       sprintf(
         "Error code %s: %s",
         headers$status %||% status,
-        if (is.list(error)) {
-          error$description %||% error$message %||% error$msg %||% error$error
-        } else if (is.character(error)) { # nocov start
-          error
-        } # nocov end
+        error$description %||% error$message %||% error$msg %||% error$error
       ),
       class = status
     )

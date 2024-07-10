@@ -10,7 +10,7 @@
 #' o311_api("zurich")
 #'
 #' can_connect <- o311_ok()
-#' if (can_connect){
+#' if (can_connect) {
 #'   o311_discovery()
 #' }
 o311_discovery <- function() {
