@@ -50,6 +50,7 @@ test_that("formal validation works", {
   vldt <- validate_endpoints(c(nrow(ep), nrow(ep) - 1))
   expect_in(vldt$reason_requests, "Endpoints not unique")
   expect_identical(vldt$requests, c(FALSE, FALSE))
+  o311_reset_endpoints()
 })
 
 test_that("tidying xml produces a valid dataframe", {
