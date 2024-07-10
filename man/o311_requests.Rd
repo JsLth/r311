@@ -125,7 +125,8 @@ if (can_connect) {
   tickets <- o311_requests(status = "open")
 
   # request the first ticket of the previous response
-  o311_request(tickets$service_request_id[1])
+  rid <- as.character(tickets$service_request_id[1])
+  o311_request(rid)
 
   # request all data
   o311_request_all()
