@@ -29,8 +29,19 @@ test_that("fails gracefully", {
 })
 
 
+test_that("validation works", {
+  add_test_endpoint("sf invalid", juris = "test")
+  ep <- o311_endpoints()
+  vldt <- validate_endpoints(c(1, nrow(ep)))
+  expect_identical(vldt$reason_requests, c(NA, "API not reachable"))
+  expect_identical(vldt$requests, c(TRUE, FALSE))
+  o311_reset_endpoints()
+})
+
+
 test_that("tidying xml produces a valid dataframe", {
   skip_on_cran()
+  add_test_endpoint("sd test")
   o311_api("sd test", format = "xml")
   expect_gt(nrow(o311_requests()), 0)
 })

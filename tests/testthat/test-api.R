@@ -55,6 +55,11 @@ test_that("no arguments returns current api", {
 })
 
 
+test_that("print method works", {
+  expect_output(print(o311_api()), "r311_api")
+})
+
+
 test_that("invalid api fails", {
   # test invalid jurisdiction
   expect_error(
