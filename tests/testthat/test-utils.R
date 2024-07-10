@@ -21,6 +21,7 @@ test_that("assertions work", {
   assert_url(url)
   assert_time(time)
   assert_dots_named(a = string)
+  assert_flag(NULL, null = TRUE)
 
   expect_error(assert_flag(NULL))
   expect_error(assert_string(NULL, null = FALSE))
