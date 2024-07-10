@@ -26,20 +26,12 @@ and thus require an attached jurisdiction using
 }
 \examples{
 # set up a jurisdiction
-o311_add_endpoint(
-  name = "helsinki test",
-  root = "https://dev.hel.fi/open311-test/v1/"
-)
-o311_api("helsinki test")
+o311_api("san francisco")
 
 can_connect <- o311_ok()
 if (can_connect) {
   # get a list of all services
   services <- o311_services()
-
-  # get a service list in finnish
-  # the locale parameter is specific to the Helsinki API
-  o311_services(locale = "fi_FI")
 
   # inspect a service code
   o311_service(services$service_code[1])

@@ -49,5 +49,5 @@ validate_endpoints(1:3)
 validate_endpoints(1:3, checks = "requests")
 
 # check only whether an endpoint is down
-validate_endpoints(1:3, checks = "down")
+validate_endpoints(1:3, methods = "down")
 }
