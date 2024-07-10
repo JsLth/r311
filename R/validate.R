@@ -38,7 +38,7 @@
 #' validate_endpoints(1:3, checks = "requests")
 #'
 #' # check only whether an endpoint is down
-#' validate_endpoints(1:3, checks = "down")
+#' validate_endpoints(1:3, methods = "down")
 validate_endpoints <- function(idx = NULL,
                                checks = c("discovery", "services", "requests"),
                                methods = c("formal", "down", "valid")) {
