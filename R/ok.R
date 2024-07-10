@@ -36,11 +36,10 @@ o311_ok <- function(error = FALSE) {
     expr = {
       # query requests because discovery and services are sometimes defined
       # but requests cannot be retrieved
-      res <- o311_query("requests", simplify = FALSE)
+      res <- o311_query("requests")
 
       # check if requests.json returns a valid requests json
-      ok <- length(res) > 1 &&
-        "service_request_id" %in% names(unlist(res, recursive = FALSE))
+      ok <- length(res) > 1 && "service_request_id" %in% names(res)
 
       if (!ok) {
         abort(
