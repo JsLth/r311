@@ -658,5 +658,14 @@
     "pagination": true,
     "limit": 50,
     "json": true
+  },
+  {
+    "name": "St. Louis, MO",
+    "root": "https://www.stlouis-mo.gov/powernap/stlouis/api.cfm/",
+    "docs": "https://www.stlouis-mo.gov/government/departments/information-technology/web-development/city-api/csb-api.cfm",
+    "key": true,
+    "pagination": true,
+    "limit": 1000,
+    "json": true
   }
 ]

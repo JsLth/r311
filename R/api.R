@@ -22,6 +22,13 @@ o311_cache <- new.env(parent = emptyenv())
 #' ID is usually the root URL of the jurisdiction website, e.g.
 #' \code{"sandiego.gov"} for San Diego.
 #'
+#' @param key \code{[character]}
+#'
+#' If a key is required by the selected API, this argument can be used to
+#' store the key in the R session. The API key is automatically used in
+#' API requests. If \code{key} is \code{NULL} although a key is required,
+#' a warning is emitted.
+#'
 #' @param format \code{[character]}
 #'
 #' Response format. Must be one of \code{"json"} or \code{"xml"}. Defaults to
@@ -62,6 +69,7 @@ o311_cache <- new.env(parent = emptyenv())
 #' @export
 o311_api <- function(endpoint = NULL,
                      jurisdiction = NULL,
+                     key = NULL,
                      format = c("json", "xml")) {
   if (is.null(endpoint) && is.null(jurisdiction)) {
     return(get_juris())
@@ -85,6 +93,18 @@ o311_api <- function(endpoint = NULL,
   check_jurisdiction(endpoints)
   check_format(endpoints, format)
   endpoints$json <- identical(format, "json")
+
+  if (isTRUE(endpoints$key) && !is.null(key)) {
+    assign("api_key", key, envir = o311_cache)
+  } else if (isTRUE(endpoints$key)) {
+    warning(paste(
+      "An API key is needed to use this API.",
+      "If necessary, pass a valid key to `o311_api()`"
+    ))
+  } else {
+    name <- intersect("api_key", ls(envir = o311_cache))
+    rm(list = name, envir = o311_cache)
+  }
 
   juris <- lapply(endpoints, "%NA%", NULL)
   class(juris) <- "r311_api"

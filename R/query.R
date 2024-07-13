@@ -17,9 +17,8 @@
 #' using \code{o311_query}.
 #'
 #' @examples
-#' \dontrun{
 #' o311_api("rostock")
-#'
+#' \donttest{
 #' # manually query discovery
 #' o311_query(path = "discovery", simplify = FALSE)
 #'
@@ -31,7 +30,11 @@ o311_query <- function(path, ..., simplify = TRUE) {
   assert_dots_named()
   juris <- get_juris()
   root <- juris$root
-  query <- drop_null(c(jurisdiction_id = juris$jurisdiction, list(...)))
+  query <- drop_null(c(
+    jurisdiction_id = juris$jurisdiction,
+    api_key = get0("api_key"),
+    list(...)
+  ))
   format <- ifelse(juris$json, "json", "xml")
   path <- paste(path, format, sep = ".")
 

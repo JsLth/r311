@@ -67,3 +67,20 @@ test_that("format checks in place", {
   )
   o311_reset_endpoints()
 })
+
+
+test_that("key is stored/removed correctly", {
+  o311_add_endpoint(
+    name = "test",
+    root = "test.org",
+    key = TRUE
+  )
+  expect_warning(o311_api("test"))
+  o311_api("st. louis", key = "test")
+  expect_identical(o311_cache$api_key, "test")
+  o311_api("st. louis", key = "test2")
+  expect_identical(o311_cache$api_key, "test2")
+  o311_api("rostock")
+  expect_null(o311_cache$api_key)
+  o311_reset_endpoints()
+})
