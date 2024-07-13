@@ -1,3 +1,3 @@
-# r311 0.3.1
+# r311 0.3.6
 
 * Initial CRAN submission.
