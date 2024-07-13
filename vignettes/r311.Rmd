@@ -71,12 +71,13 @@ provides some of the most important and easily accessible endpoints as of
 `r format(Sys.Date(), "%Y")`. However, `r311` also offers the ability to add
 new endpoints to `o311_endpoints` using `o311_add_endpoint`. You need to
 provide a name (for lookup) and a root URL (the URL used to send requests).
-The following code adds the open311 test server of San Francisco.
+The following code adds the open311 test server of Rostock, Germany.
 
 ```{r}
 o311_add_endpoint(
-  name = "San Francisco Test",
-  root = "http://mobile311-dev.sfgov.org/open311/v2/"
+  name = "Rostock Test",
+  root = "https://demo.klarschiff-hro.de/backoffice/citysdk/",
+  jurisdiction = "rostock.de"
 )
 ```
 
@@ -87,13 +88,13 @@ new row to the endpoints dataframe.
 nrow(o311_endpoints())
 ```
 
-You can now select the San Francisco test API to the session using `o311_api`.
+You can now select the Rostock test API to the session using `o311_api`.
 This function matches an API using endpoint name and jurisdiction ID and
 attaches it to the active session. Query functions automatically detect the
 attached API.
 
 ```{r}
-o311_api("San Francisco Test")
+o311_api("Rostock Test")
 ```
 
 After attaching an API, `o311_ok` confirms that the selected endpoint is able
@@ -115,7 +116,7 @@ functions can access it. You can now make requests.
 ## Services
 
 To get an overview of the available services in a jurisdiction, you can
-use `o311_services`, which returns a list of San Francisco's administrative
+use `o311_services`, which returns a list of Rostock's administrative
 services.
 
 ```{r}
@@ -138,14 +139,14 @@ returned service codes, only complaints about businesses illegally using shared
 spaces are returned.
 
 ```{r}
-o311_requests(service_code = "6050cd8ce8961bbfa32bcf2c")
+o311_requests(service_code = "16")
 ```
 
 Similarly, using a `service_request_id` from the output, you can retrieve a
 single service request from the API.
 
 ```{r}
-o311_request("1020139511")
+o311_request("4")
 ```
 
 
@@ -160,6 +161,7 @@ retrieves data from the first two pages, resulting in a tibble with 100
 service requests.
 
 ```{r}
+o311_api("Rostock, DE")
 o311_request_all(max_pages = 2)
 ```
 
@@ -175,7 +177,6 @@ usually be found in the respective documentation (e.g. on GitHub for
 The following query returns the last 50 requests tagged with the "idea" keyword.
 
 ```{r}
-o311_api("Rostock")
 tickets <- o311_requests(keyword = "idea", max_requests = 50)
 ```
 
