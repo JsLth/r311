@@ -132,23 +132,24 @@ endpoints as of 2024. However, <code>r311</code> also offers the ability
 to add new endpoints to <code>o311_endpoints</code> using
 <code>o311_add_endpoint</code>. You need to provide a name (for lookup)
 and a root URL (the URL used to send requests). The following code adds
-the open311 test server of San Francisco.</p>
+the open311 test server of Rostock, Germany.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_endpoints.html">o311_add_endpoint</a></span><span class="op">(</span></span>
-<span>  name <span class="op">=</span> <span class="st">"San Francisco Test"</span>,</span>
-<span>  root <span class="op">=</span> <span class="st">"http://mobile311-dev.sfgov.org/open311/v2/"</span></span>
+<span>  name <span class="op">=</span> <span class="st">"Rostock Test"</span>,</span>
+<span>  root <span class="op">=</span> <span class="st">"https://demo.klarschiff-hro.de/backoffice/citysdk/"</span>,</span>
+<span>  jurisdiction <span class="op">=</span> <span class="st">"rostock.de"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
 <p>Retrieving the endpoints list again confirms that you successfully
 added a new row to the endpoints dataframe.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="fu"><a href="../reference/o311_endpoints.html">o311_endpoints</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 67</span></span></code></pre></div>
-<p>You can now select the San Francisco test API to the session using
+<p>You can now select the Rostock test API to the session using
 <code>o311_api</code>. This function matches an API using endpoint name
 and jurisdiction ID and attaches it to the active session. Query
 functions automatically detect the attached API.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"San Francisco Test"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"Rostock Test"</span><span class="op">)</span></span></code></pre></div>
 <p>After attaching an API, <code>o311_ok</code> confirms that the
 selected endpoint is able to handle request queries.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -166,24 +167,24 @@ can access it. You can now make requests.</p>
 <h3 id="services">Services<a class="anchor" aria-label="anchor" href="#services"></a>
 </h3>
 <p>To get an overview of the available services in a jurisdiction, you
-can use <code>o311_services</code>, which returns a list of San
-Francisco’s administrative services.</p>
+can use <code>o311_services</code>, which returns a list of Rostock’s
+administrative services.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_services.html">o311_services</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 21 × 6</span></span></span>
-<span><span class="co">#&gt;    service_code             service_name        description metadata type  group</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 6050cd8ce8961bbfa32bcf2c Shared Spaces       Use this o… TRUE     batch Gene…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 55d6cb85df86af51c305616e Noise Issue         <span style="color: #BB0000;">NA</span>          TRUE     batch Gene…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 5fe20af6e896f754e2784e99 Holiday Tree Remov… <span style="color: #BB0000;">NA</span>          FALSE    batch Stre…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 518d5892601827e3880000c5 Street or Sidewalk… <span style="color: #BB0000;">NA</span>          TRUE     batch Stre…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 518d572e601827e388000058 Garbage Containers  Report an … TRUE     batch Stre…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 50fea92c4aa48a4a9e000099 Graffiti            Report bui… TRUE     batch Stre…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 50fea6d54aa48a4a9e00002e Illegal Postings    Report han… TRUE     batch Stre…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 518d564b601827e38800002d Blocked Pedestrian… <span style="color: #BB0000;">NA</span>          TRUE     batch Stre…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 55e8409a45ff461f92000006 Encampment          <span style="color: #BB0000;">NA</span>          TRUE     batch Stre…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 518d5d52601827e3880001b1 Abandoned Vehicles  Report a v… TRUE     batch Park…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 11 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 161 × 8</span></span></span>
+<span><span class="co">#&gt;    service_code service_name  description metadata type  keywords group group_id</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 86           Ampel behind… <span style="color: #BB0000;">NA</span>          FALSE    real… idea     Barr…      115</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 87           Ampelschaltu… <span style="color: #BB0000;">NA</span>          FALSE    real… idea     Barr…      115</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 88           Bordstein ab… <span style="color: #BB0000;">NA</span>          FALSE    real… idea     Barr…      115</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 89           Zugang rolls… <span style="color: #BB0000;">NA</span>          FALSE    real… idea     Barr…      115</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 90           Ampelschaltu… <span style="color: #BB0000;">NA</span>          FALSE    real… idea     Fahr…      120</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 91           Beleuchtung … <span style="color: #BB0000;">NA</span>          FALSE    real… idea     Fahr…      120</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 92           Beschilderun… <span style="color: #BB0000;">NA</span>          FALSE    real… idea     Fahr…      120</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 93           Beschilderun… <span style="color: #BB0000;">NA</span>          FALSE    real… idea     Fahr…      120</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 94           Bordstein ab… <span style="color: #BB0000;">NA</span>          FALSE    real… idea     Fahr…      120</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 95           Fahrradständ… <span style="color: #BB0000;">NA</span>          FALSE    real… idea     Fahr…      120</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 151 more rows</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="requests">Requests<a class="anchor" aria-label="anchor" href="#requests"></a>
@@ -192,27 +193,23 @@ Francisco’s administrative services.</p>
 <code>o311_requests</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_requests.html">o311_requests</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Simple feature collection with 50 features and 11 fields</span></span>
+<span><span class="co">#&gt; Simple feature collection with 6 features and 15 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: -122.5111 ymin: 37.74945 xmax: -122.3949 ymax: 37.79207</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 12.07615 ymin: 54.06731 xmax: 12.23699 ymax: 54.2091</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 50 × 12</span></span></span>
-<span><span class="co">#&gt;    service_request_id status service_name               service_code description</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1020140896         open   Abandoned Vehicles         518d5d52601… Grey Mazda…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1020140726         open   Abandoned Vehicles         518d5d52601… test       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1020140725         open   Park Requests              518d5cc9601… test       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1020140302         open   Street or Sidewalk Cleani… 518d5892601… Test - gar…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 1020139578         open   Street or Sidewalk Cleani… 518d5892601… Garbage on…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 1020139514         open   Encampment                 55e8409a45f… <span style="color: #BB0000;">NA</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 1020139513         closed Flooding, Sewer &amp; Water L… 518d5c0d601… -- TEST MA…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 1020139511         open   Shared Spaces              6050cd8ce89… <span style="color: #BB0000;">NA</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1020139507         open   Tree Maintenance           518d595d601… southbound…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 1020139506         open   Pothole &amp; Street Issues    50fea9c24aa… southbound…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 40 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 7 more variables: requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   address &lt;chr&gt;, token &lt;chr&gt;, status_notes &lt;chr&gt;, media_url &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 16</span></span></span>
+<span><span class="co">#&gt;   service_request_id status_notes status   service_code service_name description</span></span>
+<span><span class="co">#&gt;                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>                  3 <span style="color: #949494;">""</span>           in_proc…           16 Grünschnitt… Dieser Wei…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>                  2 <span style="color: #949494;">""</span>           in_proc…           60 Sitzgelegen… Dieser Sit…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>                  5 <span style="color: #949494;">""</span>           closed             62 Ampel schad… Die Ampel …</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>                  6 <span style="color: #949494;">""</span>           reviewed          110 Spielplatz … Hier sollt…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>                  4 <span style="color: #949494;">""</span>           closed            129 Papierkorb/… Dieser Abf…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>                  1 <span style="color: #949494;">""</span>           in_proc…          160 Altfahrzeug… Das Schrot…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 10 more variables: agency_responsible &lt;chr&gt;, service_notice &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;, expected_datetime &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   address &lt;chr&gt;, adress_id &lt;lgl&gt;, media_url &lt;chr&gt;, zipcode &lt;lgl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   geometry &lt;POINT [°]&gt;</span></span></span></code></pre></div>
 <p>Using the output of <code>o311_services</code>, you can further
 narrow down the output of requests. Open311 defines a set of standard
@@ -221,42 +218,36 @@ parameters which are implemented by all endpoints. Using the
 service codes, only complaints about businesses illegally using shared
 spaces are returned.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_requests.html">o311_requests</a></span><span class="op">(</span>service_code <span class="op">=</span> <span class="st">"6050cd8ce8961bbfa32bcf2c"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Simple feature collection with 50 features and 10 fields</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_requests.html">o311_requests</a></span><span class="op">(</span>service_code <span class="op">=</span> <span class="st">"16"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Simple feature collection with 1 feature and 15 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: -122.444 ymin: 37.75765 xmax: -122.3931 ymax: 37.79074</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 12.17547 ymin: 54.10655 xmax: 12.17547 ymax: 54.10655</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 50 × 11</span></span></span>
-<span><span class="co">#&gt;    service_request_id status service_name  service_code       requested_datetime</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1020139511         open   Shared Spaces 6050cd8ce8961bbfa… 2023-12-08T23:54:…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 6405413            closed Shared Spaces 6050cd8ce8961bbfa… 2016-10-11T13:17:…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1020139479         open   Shared Spaces 6050cd8ce8961bbfa… 2023-12-05T22:52:…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1020139460         open   Shared Spaces 6050cd8ce8961bbfa… 2023-12-01T17:20:…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 1020139449         open   Shared Spaces 6050cd8ce8961bbfa… 2023-11-29T23:30:…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 1020139418         open   Shared Spaces 6050cd8ce8961bbfa… 2023-11-27T18:53:…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 1020139417         open   Shared Spaces 6050cd8ce8961bbfa… 2023-11-27T18:43:…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 1020139414         open   Shared Spaces 6050cd8ce8961bbfa… 2023-11-27T18:31:…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1020139411         open   Shared Spaces 6050cd8ce8961bbfa… 2023-11-27T18:23:…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 1020139392         open   Shared Spaces 6050cd8ce8961bbfa… 2023-11-17T02:14:…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 40 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 6 more variables: updated_datetime &lt;chr&gt;, address &lt;chr&gt;, token &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   status_notes &lt;chr&gt;, description &lt;chr&gt;, geometry &lt;POINT [°]&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 16</span></span></span>
+<span><span class="co">#&gt;   service_request_id status_notes status   service_code service_name description</span></span>
+<span><span class="co">#&gt;                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>                  3 <span style="color: #949494;">""</span>           in_proc…           16 Grünschnitt… Dieser Wei…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 10 more variables: agency_responsible &lt;chr&gt;, service_notice &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;, expected_datetime &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   address &lt;chr&gt;, adress_id &lt;lgl&gt;, media_url &lt;chr&gt;, zipcode &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   geometry &lt;POINT [°]&gt;</span></span></span></code></pre></div>
 <p>Similarly, using a <code>service_request_id</code> from the output,
 you can retrieve a single service request from the API.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_requests.html">o311_request</a></span><span class="op">(</span><span class="st">"1020139511"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Simple feature collection with 1 feature and 8 fields</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_requests.html">o311_request</a></span><span class="op">(</span><span class="st">"4"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Simple feature collection with 1 feature and 15 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: -122.4183 ymin: 37.775 xmax: -122.4183 ymax: 37.775</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 12.12266 ymin: 54.06731 xmax: 12.12266 ymax: 54.06731</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 9</span></span></span>
-<span><span class="co">#&gt;   service_request_id status service_name  service_code        requested_datetime</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> 1020139511         open   Shared Spaces 6050cd8ce8961bbfa3… 2023-12-08T23:54:…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4 more variables: updated_datetime &lt;chr&gt;, address &lt;chr&gt;, token &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 16</span></span></span>
+<span><span class="co">#&gt;   service_request_id status_notes status service_code service_name   description</span></span>
+<span><span class="co">#&gt;                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>                  4 <span style="color: #949494;">""</span>           closed          129 Papierkorb/Ab… Dieser Abf…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 10 more variables: agency_responsible &lt;chr&gt;, service_notice &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;, expected_datetime &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   address &lt;chr&gt;, adress_id &lt;lgl&gt;, media_url &lt;chr&gt;, zipcode &lt;lgl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   geometry &lt;POINT [°]&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -270,28 +261,30 @@ in handy. It automatically iterates through pages and heuristically
 decides when to stop. The following example retrieves data from the
 first two pages, resulting in a tibble with 100 service requests.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_requests.html">o311_request_all</a></span><span class="op">(</span>max_pages <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Simple feature collection with 100 features and 11 fields</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"Rostock, DE"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/o311_requests.html">o311_request_all</a></span><span class="op">(</span>max_pages <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Simple feature collection with 4253 features and 15 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: -122.5111 ymin: 37.73277 xmax: -122.3931 ymax: 37.79207</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 12.01306 ymin: 54.05571 xmax: 12.20568 ymax: 54.20905</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 100 × 12</span></span></span>
-<span><span class="co">#&gt;    service_request_id status service_name               service_code description</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> 1020140896         open   Abandoned Vehicles         518d5d52601… Grey Mazda…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> 1020140726         open   Abandoned Vehicles         518d5d52601… test       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> 1020140725         open   Park Requests              518d5cc9601… test       </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> 1020140302         open   Street or Sidewalk Cleani… 518d5892601… Test - gar…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> 1020139578         open   Street or Sidewalk Cleani… 518d5892601… Garbage on…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> 1020139514         open   Encampment                 55e8409a45f… <span style="color: #BB0000;">NA</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> 1020139513         closed Flooding, Sewer &amp; Water L… 518d5c0d601… -- TEST MA…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> 1020139511         open   Shared Spaces              6050cd8ce89… <span style="color: #BB0000;">NA</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> 1020139507         open   Tree Maintenance           518d595d601… southbound…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> 1020139506         open   Pothole &amp; Street Issues    50fea9c24aa… southbound…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 90 more rows</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 7 more variables: requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   address &lt;chr&gt;, token &lt;chr&gt;, status_notes &lt;chr&gt;, media_url &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4,253 × 16</span></span></span>
+<span><span class="co">#&gt;    service_request_id status_notes  status service_code service_name description</span></span>
+<span><span class="co">#&gt;                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>              <span style="text-decoration: underline;">24</span>824 <span style="color: #949494;">""</span>            in_pr…          113 Beschilderu… Kreuzung A…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>              <span style="text-decoration: underline;">95</span>322 <span style="color: #949494;">"</span>Danke für I… in_pr…            2 bauliche Ge… Gefährlich…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>              <span style="text-decoration: underline;">70</span>677  <span style="color: #BB0000;">NA</span>           recei…            2 bauliche Ge… redaktione…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>              <span style="text-decoration: underline;">72</span>069  <span style="color: #BB0000;">NA</span>           recei…           22 Sperrmüll    redaktione…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>              <span style="text-decoration: underline;">72</span>070  <span style="color: #BB0000;">NA</span>           recei…           15 Elektroschr… redaktione…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>              <span style="text-decoration: underline;">70</span>740  <span style="color: #BB0000;">NA</span>           revie…           22 Sperrmüll    Die 1.Meld…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>              <span style="text-decoration: underline;">70</span>076  <span style="color: #BB0000;">NA</span>           closed          160 Altfahrzeug… <span style="color: #BB0000;">NA</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>              <span style="text-decoration: underline;">75</span>356  <span style="color: #BB0000;">NA</span>           recei…           17 Hausmüll     redaktione…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>              <span style="text-decoration: underline;">43</span>518 <span style="color: #949494;">"</span>Der Erdhauf… in_pr…           13 Bauabfall    Illegale E…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>              <span style="text-decoration: underline;">44</span>333  <span style="color: #BB0000;">NA</span>           recei…            2 bauliche Ge… redaktione…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4,243 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 10 more variables: agency_responsible &lt;chr&gt;, service_notice &lt;lgl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;, expected_datetime &lt;chr&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   address &lt;chr&gt;, adress_id &lt;lgl&gt;, media_url &lt;chr&gt;, zipcode &lt;lgl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   geometry &lt;POINT [°]&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
@@ -306,8 +299,7 @@ documentation (e.g. on GitHub for <a href="https://github.com/bfpi/klarschiff-c
 CitySDK</a>). The following query returns the last 50 requests tagged
 with the “idea” keyword.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"Rostock"</span><span class="op">)</span></span>
-<span><span class="va">tickets</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/o311_requests.html">o311_requests</a></span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"idea"</span>, max_requests <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">tickets</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/o311_requests.html">o311_requests</a></span><span class="op">(</span>keyword <span class="op">=</span> <span class="st">"idea"</span>, max_requests <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></code></pre></div>
 <p>Some custom parameters can also alter the shape of the output. In the
 following example, we query just the count of total requests using the
 <code>just_count</code> parameter. The result is a 1×1 tibble containing
@@ -317,7 +309,7 @@ a count value.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 1</span></span></span>
 <span><span class="co">#&gt;   value</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">4</span>263</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">4</span>253</span></span></code></pre></div>
 <p>The CitySDK extensions also offers additional URL paths which can be
 queried using the generic <code>o311_query</code> function.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">

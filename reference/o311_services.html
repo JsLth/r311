@@ -83,7 +83,12 @@ codes can usually be retrieved from <code>o311_services</code>.</p></dd>
 <span class="r-in"><span>  <span class="co"># inspect a service code</span></span></span>
 <span class="r-in"><span>  <span class="fu">o311_service</span><span class="op">(</span><span class="va">services</span><span class="op">$</span><span class="va">service_code</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in curl::curl_fetch_memory(req):</span> URL using bad/illegal format or missing URL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 2</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   service_code                        attributes$variable $code        $datatype</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> input:Litter Receptacle Maintenance TRUE                input.Garba… singleva…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 4 more variables: attributes$required &lt;lgl&gt;, $order &lt;int&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   $description &lt;chr&gt;, $values &lt;list&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="o311_endpoints.html">o311_reset_endpoints</a></span><span class="op">(</span><span class="op">)</span></span></span>
 </code></pre></div>
