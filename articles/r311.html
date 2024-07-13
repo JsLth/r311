@@ -112,7 +112,7 @@ implementations that are defined for use in the package. The list can be
 read using <code>o311_endpoints</code>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_endpoints.html">o311_endpoints</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 66 × 9</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 67 × 9</span></span></span>
 <span><span class="co">#&gt;    name            root  docs  jurisdiction key   pagination limit json  dialect</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Annaberg-Buchh… http… http… annberg-buc… FALSE TRUE          50 TRUE  Mark-a…</span></span>
@@ -125,7 +125,7 @@ read using <code>o311_endpoints</code>.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Newport News, … http… http… cityofnewpo… FALSE TRUE          50 TRUE  Connec…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> San Diego, CA   http… http… sandiego.gov FALSE TRUE          50 TRUE  Connec…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> Köln / Cologne… http… <span style="color: #BB0000;">NA</span>    stadt-koeln… FALSE TRUE          50 TRUE  Mark-a…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 56 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 57 more rows</span></span></span></code></pre></div>
 <p>The list does neither claim comprehensiveness nor up-to-dateness. It
 arguably provides some of the most important and easily accessible
 endpoints as of 2024. However, <code>r311</code> also offers the ability
@@ -143,7 +143,7 @@ the open311 test server of Rostock, Germany.</p>
 added a new row to the endpoints dataframe.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="fu"><a href="../reference/o311_endpoints.html">o311_endpoints</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 67</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] 68</span></span></code></pre></div>
 <p>You can now select the Rostock test API to the session using
 <code>o311_api</code>. This function matches an API using endpoint name
 and jurisdiction ID and attaches it to the active session. Query

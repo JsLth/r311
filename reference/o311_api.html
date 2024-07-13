@@ -58,7 +58,12 @@ session is terminated or until it is overwritten.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">o311_api</span><span class="op">(</span>endpoint <span class="op">=</span> <span class="cn">NULL</span>, jurisdiction <span class="op">=</span> <span class="cn">NULL</span>, format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"json"</span>, <span class="st">"xml"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">o311_api</span><span class="op">(</span></span>
+<span>  endpoint <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  jurisdiction <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  key <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"json"</span>, <span class="st">"xml"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -76,6 +81,14 @@ city, but can be any provider of an open311 API.</p></dd>
 <p>ID of a jurisdiction that is served by an open311 API. A jurisdiction
 ID is usually the root URL of the jurisdiction website, e.g.
 <code>"sandiego.gov"</code> for San Diego.</p></dd>
+
+
+<dt id="arg-key">key<a class="anchor" aria-label="anchor" href="#arg-key"></a></dt>
+<dd><p><code>[character]</code></p>
+<p>If a key is required by the selected API, this argument can be used to
+store the key in the R session. The API key is automatically used in
+API requests. If <code>key</code> is <code>NULL</code> although a key is required,
+a warning is emitted.</p></dd>
 
 
 <dt id="arg-format">format<a class="anchor" aria-label="anchor" href="#arg-format"></a></dt>

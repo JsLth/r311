@@ -159,7 +159,7 @@ directory and defaults back to
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># read default endpoints</span></span></span>
 <span class="r-in"><span><span class="fu">o311_endpoints</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 66 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 67 × 9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    name            root  docs  jurisdiction key   pagination limit json  dialect</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Annaberg-Buchh… http… http… annberg-buc… FALSE TRUE          50 TRUE  Mark-a…</span>
@@ -172,7 +172,7 @@ directory and defaults back to
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Newport News, … http… http… cityofnewpo… FALSE TRUE          50 TRUE  Connec…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> San Diego, CA   http… http… sandiego.gov FALSE TRUE          50 TRUE  Connec…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Köln / Cologne… http… <span style="color: #BB0000;">NA</span>    stadt-koeln… FALSE TRUE          50 TRUE  Mark-a…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 56 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 57 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># get all endpoints powered by Connected Bits</span></span></span>
 <span class="r-in"><span><span class="fu">o311_endpoints</span><span class="op">(</span>dialect <span class="op">=</span> <span class="st">"Connected Bits"</span><span class="op">)</span></span></span>
@@ -192,7 +192,7 @@ directory and defaults back to
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># read new endpoints</span></span></span>
 <span class="r-in"><span><span class="fu">o311_endpoints</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 67 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 68 × 9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    name            root  docs  jurisdiction key   pagination limit json  dialect</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> Annaberg-Buchh… http… http… annberg-buc… FALSE TRUE          50 TRUE  Mark-a…</span>
@@ -205,7 +205,7 @@ directory and defaults back to
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> Newport News, … http… http… cityofnewpo… FALSE TRUE          50 TRUE  Connec…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> San Diego, CA   http… http… sandiego.gov FALSE TRUE          50 TRUE  Connec…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> Köln / Cologne… http… <span style="color: #BB0000;">NA</span>    stadt-koeln… FALSE TRUE          50 TRUE  Mark-a…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 57 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 58 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># reset endpoints back to default</span></span></span>
 <span class="r-in"><span><span class="fu">o311_reset_endpoints</span><span class="op">(</span><span class="op">)</span></span></span>
