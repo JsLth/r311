@@ -29,24 +29,6 @@ test_that("identical endpoints/jurisdictions fail", {
     class = "o311_endpoints_corrupt_error"
   )
   o311_reset_endpoints()
-
-  # test identical endpoints
-  add_test_endpoint()
-  add_test_endpoint(juris = "test")
-  expect_error(
-    o311_api("sd test"),
-    class = "o311_ambiguous_endpoints_error"
-  )
-  o311_reset_endpoints()
-
-  # test identical jurisdictions
-  add_test_endpoint(juris = "test")
-  add_test_endpoint("sd test2", juris = "test")
-  expect_error(
-    o311_api(jurisdiction = "test"),
-    class = "o311_ambiguous_juris_error"
-  )
-  o311_reset_endpoints()
 })
 
 

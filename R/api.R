@@ -115,38 +115,21 @@ check_jurisdiction <- function(endpoints) {
     endpoints_dup <- length(unique(endpoints$name)) == 1
     juris_dup <- length(unique(endpoints$jurisdiction)) == 1
 
-    if (endpoints_dup && !juris_dup) {
-      abort(
-        paste(
-          "Multiple identical endpoints detected.",
-          "Consider passing `jurisdiction` explicitly."
-        ),
-        class = "ambiguous_endpoints_error"
-      )
-    } else if (!endpoints_dup && juris_dup) {
-      abort(
-        paste(
-          "Multiple identical jurisdictions detected.",
-          "Consider passing `endpoint` explicitly."
-        ),
-        class = "ambiguous_juris_error"
-      )
-    } else {
-      abort(
-        paste(
-          "Multiple identical jurisdictions for the same endpoint detected.",
-          "Consider fixing the endpoints list using `o311_reset_endpoints()`."
-        ),
-        class = "endpoints_corrupt_error"
-      )
-    }
+    abort(
+      paste(
+        "Multiple APIs matched.\n",
+        "Consider changing the input arguments or fixing the endpoints list",
+        "using `o311_reset_endpoints()`."
+      ),
+      class = "endpoints_corrupt_error"
+    )
   }
 
   if (!nrow(endpoints)) {
     abort(
       paste(
         "No jurisdiction could be found given the specified",
-        "city / jurisdiction ID. Run `o311_endpoints()`",
+        "city / jurisdiction ID.\nRun `o311_endpoints()`",
         "to get an overview of available jurisdictions."
       ),
       class = "not_found_error"
