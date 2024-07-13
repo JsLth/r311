@@ -7,22 +7,20 @@
 #' @param ... Further endpoint-specific parameters as documented in the
 #' respective endpoint reference.
 #'
-#' @returns A dataframe or list containing information about each service.
+#' @return A dataframe or list containing information about each service.
 #'
 #' @examples
 #' # set up a jurisdiction
 #' o311_api("san francisco")
-#'
-#' can_connect <- o311_ok()
-#' if (can_connect) {
+#' \donttest{
+#' if (o311_ok()) {
 #'   # get a list of all services
 #'   services <- o311_services()
 #'
 #'   # inspect a service code
 #'   o311_service(services$service_code[1])
 #' }
-#'
-#' o311_reset_endpoints()
+#' }
 #' @export
 o311_services <- function(...) {
   o311_query(path = "services", ..., simplify = TRUE)

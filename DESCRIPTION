@@ -1,6 +1,6 @@
 Package: r311
 Type: Package
-Title: R Interface to the 'open311' standard
+Title: Interface to the 'open311' Standard
 Version: 0.3.5
 Authors@R: 
     person("Jonas", "Lieth", , "jonas.lieth@gesis.org", role = c("aut", "cre", "cph"))

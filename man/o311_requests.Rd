@@ -113,9 +113,8 @@ notice. Refer to the endpoint docs to learn more about custom parameters
 }
 \examples{
 o311_api("zurich")
-
-can_connect <- o311_ok()
-if (can_connect) {
+\donttest{
+if (o311_ok()) {
   # retrieve requests from the last two days
   now <- Sys.time()
   two_days <- 60 * 60 * 24 * 2
@@ -128,11 +127,14 @@ if (can_connect) {
   rid <- as.character(tickets$service_request_id[1])
   o311_request(rid)
 
-  # request all data
-  o311_request_all()
+  if (interactive()) {
+    # request all data
+    o311_request_all()
+  }
 
   # request data of the first 5 pages
   o311_request_all(max_pages = 5)
+}
 }
 }
 \seealso{

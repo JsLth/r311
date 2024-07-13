@@ -14,9 +14,9 @@ Retrieve discovery information about the mounted endpoint.
 }
 \examples{
 o311_api("zurich")
-
-can_connect <- o311_ok()
-if (can_connect) {
+\donttest{
+if (o311_ok()) {
   o311_discovery()
+}
 }
 }

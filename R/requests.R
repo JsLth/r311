@@ -31,7 +31,7 @@
 #' @param ... Further endpoint-specific parameters as documented in the
 #' respective endpoint reference.
 #'
-#' @returns A dataframe containing data on civic service requests. The
+#' @return A dataframe containing data on civic service requests. The
 #' dataframe can contain varying columns depending on the open311
 #' implementation.
 #'
@@ -70,9 +70,8 @@
 #'
 #' @examples
 #' o311_api("zurich")
-#'
-#' can_connect <- o311_ok()
-#' if (can_connect) {
+#' \donttest{
+#' if (o311_ok()) {
 #'   # retrieve requests from the last two days
 #'   now <- Sys.time()
 #'   two_days <- 60 * 60 * 24 * 2
@@ -85,11 +84,14 @@
 #'   rid <- as.character(tickets$service_request_id[1])
 #'   o311_request(rid)
 #'
-#'   # request all data
-#'   o311_request_all()
+#'   if (interactive()) {
+#'     # request all data
+#'     o311_request_all()
+#'   }
 #'
 #'   # request data of the first 5 pages
 #'   o311_request_all(max_pages = 5)
+#' }
 #' }
 #' @seealso \code{\link{o311_api}}
 #' @export

@@ -24,7 +24,7 @@
 #' returns a valid output, i.e. a list or dataframe with more than 0
 #' rows/elements. By default, applies all methods.
 #'
-#' @returns A dataframe containing the name of the endpoint, one to three
+#' @return A dataframe containing the name of the endpoint, one to three
 #' columns on check results, and one to three columns on reasons if a check
 #' turned out to be negative.
 #'

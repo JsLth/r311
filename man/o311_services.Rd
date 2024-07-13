@@ -27,15 +27,13 @@ and thus require an attached jurisdiction using
 \examples{
 # set up a jurisdiction
 o311_api("san francisco")
-
-can_connect <- o311_ok()
-if (can_connect) {
+\donttest{
+if (o311_ok()) {
   # get a list of all services
   services <- o311_services()
 
   # inspect a service code
   o311_service(services$service_code[1])
 }
-
-o311_reset_endpoints()
+}
 }

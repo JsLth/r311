@@ -46,7 +46,7 @@
 #' argument does nothing, but it could be used in the future to adjust
 #' response handling based on dialect.
 #'
-#' @returns For \code{o311_endpoints}, a dataframe containing all relevant
+#' @return For \code{o311_endpoints}, a dataframe containing all relevant
 #' information on an endpoint. For \code{o311_add_endpoint}, the new endpoint,
 #' invisibly. \code{o311_reset_endpoints} returns \code{NULL} invisibly.
 #' If the new endpoint is a duplicate, \code{NULL} is returned invisibly.

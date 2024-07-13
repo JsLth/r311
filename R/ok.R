@@ -8,7 +8,7 @@
 #' Whether to return a logical or the error message describing why the
 #' API is not ok.
 #'
-#' @returns A logical describing whether the API is reachable or not.
+#' @return A logical describing whether the API is reachable or not.
 #' If \code{error = TRUE}, returns the corresponding error object if one
 #' occurs.
 #' @examples

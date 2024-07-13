@@ -28,9 +28,8 @@ You can set \code{options(r311_echo = TRUE)} to display all requests sent
 using \code{o311_query}.
 }
 \examples{
-\dontrun{
 o311_api("rostock")
-
+\donttest{
 # manually query discovery
 o311_query(path = "discovery", simplify = FALSE)
 

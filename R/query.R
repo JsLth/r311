@@ -10,7 +10,7 @@
 #' @param simplify Whether to simplify the output using
 #' \code{jsonlite::toJSON(..., simplify = TRUE)}.
 #'
-#' @returns The parsed query output, either as a list or dataframe.
+#' @return The parsed query output, either as a list or dataframe.
 #'
 #' @details
 #' You can set \code{options(r311_echo = TRUE)} to display all requests sent

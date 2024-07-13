@@ -38,7 +38,7 @@ o311_cache <- new.env(parent = emptyenv())
 #' \code{xml2} package for queries and the \code{xmlconvert} package for
 #' simplification.
 #'
-#' @returns A list containing the most important information on a given
+#' @return A list containing the most important information on a given
 #' jurisdiction, invisibly. This list is attached to the session and can
 #' be retrieved by calling \code{o311_api()} without arguments. Passing no
 #' arguments returns the currently attached API object.

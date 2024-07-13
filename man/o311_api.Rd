@@ -4,7 +4,12 @@
 \alias{o311_api}
 \title{Select an open311 API}
 \usage{
-o311_api(endpoint = NULL, jurisdiction = NULL, format = c("json", "xml"))
+o311_api(
+  endpoint = NULL,
+  jurisdiction = NULL,
+  key = NULL,
+  format = c("json", "xml")
+)
 }
 \arguments{
 \item{endpoint}{\code{[character]}
@@ -17,6 +22,13 @@ city, but can be any provider of an open311 API.}
 ID of a jurisdiction that is served by an open311 API. A jurisdiction
 ID is usually the root URL of the jurisdiction website, e.g.
 \code{"sandiego.gov"} for San Diego.}
+
+\item{key}{\code{[character]}
+
+If a key is required by the selected API, this argument can be used to
+store the key in the R session. The API key is automatically used in
+API requests. If \code{key} is \code{NULL} although a key is required,
+a warning is emitted.}
 
 \item{format}{\code{[character]}
 
