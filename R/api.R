@@ -169,7 +169,7 @@ check_format <- function(endpoints, format) {
     )
   } else if (!loadable("xml2", "xmlconvert") && identical(format, "xml")) {
     abort(
-      "The `xml2` package is needed to accept XML responses.",
+      "The `xml2` and `xmlconvert` packages are needed to accept XML responses.",
       class = "package_error"
     )
   }
