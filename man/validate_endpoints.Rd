@@ -42,6 +42,7 @@ and/or valid. Iterates through all endpoints defined in
 reason, if applicable.
 }
 \examples{
+\donttest{
 # check the first three endpoints in o311_endpoints()
 validate_endpoints(1:3)
 
@@ -50,4 +51,5 @@ validate_endpoints(1:3, checks = "requests")
 
 # check only whether an endpoint is down
 validate_endpoints(1:3, methods = "down")
+}
 }
