@@ -12,6 +12,7 @@
 #' If \code{error = TRUE}, returns the corresponding error object if one
 #' occurs.
 #' @examples
+#' \donttest{
 #' # check if Bonn API is reachable
 #' o311_api("Bonn")
 #' o311_ok()
@@ -30,6 +31,7 @@
 #'
 #' # reset endpoints database
 #' o311_reset_endpoints()
+#' }
 #'@export
 o311_ok <- function(error = FALSE) {
   tryCatch(
