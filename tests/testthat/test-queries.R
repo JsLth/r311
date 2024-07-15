@@ -1,3 +1,5 @@
+skip_on_cran()
+
 test_that("path seperators are handled well", {
   p1 <- "test.org/path"
   p2 <- url_path("test.org", "/path/")
@@ -6,7 +8,6 @@ test_that("path seperators are handled well", {
 
 
 test_that("simple queries return the expected output", {
-  skip_on_cran()
   add_test_endpoint()
   o311_api("sd test")
 
@@ -54,7 +55,6 @@ test_that("formal validation works", {
 })
 
 test_that("tidying xml produces a valid dataframe", {
-  skip_on_cran()
   add_test_endpoint("sd test")
   o311_api("sd test", format = "xml")
   expect_gt(nrow(o311_requests()), 0)
@@ -91,7 +91,6 @@ test_that("o311_ok detects wrong roots", {
 
 
 test_that("queries change the response", {
-  skip_on_cran()
   add_test_endpoint()
   o311_api("sd test")
   tick <- o311_requests(status = "open")
@@ -101,7 +100,6 @@ test_that("queries change the response", {
 
 
 test_that("time is correctly formatted", {
-  skip_on_cran()
   add_test_endpoint()
   o311_api("sd test")
   expect_gt(nrow(o311_requests(end_date = Sys.time())), 0)
@@ -110,7 +108,6 @@ test_that("time is correctly formatted", {
 
 
 test_that("o311_request_all can terminate", {
-  skip_on_cran()
   add_test_endpoint()
   o311_api("sd test")
   expect_error(o311_request_all(page = 1), class = "o311_page_unsupported_error")
