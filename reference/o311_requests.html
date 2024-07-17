@@ -15,7 +15,7 @@ to return a complete dataset of service requests."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">r311</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.7</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +38,7 @@ to return a complete dataset of service requests."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Get civic service request data</h1>
-      <small class="dont-index">Source: <a href="https://github.com/JsLth/r311/blob/main/R/requests.R" class="external-link"><code>R/requests.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/JsLth/r311/blob/v0.3.7/R/requests.R" class="external-link"><code>R/requests.R</code></a></small>
       <div class="d-none name"><code>o311_requests.Rd</code></div>
     </div>
 
@@ -194,25 +194,25 @@ notice. Refer to the endpoint docs to learn more about custom parameters
 <span class="r-out co"><span class="r-pr">#&gt;</span> Simple feature collection with 5000 features and 13 fields</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geometry type: POINT</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Dimension:     XY</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: 8.465915 ymin: 47.32365 xmax: 8.599787 ymax: 47.43141</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bounding box:  xmin: 8.465915 ymin: 47.32365 xmax: 8.60263 ymax: 47.43141</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Geodetic CRS:  WGS 84</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5,000 × 14</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    agency_sent_datetime     interface_used requested_datetime service_request_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> 2024-07-12T21:52:04+02:… iOS            2024-07-12T15:47:…              <span style="text-decoration: underline;">58</span>516</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> 2024-07-12T14:22:04+02:… iOS            2024-07-12T14:12:…              <span style="text-decoration: underline;">58</span>512</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> 2024-07-12T14:32:04+02:… iOS            2024-07-12T13:56:…              <span style="text-decoration: underline;">58</span>511</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> 2024-07-12T21:57:04+02:… iOS            2024-07-12T14:08:…              <span style="text-decoration: underline;">58</span>510</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> 2024-07-12T13:42:04+02:… iOS            2024-07-12T13:37:…              <span style="text-decoration: underline;">58</span>508</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> 2024-07-12T13:37:04+02:… iOS            2024-07-12T13:36:…              <span style="text-decoration: underline;">58</span>506</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> 2024-07-12T17:27:04+02:… iOS            2024-07-12T13:30:…              <span style="text-decoration: underline;">58</span>505</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> 2024-07-12T21:47:04+02:… iOS            2024-07-12T12:46:…              <span style="text-decoration: underline;">58</span>503</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> 2024-07-12T21:47:04+02:… iOS            2024-07-12T23:46:…              <span style="text-decoration: underline;">58</span>502</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> 2024-07-12T12:07:04+02:… iOS            2024-07-12T18:15:…              <span style="text-decoration: underline;">58</span>496</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    interface_used media_url         service_code detail description service_name</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> iOS            https://www.zuer… Abfall/Samm… <span style="color: #949494;">"</span>Pult<span style="color: #949494;">"</span> <span style="color: #949494;">"</span>Pult: Pul… Abfall/Samm…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> iOS            https://www.zuer… Abfall/Samm… <span style="color: #949494;">"</span>Kart… <span style="color: #949494;">"</span>Karton mi… Abfall/Samm…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> iOS            https://www.zuer… Signalisati… <span style="color: #949494;">"</span>Dies… <span style="color: #949494;">"</span>Fussgänge… Signalisati…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> iOS            https://www.zuer… Signalisati… <span style="color: #949494;">"</span>Das … <span style="color: #949494;">"</span>Das hat h… Signalisati…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> iOS            https://www.zuer… Grünflächen… <span style="color: #949494;">"</span>Abge… <span style="color: #949494;">"</span>Abgestorb… Grünflächen…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> iOS            https://www.zuer… Strasse/Tro… <span style="color: #949494;">"</span>Pfla… <span style="color: #949494;">"</span>Pflasters… Strasse/Tro…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> iOS            https://www.zuer… Abfall/Samm… <span style="color: #949494;">"</span>Stän… <span style="color: #949494;">"</span>Ständerla… Abfall/Samm…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> iOS            https://www.zuer… Abfall/Samm… <span style="color: #949494;">"</span>Schr… <span style="color: #949494;">"</span>Schrottve… Abfall/Samm…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> desktop        https://www.zuer… Strasse/Tro… <span style="color: #949494;">"</span>Velo… <span style="color: #949494;">"</span>Veloverbi… Strasse/Tro…</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> iOS            https://www.zuer… Signalisati… <span style="color: #949494;">"</span>Wies… <span style="color: #949494;">"</span>keinen Ve… Signalisati…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 4,990 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 10 more variables: description &lt;chr&gt;, status &lt;chr&gt;, updated_datetime &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   service_code &lt;chr&gt;, title &lt;chr&gt;, detail &lt;chr&gt;, service_notice &lt;chr&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   service_name &lt;chr&gt;, media_url &lt;chr&gt;, geometry &lt;POINT [°]&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 8 more variables: requested_datetime &lt;chr&gt;, status &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   updated_datetime &lt;chr&gt;, service_request_id &lt;int&gt;, title &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   service_notice &lt;chr&gt;, agency_sent_datetime &lt;chr&gt;, geometry &lt;POINT [°]&gt;</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

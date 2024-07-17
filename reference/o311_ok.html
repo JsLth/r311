@@ -9,7 +9,7 @@ and returns a valid requests response."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">r311</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.5</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.7</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +32,7 @@ and returns a valid requests response."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Is open311 API ok?</h1>
-      <small class="dont-index">Source: <a href="https://github.com/JsLth/r311/blob/main/R/ok.R" class="external-link"><code>R/ok.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/JsLth/r311/blob/v0.3.7/R/ok.R" class="external-link"><code>R/ok.R</code></a></small>
       <div class="d-none name"><code>o311_ok.Rd</code></div>
     </div>
 
@@ -65,7 +65,8 @@ occurs.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># check if Bonn API is reachable</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="co"># check if Bonn API is reachable</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"Bonn"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">o311_ok</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
@@ -86,6 +87,7 @@ occurs.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># reset endpoints database</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="o311_endpoints.html">o311_reset_endpoints</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
