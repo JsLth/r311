@@ -30,7 +30,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>API discovery</h1>
-      <small class="dont-index">Source: <a href="https://github.com/JsLth/r311/blob/v0.3.7/R/discovery.R" class="external-link"><code>R/discovery.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/JsLth/r311/blob/main/R/discovery.R" class="external-link"><code>R/discovery.R</code></a></small>
       <div class="d-none name"><code>o311_discovery.Rd</code></div>
     </div>
 
@@ -56,14 +56,17 @@
 <span class="r-in"><span>  <span class="fu">o311_discovery</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $discovery</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$contact</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Send email to zurich@fixmystreet.com."</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$max_requests</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1000"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$changeset</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2021-03-01T00:00:00Z"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$endpoints</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$endpoints[[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$endpoints[[1]]$url</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://www.zueriwieneu.ch/open311"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$endpoints[[1]]$type</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "production"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$endpoints[[1]]$formats</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$endpoints[[1]]$formats[[1]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "text/xml"</span>
@@ -75,22 +78,19 @@
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "text/html"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$endpoints[[1]]$type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "production"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$endpoints[[1]]$specification</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "http://wiki.open311.org/GeoReport_v2"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$endpoints[[1]]$changeset</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2021-03-01T00:00:00Z"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$endpoints[[1]]$url</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "https://www.zueriwieneu.ch/open311"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$contact</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Send email to zurich@fixmystreet.com."</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$changeset</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "2021-03-01T00:00:00Z"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $discovery$max_requests</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1000"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
@@ -105,7 +105,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

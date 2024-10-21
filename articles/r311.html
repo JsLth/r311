@@ -57,7 +57,7 @@
       <h1>r311: An R interface to the open311 standard</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/JsLth/r311/blob/v0.3.7/vignettes/r311.Rmd" class="external-link"><code>vignettes/r311.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/JsLth/r311/blob/main/vignettes/r311.Rmd" class="external-link"><code>vignettes/r311.Rmd</code></a></small>
       <div class="d-none name"><code>r311.Rmd</code></div>
     </div>
 
@@ -155,8 +155,8 @@ selected endpoint is able to handle request queries.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_ok.html">o311_ok</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
-<p>As the result is , you can safely start receiving real request
-data.</p>
+<p>As the result is <code>TRUE</code>, you can safely start receiving
+real request data.</p>
 </div>
 <div class="section level2">
 <h2 id="making-requests">Making requests<a class="anchor" aria-label="anchor" href="#making-requests"></a>
@@ -263,12 +263,12 @@ first two pages, resulting in a tibble with 100 service requests.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"Rostock, DE"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/o311_requests.html">o311_request_all</a></span><span class="op">(</span>max_pages <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Simple feature collection with 4308 features and 15 fields</span></span>
+<span><span class="co">#&gt; Simple feature collection with 4729 features and 15 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: 12.01306 ymin: 54.05571 xmax: 12.20568 ymax: 54.20905</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 12.01733 ymin: 54.05571 xmax: 12.22385 ymax: 54.24393</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4,308 × 16</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4,729 × 16</span></span></span>
 <span><span class="co">#&gt;    service_request_id status_notes  status service_code service_name description</span></span>
 <span><span class="co">#&gt;                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>              <span style="text-decoration: underline;">24</span>824 <span style="color: #949494;">""</span>            in_pr…          113 Beschilderu… Kreuzung A…</span></span>
@@ -276,12 +276,12 @@ first two pages, resulting in a tibble with 100 service requests.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>              <span style="text-decoration: underline;">70</span>677  <span style="color: #BB0000;">NA</span>           recei…            2 bauliche Ge… redaktione…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>              <span style="text-decoration: underline;">72</span>069  <span style="color: #BB0000;">NA</span>           recei…           22 Sperrmüll    redaktione…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>              <span style="text-decoration: underline;">72</span>070  <span style="color: #BB0000;">NA</span>           recei…           15 Elektroschr… redaktione…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>              <span style="text-decoration: underline;">70</span>740  <span style="color: #BB0000;">NA</span>           revie…           22 Sperrmüll    Die 1.Meld…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>              <span style="text-decoration: underline;">70</span>076  <span style="color: #BB0000;">NA</span>           closed          160 Altfahrzeug… <span style="color: #BB0000;">NA</span>         </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>              <span style="text-decoration: underline;">75</span>356  <span style="color: #BB0000;">NA</span>           recei…           17 Hausmüll     redaktione…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>              <span style="text-decoration: underline;">43</span>518 <span style="color: #949494;">"</span>Der Erdhauf… in_pr…           13 Bauabfall    Illegale E…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>              <span style="text-decoration: underline;">44</span>333  <span style="color: #BB0000;">NA</span>           recei…            2 bauliche Ge… redaktione…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4,298 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>              <span style="text-decoration: underline;">70</span>076  <span style="color: #BB0000;">NA</span>           closed          160 Altfahrzeug… <span style="color: #BB0000;">NA</span>         </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>              <span style="text-decoration: underline;">75</span>356  <span style="color: #BB0000;">NA</span>           recei…           17 Hausmüll     redaktione…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>              <span style="text-decoration: underline;">43</span>518 <span style="color: #949494;">"</span>Der Erdhauf… in_pr…           13 Bauabfall    Illegale E…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>              <span style="text-decoration: underline;">44</span>333  <span style="color: #BB0000;">NA</span>           recei…            2 bauliche Ge… redaktione…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>              <span style="text-decoration: underline;">44</span>457  <span style="color: #BB0000;">NA</span>           recei…            2 bauliche Ge… Seit mittl…</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4,719 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 10 more variables: agency_responsible &lt;chr&gt;, service_notice &lt;lgl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;, expected_datetime &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   address &lt;chr&gt;, adress_id &lt;lgl&gt;, media_url &lt;chr&gt;, zipcode &lt;lgl&gt;,</span></span></span>
@@ -309,7 +309,7 @@ a count value.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 1</span></span></span>
 <span><span class="co">#&gt;   value</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">4</span>308</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">4</span>729</span></span></code></pre></div>
 <p>The CitySDK extensions also offers additional URL paths which can be
 queried using the generic <code>o311_query</code> function.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
@@ -343,7 +343,7 @@ and remove all endpoints manually added by
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer>

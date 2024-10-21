@@ -34,7 +34,7 @@ o311_api."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Get service list</h1>
-      <small class="dont-index">Source: <a href="https://github.com/JsLth/r311/blob/v0.3.7/R/services.R" class="external-link"><code>R/services.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/JsLth/r311/blob/main/R/services.R" class="external-link"><code>R/services.R</code></a></small>
       <div class="d-none name"><code>o311_services.Rd</code></div>
     </div>
 
@@ -83,11 +83,10 @@ codes can usually be retrieved from <code>o311_services</code>.</p></dd>
 <span class="r-in"><span>  <span class="fu">o311_service</span><span class="op">(</span><span class="va">services</span><span class="op">$</span><span class="va">service_code</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 1 × 2</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   service_code                        attributes$variable $code        $datatype</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> input:Litter Receptacle Maintenance TRUE                input.Garba… singleva…</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 4 more variables: attributes$required &lt;lgl&gt;, $order &lt;int&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   $description &lt;chr&gt;, $values &lt;list&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   service_code        attributes$variable $code       $datatype $required $order</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> RPD:General:General TRUE                oform.rpd_… singleva… TRUE           1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: attributes$description &lt;chr&gt;, $values &lt;list&gt;</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
@@ -100,7 +99,7 @@ codes can usually be retrieved from <code>o311_services</code>.</p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>
