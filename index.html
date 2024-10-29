@@ -14,8 +14,8 @@
 <link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Interface to the open311 Standard">
-<meta name="description" content="Access and handle APIs that use the international open311 GeoReport v2 standard for civic issue tracking. Retrieve civic service types and request data. Select and add available open311 endpoints and jurisdictions. Implicitly supports custom queries and open311 extensions such as CitySDK or uReport. Requires a minimal number of hard dependencies while still allowing the integration in common R formats (xml2, tibble, sf).">
-<meta property="og:description" content="Access and handle APIs that use the international open311 GeoReport v2 standard for civic issue tracking. Retrieve civic service types and request data. Select and add available open311 endpoints and jurisdictions. Implicitly supports custom queries and open311 extensions such as CitySDK or uReport. Requires a minimal number of hard dependencies while still allowing the integration in common R formats (xml2, tibble, sf).">
+<meta name="description" content="Access and handle APIs that use the international open311 GeoReport v2 standard for civic issue tracking &lt;https://wiki.open311.org/GeoReport_v2/&gt;. Retrieve civic service types and request data. Select and add available open311 endpoints and jurisdictions. Implicitly supports custom queries and open311 extensions. Requires a minimal number of hard dependencies while still allowing the integration in common R formats (xml2, tibble, sf).">
+<meta property="og:description" content="Access and handle APIs that use the international open311 GeoReport v2 standard for civic issue tracking &lt;https://wiki.open311.org/GeoReport_v2/&gt;. Retrieve civic service types and request data. Select and add available open311 endpoints and jurisdictions. Implicitly supports custom queries and open311 extensions. Requires a minimal number of hard dependencies while still allowing the integration in common R formats (xml2, tibble, sf).">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -55,11 +55,11 @@
 </h1></div>
 <!-- badges: start -->
 
-<p><code>r311</code> is an R interface to the international standard <a href="https://www.open311.org/" class="external-link">open311</a>. Open311 APIs are used for civic issue management and public service communication. The standard allows administrations to better manage citizen requests, citizens to more easily submit requests, and (hence this package) researchers and data scientists to access data regarding public service communication. <code>r311</code> supports the seamless management and supplementation of available endpoints, the selection of appropriate APIs to access, and the retrieval of civic service and request data. Custom queries and extensions (e.g. from CitySDK) are implicitly supported. <code>r311</code> is designed to require a minimal amount of dependencies, but allow for easy integration into common R frameworks such as the tidyverse, <code>sf</code> or <code>xml2</code>.</p>
+<p><a href="https://github.com/jslth/r311" class="external-link">r311</a> is an R interface to the international standard <a href="https://www.open311.org/" class="external-link">open311</a>. Open311 APIs are used for civic issue management and public service communication. The standard allows administrations to better manage citizen requests, citizens to more easily submit requests, and (hence this package) researchers and data scientists to access data regarding public service communication. <a href="https://github.com/jslth/r311" class="external-link">r311</a> supports the seamless management and supplementation of available endpoints, the selection of appropriate APIs to access, and the retrieval of civic service and request data. Custom queries and extensions (e.g. from CitySDK) are implicitly supported. <a href="https://github.com/jslth/r311" class="external-link">r311</a> is designed to require a minimal amount of dependencies, but allow for easy integration into common R frameworks such as the tidyverse, <code>sf</code> or <code>xml2</code>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install r311 from CRAN with:</p>
+<p>You can install <a href="https://github.com/jslth/r311" class="external-link">r311</a> from CRAN with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"r311"</span><span class="op">)</span></span></code></pre></div>
 <p>Or you can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
@@ -70,7 +70,7 @@
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>The following example loads <code>r311</code>, sets up a jurisdiction and retrieves a small amount of data on service tickets in Cologne, Germany.</p>
+<p>The following example loads <a href="https://github.com/jslth/r311" class="external-link">r311</a>, sets up a jurisdiction and retrieves a small amount of data on service tickets in Cologne, Germany.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jslth/r311" class="external-link">r311</a></span><span class="op">)</span></span>
 <span></span>
@@ -79,25 +79,31 @@
 <span><span class="co">#&gt; Simple feature collection with 100 features and 11 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: 6.833572 ymin: 50.84786 xmax: 7.098123 ymax: 51.05979</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 6.822994 ymin: 50.86506 xmax: 7.100928 ymax: 51.06279</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
 <span><span class="co">#&gt; # A tibble: 100 × 12</span></span>
 <span><span class="co">#&gt;    service_request_id title              description address_string service_name</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;       </span></span>
-<span><span class="co">#&gt;  1 8421-2024          #8421-2024 Schrot… "An der Me… 50931 Köln - … Schrottfahr…</span></span>
-<span><span class="co">#&gt;  2 8422-2024          #8422-2024 Stadts… "Hier wird… 51061 Köln - … Stadtsauber…</span></span>
-<span><span class="co">#&gt;  3 8423-2024          #8423-2024 Wilder… "Sperrmüll… 50933 Köln - … Wilder Müll </span></span>
-<span><span class="co">#&gt;  4 8424-2024          #8424-2024 Defekt… "Zwischen … 50933 Köln - … Defekte Obe…</span></span>
-<span><span class="co">#&gt;  5 8425-2024          #8425-2024 Defekt… "Mitten au… 50933 Köln - … Defekte Obe…</span></span>
-<span><span class="co">#&gt;  6 8426-2024          #8426-2024 Schrot… "Heidestr.… 51069 Köln - … Schrott-Kfz </span></span>
-<span><span class="co">#&gt;  7 8427-2024          #8427-2024 Defekt… "mehrere g… 50737 Köln - … Defekte Obe…</span></span>
-<span><span class="co">#&gt;  8 8428-2024          #8428-2024 Schrot…  &lt;NA&gt;       50968 Köln - … Schrott-Kfz </span></span>
-<span><span class="co">#&gt;  9 8429-2024          #8429-2024 Defekt… "Auf dem G… 50825 Köln - … Defekte Obe…</span></span>
-<span><span class="co">#&gt; 10 8430-2024          #8430-2024 Wilder… "In unsere… 50670 Köln - … Wilder Müll </span></span>
+<span><span class="co">#&gt;  1 20477-2024         #20477-2024 Wilde… "Am Straße… 50739 Köln - … Wilder Müll </span></span>
+<span><span class="co">#&gt;  2 20478-2024         #20478-2024 Schro… "Rad mit n… 50933 Köln - … Schrottfahr…</span></span>
+<span><span class="co">#&gt;  3 20479-2024         #20479-2024 Schro… "Fahrradle… 50939 Köln - … Schrottfahr…</span></span>
+<span><span class="co">#&gt;  4 20480-2024         #20480-2024 Wilde… "Dämmplatt… 50739 Köln - … Wilder Müll </span></span>
+<span><span class="co">#&gt;  5 20481-2024         #20481-2024 Schro… "31.08.202… 51065 Köln - … Schrottfahr…</span></span>
+<span><span class="co">#&gt;  6 20482-2024         #20482-2024 Wilde… "Vor Haus … 51105 Köln - … Wilder Müll </span></span>
+<span><span class="co">#&gt;  7 20483-2024         #20483-2024 Defek… "gefährlic… 50677 Köln - … Defekte Obe…</span></span>
+<span><span class="co">#&gt;  8 20484-2024         #20484-2024 Straß… "auffahrra… 50674 Köln - … Straßenbaus…</span></span>
+<span><span class="co">#&gt;  9 20485-2024         #20485-2024 Wilde…  &lt;NA&gt;       50765 Köln - … Wilder Müll </span></span>
+<span><span class="co">#&gt; 10 20486-2024         #20486-2024 Kölne… "Grünfläch… 50765 Köln - … Kölner Grün </span></span>
 <span><span class="co">#&gt; # ℹ 90 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 7 more variables: requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   status &lt;chr&gt;, media_url &lt;chr&gt;, status_note &lt;chr&gt;, service_code &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   geometry &lt;POINT [°]&gt;</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="api-upkeep">API upkeep<a class="anchor" aria-label="anchor" href="#api-upkeep"></a>
+</h2>
+<p><a href="https://github.com/jslth/r311" class="external-link">r311</a> is powered by a JSON of available APIs (see <a href="https://github.com/JsLth/r311/blob/main/inst/endpoints.json" class="external-link">here</a>). This list does not claim to be comprehensive nor up-to-date at all times but is updated from time to time. If an API is found to be unavailable for an extended period of time, it will be marked as “questioning”. Questionable APIs will be removed on the next release.</p>
+<p>If you know about a stable open311 API that should be added to the list, please consider opening an issue. Otherwise, you can also just use the <code><a href="reference/o311_endpoints.html">o311_add_endpoint()</a></code> function to add the API locally.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -139,7 +145,6 @@
 <li><a href="https://cran.r-project.org/package=r311" class="external-link"><img src="https://www.r-pkg.org/badges/version/r311"></a></li>
 <li><a href="https://app.codecov.io/gh/JsLth/r311?branch=main" class="external-link"><img src="https://codecov.io/gh/JsLth/r311/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 <li><a href="https://www.codefactor.io/repository/github/jslth/r311" class="external-link"><img src="https://www.codefactor.io/repository/github/jslth/r311/badge" alt="CodeFactor"></a></li>
-<li><a href="https://cran.r-project.org/package=r311" class="external-link"><img src="https://cranlogs.r-pkg.org/badges/r311"></a></li>
 </ul>
 </div>
 
