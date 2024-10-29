@@ -104,7 +104,7 @@ to handle request queries.
 o311_ok()
 ```
 
-As the result is \code{TRUE}, you can safely start receiving real request data.
+As the result is `TRUE`, you can safely start receiving real request data.
 
 
 

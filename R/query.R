@@ -127,8 +127,13 @@ guess_error <- function(resp) { # nocov start
     abort(
       sprintf(
         "Error code %s: %s",
-        headers$status %||% status,
-        error$description %||% error$message %||% error$msg %||% error$error
+        headers$status %||% status %||% "999",
+        error$description %||%
+          error$message %||%
+          error$msg %||%
+          error$error %||%
+          error$faultstring %||%
+          "Unknown error"
       ),
       class = status
     )

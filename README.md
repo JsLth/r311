@@ -10,6 +10,7 @@
 [![Codecov test
 coverage](https://codecov.io/gh/JsLth/r311/branch/main/graph/badge.svg)](https://app.codecov.io/gh/JsLth/r311?branch=main)
 [![CodeFactor](https://www.codefactor.io/repository/github/jslth/r311/badge)](https://www.codefactor.io/repository/github/jslth/r311)
+[![](https://cranlogs.r-pkg.org/badges/r311)](https://cran.r-project.org/package=r311)
 <!-- badges: end -->
 
 `r311` is an R interface to the international standard

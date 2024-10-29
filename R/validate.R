@@ -56,7 +56,7 @@ validate_endpoints <- function(idx = NULL,
 
     formal <- try(o311_api(endpoint = name, jurisdiction = juris), silent = TRUE)
     if (inherits(formal, "try-error")) {
-      do_formal <- rep("formal" %in% methods, 3)
+      do_formal <- rep("formal" %in% methods, length(checks))
       ok <- do.call(cbind.data.frame, as.list(!do_formal))
       reasons <- do.call(
         cbind.data.frame,
