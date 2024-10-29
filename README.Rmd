@@ -24,11 +24,11 @@ httptest2::start_vignette("../man/figures/README")
 [![CodeFactor](https://www.codefactor.io/repository/github/jslth/r311/badge)](https://www.codefactor.io/repository/github/jslth/r311)
 <!-- badges: end -->
 
-`r311` is an R interface to the international standard [open311](https://www.open311.org/). Open311 APIs are used for civic issue management and public service communication. The standard allows administrations to better manage citizen requests, citizens to more easily submit requests, and (hence this package) researchers and data scientists to access data regarding public service communication. `r311` supports the seamless management and supplementation of available endpoints, the selection of appropriate APIs to access, and the retrieval of civic service and request data. Custom queries and extensions (e.g. from CitySDK) are implicitly supported. `r311` is designed to require a minimal amount of dependencies, but allow for easy integration into common R frameworks such as the tidyverse, `sf` or `xml2`.
+`{r311}` is an R interface to the international standard [open311](https://www.open311.org/). Open311 APIs are used for civic issue management and public service communication. The standard allows administrations to better manage citizen requests, citizens to more easily submit requests, and (hence this package) researchers and data scientists to access data regarding public service communication. `{r311}` supports the seamless management and supplementation of available endpoints, the selection of appropriate APIs to access, and the retrieval of civic service and request data. Custom queries and extensions (e.g. from CitySDK) are implicitly supported. `{r311}` is designed to require a minimal amount of dependencies, but allow for easy integration into common R frameworks such as the tidyverse, `sf` or `xml2`.
 
 ## Installation
 
-You can install r311 from CRAN with:
+You can install `{r311}` from CRAN with:
 
 ```r
 install.packages("r311")
@@ -44,7 +44,7 @@ remotes::install_github("JsLth/r311")
 
 ## Example
 
-The following example loads `r311`, sets up a jurisdiction and retrieves
+The following example loads `{r311}`, sets up a jurisdiction and retrieves
 a small amount of data on service tickets in Cologne, Germany.
 
 ```{r example}
@@ -54,3 +54,9 @@ o311_api("Cologne")
 o311_requests()
 ```
 
+
+## API upkeep
+
+`{r311}` is powered by a JSON of available APIs (see [here](https://github.com/JsLth/r311/blob/main/inst/endpoints.json)). This list does not claim to be comprehensive nor up-to-date at all times but is updated from time to time. If an API is found to be unavailable for an extended period of time, it will be marked as "questioning". Questionable APIs will be removed on the next release.
+
+If you know about a stable open311 API that should be added to the list, please consider opening an issue. Otherwise, you can also just use the `o311_add_endpoint()` function to add the API locally.

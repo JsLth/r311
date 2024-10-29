@@ -94,6 +94,15 @@ o311_api <- function(endpoint = NULL,
   check_format(endpoints, format)
   endpoints$json <- identical(format, "json")
 
+  if (isTRUE(endpoints$questioning)) {
+    warning(paste( # nocov start
+      "This API was marked as \"questioning\". This means that it did not",
+      "work the last time it was checked and will be removed on the next",
+      "release if nothing changes. If you think this is a mistake, please",
+      "submit a bug report!"
+    )) # nocov end
+  }
+
   if (isTRUE(endpoints$key) && !is.null(key)) {
     assign("api_key", key, envir = o311_cache)
   } else if (isTRUE(endpoints$key)) {

@@ -71,7 +71,8 @@
     "pagination": true,
     "limit": 50,
     "json": true,
-    "dialect": "Connected Bits"
+    "dialect": "Connected Bits",
+    "questioning": true
   },
   {
     "name": "Newport News, VA",
@@ -112,7 +113,8 @@
     "key": false,
     "pagination": true,
     "limit": 1000,
-    "json": true
+    "json": true,
+    "questioning": true
   },
   {
     "name": "Rostock, DE",
@@ -161,7 +163,8 @@
     "pagination": true,
     "limit": 50,
     "json": true,
-    "dialect": "Mark-a-Spot"
+    "dialect": "Mark-a-Spot",
+    "questioning": true
   },
   {
     "name": "Paderborn, DE",
@@ -186,7 +189,8 @@
     "root": "https://api.turku.fi/feedback/v1/",
     "key": false,
     "pagination": false,
-    "json": true
+    "json": true,
+    "questioning": true
   },
   {
     "name": "Zurich, CH",
@@ -201,12 +205,11 @@
   },
   {
     "name": "Philadelphia, PA",
-    "root": "https://www.publicstuff.com/api/open311/",
-    "jurisdiction": "philadelphia-pa",
+    "root": "https://api.phila.gov/open311/v2/",
     "key": false,
     "pagination": true,
-    "json": true,
-    "dialect": "PublicStuff"
+    "limit": 1000,
+    "json": true
   },
   {
     "name": "Schwerin, DEU",
@@ -400,7 +403,7 @@
     "dialect": "SeeClickFix"
   },
   {
-    "name": "New Haven, CT",
+    "name": "Southern Connecticut State University (SCSU)",
     "root": "https://seeclickfix.com/open311/v2/183/",
     "docs": "https://seeclickfix.com/open311/v2/docs",
     "key": false,
@@ -477,7 +480,8 @@
     "pagination": true,
     "limit": 20,
     "json": true,
-    "dialect": "SeeClickFix"
+    "dialect": "SeeClickFix",
+    "questioning": true
   },
   {
     "name": "Union City, GA",
