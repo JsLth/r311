@@ -1,15 +1,19 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# r311
+# r311 <img align="right" height="150" src="man/figures/logo.png">
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/JsLth/r311/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JsLth/r311/actions/workflows/R-CMD-check.yaml)
+[![rOG-badge](https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg)](https://ropengov.org/)
+[![R-CMD-check](https://github.com/rOpenGov/r311/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rOpenGov/r311/actions/workflows/R-CMD-check.yaml)
 [![](https://www.r-pkg.org/badges/version/r311)](https://cran.r-project.org/package=r311)
 [![Codecov test
-coverage](https://codecov.io/gh/JsLth/r311/branch/main/graph/badge.svg)](https://app.codecov.io/gh/JsLth/r311?branch=main)
-[![CodeFactor](https://www.codefactor.io/repository/github/jslth/r311/badge)](https://www.codefactor.io/repository/github/jslth/r311)
+coverage](https://codecov.io/gh/rOpenGov/r311/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rOpenGov/r311?branch=main)
+[![CodeFactor](https://www.codefactor.io/repository/github/rOpenGov/r311/badge)](https://www.codefactor.io/repository/github/rOpenGov/r311)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 <!-- badges: end -->
 
 `{r311}` is an R interface to the international standard
@@ -39,7 +43,7 @@ Or you can install the development version from
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("JsLth/r311")
+remotes::install_github("rOpenGov/r311")
 ```
 
 ## Example
@@ -55,21 +59,21 @@ o311_requests()
 #> Simple feature collection with 100 features and 11 fields
 #> Geometry type: POINT
 #> Dimension:     XY
-#> Bounding box:  xmin: 6.822994 ymin: 50.86506 xmax: 7.100928 ymax: 51.06279
+#> Bounding box:  xmin: 6.822994 ymin: 50.85606 xmax: 7.100928 ymax: 51.06279
 #> Geodetic CRS:  WGS 84
 #> # A tibble: 100 × 12
 #>    service_request_id title              description address_string service_name
 #>    <chr>              <chr>              <chr>       <chr>          <chr>       
-#>  1 20477-2024         #20477-2024 Wilde… "Am Straße… 50739 Köln - … Wilder Müll 
-#>  2 20478-2024         #20478-2024 Schro… "Rad mit n… 50933 Köln - … Schrottfahr…
-#>  3 20479-2024         #20479-2024 Schro… "Fahrradle… 50939 Köln - … Schrottfahr…
-#>  4 20480-2024         #20480-2024 Wilde… "Dämmplatt… 50739 Köln - … Wilder Müll 
-#>  5 20481-2024         #20481-2024 Schro… "31.08.202… 51065 Köln - … Schrottfahr…
-#>  6 20482-2024         #20482-2024 Wilde… "Vor Haus … 51105 Köln - … Wilder Müll 
-#>  7 20483-2024         #20483-2024 Defek… "gefährlic… 50677 Köln - … Defekte Obe…
-#>  8 20484-2024         #20484-2024 Straß… "auffahrra… 50674 Köln - … Straßenbaus…
-#>  9 20485-2024         #20485-2024 Wilde…  <NA>       50765 Köln - … Wilder Müll 
-#> 10 20486-2024         #20486-2024 Kölne… "Grünfläch… 50765 Köln - … Kölner Grün 
+#>  1 20481-2024         #20481-2024 Schro… "31.08.202… 51065 Köln - … Schrottfahr…
+#>  2 20482-2024         #20482-2024 Wilde… "Vor Haus … 51105 Köln - … Wilder Müll 
+#>  3 20483-2024         #20483-2024 Defek… "gefährlic… 50677 Köln - … Defekte Obe…
+#>  4 20484-2024         #20484-2024 Straß… "auffahrra… 50674 Köln - … Straßenbaus…
+#>  5 20485-2024         #20485-2024 Wilde…  <NA>       50765 Köln - … Wilder Müll 
+#>  6 20486-2024         #20486-2024 Kölne… "Grünfläch… 50765 Köln - … Kölner Grün 
+#>  7 20487-2024         #20487-2024 Defek…  <NA>       51147 Köln - … Defekte Obe…
+#>  8 20488-2024         #20488-2024 Schro… "Hallo, an… 50825 Köln - … Schrottfahr…
+#>  9 20489-2024         #20489-2024 Wilde… "Evastr Ec… 51149 Köln - … Wilder Müll 
+#> 10 20490-2024         #20490-2024 Wilde… "Wilder Mü… 50827 Köln - … Wilder Müll 
 #> # ℹ 90 more rows
 #> # ℹ 7 more variables: requested_datetime <chr>, updated_datetime <chr>,
 #> #   status <chr>, media_url <chr>, status_note <chr>, service_code <chr>,
@@ -79,7 +83,7 @@ o311_requests()
 ## API upkeep
 
 `{r311}` is powered by a JSON of available APIs (see
-[here](https://github.com/JsLth/r311/blob/main/inst/endpoints.json)).
+[here](https://github.com/rOpenGov/r311/blob/main/inst/endpoints.json)).
 This list does not claim to be comprehensive nor up-to-date at all times
 but is updated from time to time. If an API is found to be unavailable
 for an extended period of time, it will be marked as “questioning”.

@@ -10,3 +10,4 @@
 ^cran-comments\.md$
 ^useful$
 ^CRAN-SUBMISSION$
+^\._pkgdown\.yml$

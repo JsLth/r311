@@ -1,5 +1,5 @@
-Package: r311
 Type: Package
+Package: r311
 Title: Interface to the 'open311' Standard
 Version: 0.4.0
 Authors@R: 
@@ -7,32 +7,38 @@ Authors@R:
 Maintainer: Jonas Lieth <jonas.lieth@gesis.org>
 Description: Access and handle APIs that use the international 'open311'
     'GeoReport v2' standard for civic issue tracking
-    <https://wiki.open311.org/GeoReport_v2/>. Retrieve civic service types and
-    request data. Select and add available 'open311' endpoints and
-    jurisdictions. Implicitly supports custom queries and 'open311' extensions.
-    Requires a minimal number of hard dependencies while still allowing the
-    integration in common R formats ('xml2', 'tibble', 'sf').
+    <https://wiki.open311.org/GeoReport_v2/>. Retrieve civic service types
+    and request data. Select and add available 'open311' endpoints and
+    jurisdictions. Implicitly supports custom queries and 'open311'
+    extensions.  Requires a minimal number of hard dependencies while
+    still allowing the integration in common R formats ('xml2', 'tibble',
+    'sf').
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: true
+URL: https://github.com/jslth/r311, https://jslth.github.io/r311/,
+    https://github.com/JsLth/r311, https://ropengov.github.io/r311/,
+    https://github.com/rOpenGov/r311
+BugReports: https://github.com/rOpenGov/r311/issues
 Depends:
     R (>= 4.0.0)
 Imports:
-    utils,
-    tools,
     curl,
-    jsonlite
+    jsonlite,
+    tools,
+    utils
 Suggests:
     httptest2,
-    testthat (>= 3.0.0),
     knitr,
-    tibble,
+    rmarkdown,
     sf,
+    testthat (>= 3.0.0),
+    tibble,
     xml2,
-    xmlconvert,
-    rmarkdown
-RoxygenNote: 7.3.1
-VignetteBuilder: knitr
+    xmlconvert
+VignetteBuilder: 
+    knitr
 Config/testthat/edition: 3
-URL: https://github.com/jslth/r311, https://jslth.github.io/r311/, https://github.com/JsLth/r311
-BugReports: https://github.com/JsLth/r311/issues
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.3.1
+X-schema.org-isPartOf: http://ropengov.org/
+X-schema.org-keywords: ropengov

@@ -1,23 +1,29 @@
-url: https://jslth.github.io/r311/
+url: https://ropengov.github.io/r311/
 pkwurl: ~
 template:
-  bootstrap: 5
+  bootstrap: 5.0
   bootswatch: litera
   bslib:
-    base_font: {google: "Roboto"}
-    heading_font: {google: "Roboto Slab"}
-    code_font: {google: "JetBrains Mono"}
-    link-color: "#0054AD"
-
+    base_font:
+      google: Roboto
+    heading_font:
+      google: Roboto Slab
+    code_font:
+      google: JetBrains Mono
+    link-color: '#0054AD'
+  package: rogtemplate
+  opengraph:
+    twitter:
+      site: '@rOpenGov'
 navbar:
-  title: "r311"
+  title: r311
   left:
-    - text: "Overview"
-      icon: fa-home
-      href: index.html
-    - text: "Get started"
-      icon: fa-book
-      href: articles/r311.html
-    - text: "Reference"
-      icon: fa-search
-      href: reference/index.html
+  - text: Overview
+    icon: fa-home
+    href: index.html
+  - text: Get started
+    icon: fa-book
+    href: articles/r311.html
+  - text: Reference
+    icon: fa-search
+    href: reference/index.html
