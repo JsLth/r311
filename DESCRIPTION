@@ -1,7 +1,7 @@
 Package: r311
 Type: Package
 Title: Interface to the 'open311' Standard
-Version: 0.3.7
+Version: 0.4.0
 Authors@R: 
     person("Jonas", "Lieth", , "jonas.lieth@gesis.org", role = c("aut", "cre", "cph"))
 Maintainer: Jonas Lieth <jonas.lieth@gesis.org>
