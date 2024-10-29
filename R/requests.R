@@ -194,12 +194,25 @@ o311_request_all <- function(service_code = NULL,
       break
     }
 
-    # break if last request is identical to previous one
-    if (length(out) && identical(res, out[[length(out)]])) break
+    # break if last request is identical to the first or previous one
+    if (length(out) && identical_request_ids(res, out[c(1, length(out))])) {
+      break
+    }
 
     out[[i]] <- res
     i <- i + 1
   }
 
   rbind_list(out)
+}
+
+
+identical_request_ids <- function(x, y) {
+  if (!inherits(x, "list")) {
+    x <- list(x)
+  }
+  matches <- outer(x, y, Vectorize(function(x, y) {
+    setequal(x$service_request_id, y$service_request_id)
+  }))
+  any(as.logical(matches))
 }
