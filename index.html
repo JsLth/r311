@@ -6,26 +6,41 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Interface to the open311 Standard • r311</title>
-<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
+<script src="katex-auto.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Roboto-0.4.9/font.css" rel="stylesheet">
 <link href="deps/JetBrains_Mono-0.4.9/font.css" rel="stylesheet">
 <link href="deps/Roboto_Slab-0.4.9/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Interface to the open311 Standard">
+<script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><link href="deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Interface to the open311 Standard">
 <meta name="description" content="Access and handle APIs that use the international open311 GeoReport v2 standard for civic issue tracking &lt;https://wiki.open311.org/GeoReport_v2/&gt;. Retrieve civic service types and request data. Select and add available open311 endpoints and jurisdictions. Implicitly supports custom queries and open311 extensions. Requires a minimal number of hard dependencies while still allowing the integration in common R formats (xml2, tibble, sf).">
 <meta property="og:description" content="Access and handle APIs that use the international open311 GeoReport v2 standard for civic issue tracking &lt;https://wiki.open311.org/GeoReport_v2/&gt;. Retrieve civic service types and request data. Select and add available open311 endpoints and jurisdictions. Implicitly supports custom queries and open311 extensions. Requires a minimal number of hard dependencies while still allowing the integration in common R formats (xml2, tibble, sf).">
+<meta property="og:image" content="https://ropengov.github.io/r311/logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@rOpenGov">
+<meta name="twitter:site" content="@rOpenGov">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=B612+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;family=Roboto+Mono:ital,wght@0,100..700;1,100..700&amp;display=swap" rel="stylesheet">
+<!-- rogtemplate style sheet --><link href="BS5/rogtemplate.min.css" rel="stylesheet">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top bg-dark" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="index.html">r311</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +57,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/JsLth/r311/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/rOpenGov/r311/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -51,8 +66,10 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="r311">r311<a class="anchor" aria-label="anchor" href="#r311"></a>
-</h1></div>
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="r311-">r311 <a class="anchor" aria-label="anchor" href="#r311-"></a>
+</h1>
+</div>
 <!-- badges: start -->
 
 <p><a href="https://github.com/jslth/r311" class="external-link">r311</a> is an R interface to the international standard <a href="https://www.open311.org/" class="external-link">open311</a>. Open311 APIs are used for civic issue management and public service communication. The standard allows administrations to better manage citizen requests, citizens to more easily submit requests, and (hence this package) researchers and data scientists to access data regarding public service communication. <a href="https://github.com/jslth/r311" class="external-link">r311</a> supports the seamless management and supplementation of available endpoints, the selection of appropriate APIs to access, and the retrieval of civic service and request data. Custom queries and extensions (e.g. from CitySDK) are implicitly supported. <a href="https://github.com/jslth/r311" class="external-link">r311</a> is designed to require a minimal amount of dependencies, but allow for easy integration into common R frameworks such as the tidyverse, <code>sf</code> or <code>xml2</code>.</p>
@@ -65,7 +82,7 @@
 <p>Or you can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"JsLth/r311"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"rOpenGov/r311"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
@@ -79,21 +96,21 @@
 <span><span class="co">#&gt; Simple feature collection with 100 features and 11 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
-<span><span class="co">#&gt; Bounding box:  xmin: 6.822994 ymin: 50.86506 xmax: 7.100928 ymax: 51.06279</span></span>
+<span><span class="co">#&gt; Bounding box:  xmin: 6.822994 ymin: 50.85606 xmax: 7.100928 ymax: 51.06279</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
 <span><span class="co">#&gt; # A tibble: 100 × 12</span></span>
 <span><span class="co">#&gt;    service_request_id title              description address_string service_name</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt;       </span></span>
-<span><span class="co">#&gt;  1 20477-2024         #20477-2024 Wilde… "Am Straße… 50739 Köln - … Wilder Müll </span></span>
-<span><span class="co">#&gt;  2 20478-2024         #20478-2024 Schro… "Rad mit n… 50933 Köln - … Schrottfahr…</span></span>
-<span><span class="co">#&gt;  3 20479-2024         #20479-2024 Schro… "Fahrradle… 50939 Köln - … Schrottfahr…</span></span>
-<span><span class="co">#&gt;  4 20480-2024         #20480-2024 Wilde… "Dämmplatt… 50739 Köln - … Wilder Müll </span></span>
-<span><span class="co">#&gt;  5 20481-2024         #20481-2024 Schro… "31.08.202… 51065 Köln - … Schrottfahr…</span></span>
-<span><span class="co">#&gt;  6 20482-2024         #20482-2024 Wilde… "Vor Haus … 51105 Köln - … Wilder Müll </span></span>
-<span><span class="co">#&gt;  7 20483-2024         #20483-2024 Defek… "gefährlic… 50677 Köln - … Defekte Obe…</span></span>
-<span><span class="co">#&gt;  8 20484-2024         #20484-2024 Straß… "auffahrra… 50674 Köln - … Straßenbaus…</span></span>
-<span><span class="co">#&gt;  9 20485-2024         #20485-2024 Wilde…  &lt;NA&gt;       50765 Köln - … Wilder Müll </span></span>
-<span><span class="co">#&gt; 10 20486-2024         #20486-2024 Kölne… "Grünfläch… 50765 Köln - … Kölner Grün </span></span>
+<span><span class="co">#&gt;  1 20481-2024         #20481-2024 Schro… "31.08.202… 51065 Köln - … Schrottfahr…</span></span>
+<span><span class="co">#&gt;  2 20482-2024         #20482-2024 Wilde… "Vor Haus … 51105 Köln - … Wilder Müll </span></span>
+<span><span class="co">#&gt;  3 20483-2024         #20483-2024 Defek… "gefährlic… 50677 Köln - … Defekte Obe…</span></span>
+<span><span class="co">#&gt;  4 20484-2024         #20484-2024 Straß… "auffahrra… 50674 Köln - … Straßenbaus…</span></span>
+<span><span class="co">#&gt;  5 20485-2024         #20485-2024 Wilde…  &lt;NA&gt;       50765 Köln - … Wilder Müll </span></span>
+<span><span class="co">#&gt;  6 20486-2024         #20486-2024 Kölne… "Grünfläch… 50765 Köln - … Kölner Grün </span></span>
+<span><span class="co">#&gt;  7 20487-2024         #20487-2024 Defek…  &lt;NA&gt;       51147 Köln - … Defekte Obe…</span></span>
+<span><span class="co">#&gt;  8 20488-2024         #20488-2024 Schro… "Hallo, an… 50825 Köln - … Schrottfahr…</span></span>
+<span><span class="co">#&gt;  9 20489-2024         #20489-2024 Wilde… "Evastr Ec… 51149 Köln - … Wilder Müll </span></span>
+<span><span class="co">#&gt; 10 20490-2024         #20490-2024 Wilde… "Wilder Mü… 50827 Köln - … Wilder Müll </span></span>
 <span><span class="co">#&gt; # ℹ 90 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 7 more variables: requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;,</span></span>
 <span><span class="co">#&gt; #   status &lt;chr&gt;, media_url &lt;chr&gt;, status_note &lt;chr&gt;, service_code &lt;chr&gt;,</span></span>
@@ -102,7 +119,7 @@
 <div class="section level2">
 <h2 id="api-upkeep">API upkeep<a class="anchor" aria-label="anchor" href="#api-upkeep"></a>
 </h2>
-<p><a href="https://github.com/jslth/r311" class="external-link">r311</a> is powered by a JSON of available APIs (see <a href="https://github.com/JsLth/r311/blob/main/inst/endpoints.json" class="external-link">here</a>). This list does not claim to be comprehensive nor up-to-date at all times but is updated from time to time. If an API is found to be unavailable for an extended period of time, it will be marked as “questioning”. Questionable APIs will be removed on the next release.</p>
+<p><a href="https://github.com/jslth/r311" class="external-link">r311</a> is powered by a JSON of available APIs (see <a href="https://github.com/rOpenGov/r311/blob/main/inst/endpoints.json" class="external-link">here</a>). This list does not claim to be comprehensive nor up-to-date at all times but is updated from time to time. If an API is found to be unavailable for an extended period of time, it will be marked as “questioning”. Questionable APIs will be removed on the next release.</p>
 <p>If you know about a stable open311 API that should be added to the list, please consider opening an issue. Otherwise, you can also just use the <code><a href="reference/o311_endpoints.html">o311_add_endpoint()</a></code> function to add the API locally.</p>
 </div>
 </div>
@@ -110,8 +127,9 @@
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li><a href="https://cloud.r-project.org/package=r311" class="external-link">View on CRAN</a></li>
-<li><a href="https://github.com/JsLth/r311/" class="external-link">Browse source code</a></li>
-<li><a href="https://github.com/JsLth/r311/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://github.com/rOpenGov/r311/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/rOpenGov/r311/issues" class="external-link">Report a bug</a></li>
+<li><a href="https://ropengov.org/" class="external-link">Part of <img src="https://raw.githubusercontent.com/rOpenGov/homepage/master/static/images/logo2020_black_orange.svg" height="20" class="d-inline-block mx-1 rog-logo"></a></li>
 </ul>
 </div>
 
@@ -141,10 +159,12 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/JsLth/r311/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/JsLth/r311/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://ropengov.org/" class="external-link"><img src="https://ropengov.github.io/rogtemplate/reference/figures/ropengov-badge.svg" alt="rOG-badge"></a></li>
+<li><a href="https://github.com/rOpenGov/r311/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/rOpenGov/r311/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
 <li><a href="https://cran.r-project.org/package=r311" class="external-link"><img src="https://www.r-pkg.org/badges/version/r311"></a></li>
-<li><a href="https://app.codecov.io/gh/JsLth/r311?branch=main" class="external-link"><img src="https://codecov.io/gh/JsLth/r311/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
-<li><a href="https://www.codefactor.io/repository/github/jslth/r311" class="external-link"><img src="https://www.codefactor.io/repository/github/jslth/r311/badge" alt="CodeFactor"></a></li>
+<li><a href="https://app.codecov.io/gh/rOpenGov/r311?branch=main" class="external-link"><img src="https://codecov.io/gh/rOpenGov/r311/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
+<li><a href="https://www.codefactor.io/repository/github/rOpenGov/r311" class="external-link"><img src="https://www.codefactor.io/repository/github/rOpenGov/r311/badge" alt="CodeFactor"></a></li>
+<li><a href="https://www.repostatus.org/#active" class="external-link"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Project Status: Active – The project has reached a stable, usable state and is being actively developed."></a></li>
 </ul>
 </div>
 
@@ -165,7 +185,7 @@
 
 
 
-
-
-  </body>
+    <!-- Add ropengov logo -->
+  <script src="BS5/logo.js"></script>
+</body>
 </html>

@@ -6,24 +6,35 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>r311: An R interface to the open311 standard • r311</title>
-<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<script src="../katex-auto.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.9/font.css" rel="stylesheet">
 <link href="../deps/JetBrains_Mono-0.4.9/font.css" rel="stylesheet">
 <link href="../deps/Roboto_Slab-0.4.9/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="r311: An R interface to the open311 standard">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><link href="../deps/KaTex-0.16.10/katex.min.css" rel="stylesheet">
+<script src="../deps/KaTex-0.16.10/katex.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="r311: An R interface to the open311 standard">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=B612+Mono:ital,wght@0,400;0,700;1,400;1,700&amp;family=Roboto+Mono:ital,wght@0,100..700;1,100..700&amp;display=swap" rel="stylesheet">
+<!-- rogtemplate style sheet --><link href="../BS5/rogtemplate.min.css" rel="stylesheet">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top bg-dark" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="../index.html">r311</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.7</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +51,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/JsLth/r311/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/rOpenGov/r311/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -53,11 +64,10 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>r311: An R interface to the open311 standard</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>r311: An R interface to the open311 standard</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/JsLth/r311/blob/main/vignettes/r311.Rmd" class="external-link"><code>vignettes/r311.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rOpenGov/r311/blob/main/vignettes/r311.Rmd" class="external-link"><code>vignettes/r311.Rmd</code></a></small>
       <div class="d-none name"><code>r311.Rmd</code></div>
     </div>
 
@@ -194,20 +204,21 @@ administrative services.</p>
 <code>o311_requests</code>.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_requests.html">o311_requests</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Simple feature collection with 6 features and 15 fields</span></span>
+<span><span class="co">#&gt; Simple feature collection with 7 features and 15 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
 <span><span class="co">#&gt; Bounding box:  xmin: 12.07615 ymin: 54.06731 xmax: 12.23699 ymax: 54.2091</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 16</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 16</span></span></span>
 <span><span class="co">#&gt;   service_request_id status_notes status   service_code service_name description</span></span>
 <span><span class="co">#&gt;                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>                  3 <span style="color: #949494;">""</span>           in_proc…           16 Grünschnitt… Dieser Wei…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>                  2 <span style="color: #949494;">""</span>           in_proc…           60 Sitzgelegen… Dieser Sit…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>                  5 <span style="color: #949494;">""</span>           closed             62 Ampel schad… Die Ampel …</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>                  6 <span style="color: #949494;">""</span>           reviewed          110 Spielplatz … Hier sollt…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>                  4 <span style="color: #949494;">""</span>           closed            129 Papierkorb/… Dieser Abf…</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>                  1 <span style="color: #949494;">""</span>           in_proc…          160 Altfahrzeug… Das Schrot…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>                  7 <span style="color: #BB0000;">NA</span>           received           11 Wegereinigu… redaktione…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>                  3 <span style="color: #949494;">""</span>           in_proc…           16 Grünschnitt… Dieser Wei…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>                  2 <span style="color: #949494;">""</span>           in_proc…           60 Sitzgelegen… Dieser Sit…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>                  5 <span style="color: #949494;">""</span>           closed             62 Ampel schad… Die Ampel …</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>                  6 <span style="color: #949494;">""</span>           reviewed          110 Spielplatz … Hier sollt…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>                  4 <span style="color: #949494;">""</span>           closed            129 Papierkorb/… Dieser Abf…</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">7</span>                  1 <span style="color: #949494;">""</span>           in_proc…          160 Altfahrzeug… Das Schrot…</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 10 more variables: agency_responsible &lt;chr&gt;, service_notice &lt;lgl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;, expected_datetime &lt;lgl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   address &lt;chr&gt;, adress_id &lt;lgl&gt;, media_url &lt;chr&gt;, zipcode &lt;lgl&gt;,</span></span></span>
@@ -264,12 +275,12 @@ first two pages, resulting in a tibble with 100 service requests.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/o311_api.html">o311_api</a></span><span class="op">(</span><span class="st">"Rostock, DE"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/o311_requests.html">o311_request_all</a></span><span class="op">(</span>max_pages <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Simple feature collection with 4826 features and 15 fields</span></span>
+<span><span class="co">#&gt; Simple feature collection with 4847 features and 15 fields</span></span>
 <span><span class="co">#&gt; Geometry type: POINT</span></span>
 <span><span class="co">#&gt; Dimension:     XY</span></span>
 <span><span class="co">#&gt; Bounding box:  xmin: 12.01733 ymin: 54.05571 xmax: 12.22792 ymax: 54.24393</span></span>
 <span><span class="co">#&gt; Geodetic CRS:  WGS 84</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4,826 × 16</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 4,847 × 16</span></span></span>
 <span><span class="co">#&gt;    service_request_id status_notes  status service_code service_name description</span></span>
 <span><span class="co">#&gt;                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>              <span style="text-decoration: underline;">24</span>824 <span style="color: #949494;">""</span>            in_pr…          113 Beschilderu… Kreuzung A…</span></span>
@@ -282,7 +293,7 @@ first two pages, resulting in a tibble with 100 service requests.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>              <span style="text-decoration: underline;">75</span>356  <span style="color: #BB0000;">NA</span>           recei…           17 Hausmüll     redaktione…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>              <span style="text-decoration: underline;">43</span>518 <span style="color: #949494;">"</span>Der Erdhauf… closed           13 Bauabfall    Illegale E…</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>              <span style="text-decoration: underline;">44</span>333  <span style="color: #BB0000;">NA</span>           recei…            2 bauliche Ge… redaktione…</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4,816 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 4,837 more rows</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 10 more variables: agency_responsible &lt;chr&gt;, service_notice &lt;lgl&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   requested_datetime &lt;chr&gt;, updated_datetime &lt;chr&gt;, expected_datetime &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   address &lt;chr&gt;, adress_id &lt;lgl&gt;, media_url &lt;chr&gt;, zipcode &lt;lgl&gt;,</span></span></span>
@@ -310,7 +321,7 @@ a count value.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 1</span></span></span>
 <span><span class="co">#&gt;   value</span></span>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">4</span>826</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>  <span style="text-decoration: underline;">4</span>847</span></span></code></pre></div>
 <p>The CitySDK extensions also offers additional URL paths which can be
 queried using the generic <code>o311_query</code> function.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
@@ -352,7 +363,7 @@ and remove all endpoints manually added by
 
 
 
-
-
-  </body>
+    <!-- Add ropengov logo -->
+  <script src="../BS5/logo.js"></script>
+</body>
 </html>
