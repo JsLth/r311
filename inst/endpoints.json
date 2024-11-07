@@ -186,7 +186,25 @@
   },
   {
     "name": "Turku, FI",
-    "root": "https://api.turku.fi/feedback/v1/",
+    "root": "https://opaskartta.turku.fi/efeedback/api/georeport/6aika/",
+    "key": false,
+    "pagination": false,
+    "json": true,
+    "questioning": false
+  },
+  {
+    "name": "Espoo, FI",
+    "root": "https://easiointi.espoo.fi/efeedback/api/georeport/6aika/",
+    "jurisdiction": "espoo",
+    "key": false,
+    "pagination": false,
+    "json": true,
+    "questioning": true
+  },
+  {
+    "name": "Oulu, FI",
+    "root": "https://e-kartta.ouka.fi/efeedback/api/georeport/v2/",
+    "jurisdiction": "oulu",
     "key": false,
     "pagination": false,
     "json": true,
